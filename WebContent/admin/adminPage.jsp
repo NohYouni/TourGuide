@@ -10,7 +10,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <meta charset="UTF-8">
-<title>관리자페이지</title>
+<title>관리자페이지13</title>
 <link rel="stylesheet" href="/css/commonCss.css">
 <link rel="stylesheet" href="/css/board.css">
 </head>
