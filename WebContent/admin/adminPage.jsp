@@ -10,7 +10,11 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <meta charset="UTF-8">
+<<<<<<< HEAD
 <title>관리자페이지12</title>
+=======
+<title>관리자페이지13</title>
+>>>>>>> mypage
 <link rel="stylesheet" href="/css/commonCss.css">
 <link rel="stylesheet" href="/css/board.css">
 </head>
