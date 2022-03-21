@@ -27,7 +27,7 @@ table {
 	height: 150px;
 }
 </style>
-
+<link rel="stylesheet" href="/css/commonCss.css">
 </head>
 	<h1>행운을 잡아라</h1>
 	<br />
