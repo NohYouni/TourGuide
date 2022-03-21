@@ -10,13 +10,18 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <meta charset="UTF-8">
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <title>관리자페이지12</title>
 =======
 <title>관리자페이지13</title>
 >>>>>>> mypage
 <link rel="stylesheet" href="/css/commonCss.css">
+=======
+<title>관리자페이지</title>
+>>>>>>> Stashed changes
 <link rel="stylesheet" href="/css/board.css">
+<link rel="stylesheet" href="adminCSS.css">
 </head>
 <%
 	request.setCharacterEncoding("utf-8");
@@ -85,145 +90,12 @@ int endReviewPage = review_current_paging * one_page_reviewNumbers;
 if (endReviewPage > total_review_page)
 	endReviewPage = total_review_page;
 %>
-<style>
-.em {
-	width: 600px;
-}
 
-.image {
-	border: 2px solid black;
-	width: 200px;
-}
-
-.right {
-	text-align: right;
-}
-
-td, th{
-	text-align: left;
-
-}
-
-.leftUl{
-  float: left;
-  padding: 10px;
-}
-
-.container {
-	margin: 20px auto;
-}
-
-.tab_title {
-	
-	width:  100%;
-}
-
-.tab_title li {
-	/* list-style: none;
-	float: left;
-	width: 100px;
-	padding: 10px 15px;
-	cursor: pointer;
-	text-align: center;
-	border: 1px solid #bebebe; */	
-	text-align: center;
-	position: relative;
-    height : 3em;
-    border: 1px ;
-    width : 49%;
-    display: inline-block;
-    border-radius: 5px;
-    font-family: "paybooc-Light", sans-serif;
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.25s;
-    cursor: pointer;
-    font-weight: bold;
-	color: var(--darker-color);
-}
-
-.tab_title li.on {
-	background-color: var(--primary-color);
-	color: var(--white-color);
-}
-
-.tab_cont {
-	clear: both;
-	height: 250px;
-}
-
-.tab_cont>div {
-	display: none;
-	text-align: center;
-}
-
-.tab_cont div.on {
-	display: block;
-}
-
-.memeberT {
-	margin: 0 auto;
-}
-
-.reviewCon {
-	float: left;
-}
-
-.pagination {
-	margin: 0 auto;
-}
-
-.pagination ul {
-	display: inline-block;
-}
-
-.pagination ul li {
-	float: left;
-}
-
-ul li {
-	list-style-type: none;
-	display: inline;
-	margin-left: 5px;
-}
-.memeberT{
-	border-collapse: collapse;
-}
-
-.modal {
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   border-radius: 10px red;
-}
-.modalBox {
-   position: absolute;
-   top: 30%;
-   background-color: #fff;
-   width: 400px;
-   height: 200px;
-   padding: 15px;
-}
-.modal .bg {
-   width: 100%;
-   height: 100%;
-   background-color: rgba(0, 0, 0, 0.6);
-}
-.hidden {
-   display: none;
-}
-</style>
 
 <body>
 <c:import url="/header.jsp"></c:import>
 
-<div class="container">
+<div class="">
 	<ul class="tab_title">
 		<li class="on">회원 조회</li>
 		<li>리뷰 조회</li>
