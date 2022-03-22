@@ -64,6 +64,32 @@ $(function() { // 보이기 | 숨기기
 	}); 
 });	
 
-function tabSwitch(tabName){
+let tabSwitch = function (event){
+	let tab1_boardDetail = document.getElementById('tab1_boardDetail');
+	let tab2_boardDetail = document.getElementById('tab2_boardDetail');
+	let div_boardDetail_03 = document.getElementById('div_boardDetail_03');
+	let target = event.target;
+	if (target.id ==='tab_boardDetail_01'){
+		target.classList= 'btn_tab selected_tab';
+		target.parentElement.children[1].className = "btn_tab";
+		tab1_boardDetail.className = 'tab_view';
+		tab2_boardDetail.className = 'tab_hidden';
+	}else{
+		target.classList= 'btn_tab selected_tab'
+		target.parentElement.children[0].className = "btn_tab";
+		tab1_boardDetail.className = 'tab_hidden';
+		tab2_boardDetail.className = 'tab_view';
+		div_boardDetail_03.className = 'square_list';
+	}
+}
+
+let reviewModalOpen = function (event){
+//	event.stopImmediatePropagation();
+	document.getElementById('modal_boardDetail').style.display = 'block';
 	
 }
+function reviewModalClose(){
+	document.getElementById('form_boardMdal').reset();
+	document.getElementById('modal_boardDetail').style.display = 'none';
+}
+
