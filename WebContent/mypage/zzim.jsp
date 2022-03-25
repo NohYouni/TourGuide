@@ -19,6 +19,7 @@
 
 
 </style>
+<link rel="stylesheet" href="/css/commonCss.css">
 </head>
 	
 <body>

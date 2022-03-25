@@ -1,25 +1,15 @@
 <%@page import="proto.TestVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <meta charset="UTF-8">
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-<title>관리자페이지12</title>
-=======
-<title>관리자페이지13</title>
->>>>>>> mypage
-<link rel="stylesheet" href="/css/commonCss.css">
-=======
+
 <title>관리자페이지</title>
->>>>>>> Stashed changes
 <link rel="stylesheet" href="/css/board.css">
 <link rel="stylesheet" href="adminCSS.css">
 </head>
