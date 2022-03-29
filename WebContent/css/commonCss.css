@@ -96,38 +96,34 @@ header{
 	color: var(--white-color);
 }
 
-
-
-
-
-
-
-
-
 .selected_menu{
 	font-weight: bold;
 	color: var(--darker-color);
 	text-decoration : none;
 }
 
+/* input */
 
-
-
-
-
-
+[type='text']{
+	border-radius: 10px;
+	height : 2em;
+	width: 400px;
+ 
 	
-	.inlineUl li{
-	  list-style-type: none;
-	  display: inline-block;
-	  box-sizing: border-box;
-	  width: 100px;
-	}
-	.rigthUl{
-	  float: right;
-	}
-	.siteName{
-		font-size: 50px;
-	    text-align: center;
-	    padding-bottom : 30px;
-	}
+} 
+
+.inlineUl li{
+  list-style-type: none;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 100px;
+}
+.rigthUl{
+  float: right;
+}
+.siteName{
+	font-size: 50px;
+    text-align: center;
+    padding-bottom : 30px;
+}
+
