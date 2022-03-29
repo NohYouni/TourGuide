@@ -93,3 +93,11 @@ function reviewModalClose(){
 	document.getElementById('modal_boardDetail').style.display = 'none';
 }
 
+function openModal() {
+	document.querySelector(".modal").classList.remove("hidden");
+}
+function closeModal() {
+	document.querySelector(".modal").classList.add("hidden");
+}
+
+document.querySelector(".bg").addEventListener("click", closeModal);

@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <c:import url="/header.jsp"></c:import>
 <style>
 .number {
@@ -46,11 +47,23 @@ table {
 	<td class="number">3</td>
 	<td class="number">6</td>
 	<td class="number">8</td>
-	<td><button>응모</button></td>
+	<td><button class="openBtn">응모</button></td>
 	</tr>
 	</table>
 	</tr>
 	</table>
+	<div class="modal hidden">
+		<div class="bg"></div>
+		<div class="modalBox modal_Align_center">
+			<form action="">
+				<p>choose jstl로 import 하는 페이지 다르게 해서
+				로그인 / 기참여자 여부 모달로 하기
+				</p> 
+				<input type="button" class="closeBtn btn_primary btn_middle" value="취소" />
+			</form>
+		</div>
+	</div>
+	<footer ><c:import url="/footer.jsp"></c:import></footer>
 </body>
-<footer><c:import url="/footer.jsp"></c:import></footer>
+
 </html>

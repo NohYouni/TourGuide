@@ -11,21 +11,6 @@
 
 <link rel="stylesheet" href="/css/board.css">
 <style>
-.select_loca{
-	width : 180px;
-	height : 2em;
-	radius : 10px;	
-}
-
-#img_boardList{
-	width : 210px;
-	height : 300px;
-}
-
-#div_boardList_searchbar{
-	margin-bottom: 20px;
-}
-
 
 
 

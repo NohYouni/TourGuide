@@ -8,6 +8,8 @@
 <style type="text/css">
 .input {
 	width: 80%;
+	border-radius: 10px;
+	height: 2em;
 }
 
 .first {
@@ -28,37 +30,8 @@
 .center {
 	text-align: center;
 }
-.modal {
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   border-radius: 10px red;
-}
 
-.modal .bg {
-   width: 100%;
-   height: 100%;
-   background-color: rgba(0, 0, 0, 0.6);
-}
 
-.modalBox {
-   position: absolute;
-   top: 50%;
-   left: 60%;
-   background-color: #fff;
-   width: 400px;
-   height: 200px;
-   padding: 15px;
-}
-
-.hidden {
-   display: none;
-}
 </style>
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/commonCss.css">
@@ -73,7 +46,8 @@
 				<td class="first"><label for="id">아 이 디 : </label></td>
 				<td class="second"><input type="text" id="id" class="input"
 					placeholder="내용을 입력해주세요" /></td>
-				<td class="third"><input type="button" value="중복확인"></td>
+				<td class="third"><input type="button"
+					class="btn_primary btn_middle" value="중복확인"></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -115,23 +89,8 @@
 				<td class="first"><label for="email">이 메 일 : </label></td>
 				<td class="second"><input type="text" id="email" class="input"
 					placeholder="내용을 입력해주세요" /></td>
-				<td class="third"><input type="button" class="openBtn"
-					value="이메일 인증" />
-					<div class="modal hidden">
-						<div class="bg"></div>
-						<div class="modalBox">
-							<form action="">
-								<table>
-									<tr>
-										<td>해당 이메일로 인증번호가 발송되었습니다.</td>
-									</tr>
-									<tr>
-										<td><input type="button" class="closeBtn" value="취소" /></td>
-									</tr>
-								</table>
-							</form>
-						</div>
-					</div></td>
+				<td class="third"><input type="button"
+					class="openBtn btn_primary btn_middle" value="이메일 인증" /></td>
 			</tr>
 
 
@@ -144,7 +103,7 @@
 				<td><label for="check">인 증 번 호 : </label></td>
 				<td><input type="text" id="check" class="input"
 					placeholder="내용을 입력해주세요" /></td>
-				<td><button>확인</button></td>
+				<td><button class="btn_primary btn_middle">확인</button></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -154,25 +113,21 @@
 		</table>
 		<hr />
 		<div class="center">
-			<input type="submit" value="가입" /> <input type="button" value="취소" />
+			<input type="submit" class="btn_primary btn_middle" value="가입" /> <input
+				type="button" class="btn_primary btn_middle" value="취소" />
 		</div>
 	</form>
-
+	<div class="modal hidden">
+		<div class="bg"></div>
+		<div class="modalBox modal_Align_center">
+			<form action="">
+				<p>해당 이메일로 인증번호가 발송되었습니다.</p> 
+				<input type="button" class="closeBtn btn_primary btn_middle" value="취소" />
+			</form>
+		</div>
+	</div>
 </body>
-<script>
-   const open = () => {
-       document.querySelector(".modal").classList.remove("hidden");
-     }
 
-     const close = () => {
-       document.querySelector(".modal").classList.add("hidden");
-     }
-
-     document.querySelector(".openBtn").addEventListener("click", open);
-     document.querySelector(".closeBtn").addEventListener("click", close);
-     document.querySelector(".bg").addEventListener("click", close);
-
-</script>
 <footer>
 	<c:import url="/footer.jsp"></c:import>
 </footer>
