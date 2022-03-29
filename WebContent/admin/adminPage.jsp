@@ -11,7 +11,11 @@
 
 <title>관리자페이지</title>
 <link rel="stylesheet" href="/css/board.css">
+<<<<<<< Updated upstream
 <link rel="stylesheet" href="adminCSS.css">
+=======
+<link rel="stylesheet" href="/css/review.css">
+>>>>>>> Stashed changes
 </head>
 <%
 	request.setCharacterEncoding("utf-8");
@@ -80,7 +84,147 @@ int endReviewPage = review_current_paging * one_page_reviewNumbers;
 if (endReviewPage > total_review_page)
 	endReviewPage = total_review_page;
 %>
+<<<<<<< Updated upstream
 
+=======
+<style>
+td, th{
+	text-align: left;
+
+}
+
+.leftUl{
+  float: left;
+  padding: 10px;
+}
+
+.container {
+	margin: 20px auto;
+}
+
+.tab_title {
+	
+	width:  100%;
+}
+
+.tab_title li {
+	/* list-style: none;
+	float: left;
+	width: 100px;
+	padding: 10px 15px;
+	cursor: pointer;
+	text-align: center;
+	border: 1px solid #bebebe; */	
+	text-align: center;
+	position: relative;
+    height : 3em;
+    border: 1px ;
+    width : 49%;
+    display: inline-block;
+    border-radius: 5px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    cursor: pointer;
+    font-weight: bold;
+	color: var(--darker-color);
+}
+
+.tab_title li.on {
+	background-color: var(--primary-color);
+	color: var(--white-color);
+}
+
+.tab_cont {
+	clear: both;
+	height: 250px;
+}
+
+.tab_cont>div {
+	display: none;
+	text-align: center;
+}
+
+.tab_cont div.on {
+	display: block;
+}
+
+.memeberT {
+	margin: 0 auto;
+}
+
+.reviewCon {
+	float: left;
+}
+
+.pagination {
+	margin: 0 auto;
+}
+
+.pagination ul {
+	display: inline-block;
+}
+
+.pagination ul li {
+	float: left;
+}
+
+ul li {
+	list-style-type: none;
+	display: inline;
+	margin-left: 5px;
+}
+.memeberT{
+	border-collapse: collapse;
+}
+
+.modal {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 10px red;
+}
+.modal2 {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 10px red;
+}
+.modalBox {
+   position: absolute;
+   top: 30%;
+   background-color: #fff;
+   width: 400px;
+   height: 250px;
+   padding: 15px;
+}
+.modal .bg {
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.6);
+}
+.modal2 .bg {
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.6);
+}
+.hidden {
+   display: none;
+}
+</style>
+>>>>>>> Stashed changes
 
 <body>
 <c:import url="/header.jsp"></c:import>
@@ -129,7 +273,7 @@ if (endReviewPage > total_review_page)
 			<div class="modal hidden">
 				<div class="bg"></div>
 				<div class="modalBox">
-					<c:import url="adminModal.jsp"></c:import>
+					<c:import url="memDelModal.jsp"></c:import>
 				</div>
 			</div>
 		</div>
@@ -155,7 +299,7 @@ if (endReviewPage > total_review_page)
 						</tr>
 						<tr>
 							<td colspan="3"></td>
-							<td class="right"><button>리뷰 삭제</button></td>
+							<td class="right"><button onclick="openModal2()">리뷰 삭제</button></td>
 						</tr>
 					</table>
 					<hr />
@@ -176,10 +320,10 @@ if (endReviewPage > total_review_page)
 						</c:if> <span>»</span></a></li>	
 				</ul>
 			</div>
-			<div class="modal hidden">
+			<div class="modal2 hidden">
 				<div class="bg"></div>
 				<div class="modalBox">
-					<c:import url="adminModal.jsp"></c:import>
+					<c:import url="reviewDelModal.jsp"></c:import>
 				</div>
 			</div>
 		</div>
@@ -215,15 +359,17 @@ $(document).ready(function() {
 function openModal() {
 	document.querySelector(".modal").classList.remove("hidden");
 }
+function openModal2() {
+	document.querySelector(".modal2").classList.remove("hidden");
+}
 function closeModal() {
 	document.querySelector(".modal").classList.add("hidden");
+	document.querySelector(".modal2").classList.add("hidden");
 }
 
-document.querySelector(".bg").addEventListener("click", closeModal);
-		
-function test(e) {
-	console.log(e.serch);
-}
+document.querySelector(".modal .bg").addEventListener("click", closeModal);
+document.querySelector(".modal2 .bg").addEventListener("click", closeModal);	
+
 		
 </script>
 </body>

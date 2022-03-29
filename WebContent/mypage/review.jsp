@@ -7,20 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="/header.jsp"></c:import>
-<style>
-.em{
-	width: 600px;
-}
-
-
-.image{
-	border: 2px solid black;
-	width: 200px;
-}
-.right{
-	text-align: right;
-}
-</style>
+<link rel="stylesheet" href="/css/review.css">
 <link rel="stylesheet" href="/css/commonCss.css">
 </head>
 	
