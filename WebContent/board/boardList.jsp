@@ -45,11 +45,11 @@
 		</div>
 		
 		<div class="square_list" id="div_boardList_article">
-		<c:forEach begin="1" end="32">
+		<c:forEach items="${list}" var ="list">
 			<div class="" id="">
 				<table id="tb_boardList">
-				<tr><td><img alt="no image" src="/board/noImages.jpg" id="img_boardList"></td></tr>
-				<tr><td>신나는 축제입니다.</td></tr>
+				<tr><td><img alt="no image" src="${list.firstimage}" id="img_boardList"></td></tr>
+				<tr><td>${list.title}</td></tr>
 				</table>				
 			</div>
 		</c:forEach>
