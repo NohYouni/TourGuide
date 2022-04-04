@@ -1,7 +1,3 @@
-/**
- * 
- */
-
 let data = 
 	[
 		{"locaNum": 0, "locaName":"전국"},
@@ -23,6 +19,8 @@ let data =
 		{"locaNum": 38, "locaName":"전라남도"},
 		{"locaNum": 39, "locaName":"제주도"}
 	]
+	
+	
 function selectLocation(locaNum){
 	// location select 옵션 채우기 함수
 	let mydata = JSON.parse(JSON.stringify(data));
@@ -39,6 +37,8 @@ function selectLocation(locaNum){
 	
 	selectLoca.innerHTML = options;
 }
+
+
 window.onload = function () {
 	selectLocation(0);
 	// 네비바의 메뉴명 선택해서 진하게 만들기
@@ -64,7 +64,7 @@ $(function() { // 보이기 | 숨기기
 	}); 
 });	
 
-let tabSwitch = function (event){
+function tabSwitch(event){
 	let tab1_boardDetail = document.getElementById('tab1_boardDetail');
 	let tab2_boardDetail = document.getElementById('tab2_boardDetail');
 	let div_boardDetail_03 = document.getElementById('div_boardDetail_03');
@@ -101,3 +101,32 @@ function closeModal() {
 }
 
 document.querySelector(".bg").addEventListener("click", closeModal);
+
+
+// 더보기 눌렀을 때
+
+function boardListViewMore(){
+	
+}
+
+// 리스트에서 행사 눌러서 detail 보여주는 메서드
+function viewDetailFestival(contentid, contentTypeId, mapx, mapy){
+	let form_boardList = document.getElementById("form_boardList");
+	document.getElementById("input_boardList_contentid").value = contentid;
+	document.getElementById("input_boardList_contenttypeid").value = contentTypeId;
+	document.getElementById("input_boardList_mapx").value = mapx;
+	document.getElementById("input_boardList_mapy").value = mapy;
+	
+	form_boardList.submit();	
+}
+
+function viewDetailSeeSight(contentid, contentTypeId, mapx, mapy){
+	let form_boardDetail = document.getElementById("form_boardDetail");
+	document.getElementById("input_boardDetail_contentid").value = contentid;
+	document.getElementById("input_boardDetail_contenttypeid").value = contentTypeId;
+	document.getElementById("input_boardDetail_mapx").value = mapx;
+	document.getElementById("input_boardDetail_mapy").value = mapy;
+	
+	form_boardDetail.submit();
+	
+}

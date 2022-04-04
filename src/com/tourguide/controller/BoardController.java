@@ -48,17 +48,27 @@ public class BoardController extends HttpServlet {
 		BoardSv bs = new BoardService();
 		
 		if(cmd.equals("/festival/main")){
-			request.getParameter("");
-			request.setAttribute("list", bs.getAll("20", "0"));
-			System.out.println(bs.getAll("10", "0"));
+			String numOfRows = request.getParameter("numOfRows");
+			String location = request.getParameter("location");
+			request.setAttribute("list", bs.getAll(numOfRows, location));
 			
 			rd = request.getRequestDispatcher("/board/boardList.jsp");
 			rd.forward(request, response);
 			
-		}else if(cmd.equals("/festival/detail")){			
-			System.out.println("미개발 detail");		
+		}else if(cmd.equals("/festival/detail")){		
+			String contentid = request.getParameter("contentid");
+			String contentTypeId = request.getParameter("contentTypeId");
+			String mapx = request.getParameter("mapx");
+			String mapy = request.getParameter("mapy");
+			request.setAttribute("detail", bs.getOne1(contentid).get(0));
+			request.setAttribute("review", bs.getReview(contentid));
+			request.setAttribute("seeSight", bs.getSight("10", mapx, mapy));
+			rd = request.getRequestDispatcher("/board/boardDetail.jsp");
+			rd.forward(request, response);
 			
 		}
 	}
 
 }
+
+
