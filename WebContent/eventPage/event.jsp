@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<c:import url="/header.jsp"></c:import>
+
 <style>
 .number {
 	width: 30px;
@@ -29,12 +29,19 @@ table {
 }
 </style>
 <link rel="stylesheet" href="/css/commonCss.css">
+
+<body>
+<c:import url="/header.jsp"></c:import>
+
+	<nav>
+        <ul class="inlineUl">
+        <li><a style="cursor : pointer;" onclick="festivalBoardLoad(8, 0)" id="a_header_fv">전국의 행사</a></li>
+        <li><a class="selected_menu"  href="" id="a_header_ev">이벤트</a></li></ul><hr>
+    </nav>
 </head>
 	<h1>행운을 잡아라</h1>
 	<br />
 	<p>숫자 세개를 선택해 주세요 !</p>
-<body>
-
 	<table>
 		<tr>
 		<td class="image">이미지</td>

@@ -74,9 +74,14 @@
 	radius : 10px;	
 }
 
-#img_boardList{
+.img_boardList {
 	width : 210px;
 	height : 300px;
+}
+
+.img_boardDetail{
+	width : 300px;
+	height : 390px;
 }
 
 #div_boardList_searchbar{

@@ -8,6 +8,8 @@ import api.vo.DetailCommonRequest;
 import api.vo.DetailCommonResponse;
 import api.vo.DetailIntroRequest;
 import api.vo.DetailIntroResponse;
+import api.vo.LocationBasedListRequest;
+import api.vo.LocationBasedListResponse;
 import api.vo.SearchFestivalRequest;
 import api.vo.SearchFestivalResponse;
 
@@ -34,14 +36,13 @@ public class BoardService implements BoardSv{
 	}
 
 	@Override
-	public <T> List<T> getOne1(String contentid, String contentTypeId) {
+	public <T> List<T> getOne1(String contentid) {
 		SvcName svcName = SvcName.DTC;
 		
 		DetailCommonRequest requestParam = (DetailCommonRequest) svcName.requestObj();
 		DetailCommonResponse responseParam = (DetailCommonResponse) svcName.responseObj();
 		
 		requestParam.setContentId(contentid);	
-		requestParam.setContentTypeId(contentTypeId);
 		requestParam.setDefaultYN("Y");
 		requestParam.setFirstImageYN("Y");
 		requestParam.setMapinfoYN("Y");
@@ -52,14 +53,26 @@ public class BoardService implements BoardSv{
 	}
 
 	@Override
-	public <T> List<T> getOne2(String contentid, String contentTypeId) {
-SvcName svcName = SvcName.DTL;
+	public <T> List<T> getReview(String contentid) {
+		// contentid에 맞는 리뷰 가져오기
+		return null;
+	}
+
+	@Override
+	public <T> List<T> getSight(String numOfRows, String mapx, String mapy) {
+		SvcName svcName = SvcName.LBL; 
 		
-		DetailIntroRequest requestParam = (DetailIntroRequest) svcName.requestObj();
-		DetailIntroResponse responseParam = (DetailIntroResponse) svcName.responseObj();
+		LocationBasedListRequest requestParam = (LocationBasedListRequest) svcName.requestObj();
+		LocationBasedListResponse responseParam = (LocationBasedListResponse) svcName.responseObj();
 		
-		requestParam.setContentId(contentid);	
-		requestParam.setContentTypeId(contentTypeId);
+		requestParam.setNumOfRows(numOfRows) ;
+		requestParam.setPageNo("1");
+		requestParam.setArrange("D");
+		requestParam.setArrange("E");
+		requestParam.setListYN("Y");
+		requestParam.setMapX(mapx);
+		requestParam.setMapY(mapy);
+		requestParam.setRadius("1000");
 		
 		return GetApi.playApi(requestParam, responseParam, svcName);
 	}

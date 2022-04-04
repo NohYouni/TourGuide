@@ -21,7 +21,11 @@ header{
 	  display: grid;
 	  grid-template-rows: auto;
 	}
-	
+footer{
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+}
 	
 	
 	/* 버튼 */

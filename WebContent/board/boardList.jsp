@@ -18,24 +18,15 @@
 </style>
 </head>
 <body>
-<!-- <header> -->
-<!--         <div id="" class=""> -->
-<!--             <ul class="inlineUl rigthUl"> -->
-<!--               <li>로그아웃</li> -->
-<%--               <li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp">마이페이지</a></li> --%>
-<%--               <li><a href="${pageContext.request.contextPath}/admin/adminPage.jsp">관리자페이지</a></li> --%>
-<!--             </ul> -->
-<!--         </div> -->
-<!--         <div id="" class="siteName"> -->
-<!--             <a id=>어쩌다 여행</a> -->
-<!--         </div> -->
-<!--     </header> -->
-<!--     <nav> -->
-<!--         <ul class="inlineUl"> -->
-<!--         <li><a href="" class="selected_menu">전국의 행사</a></li> -->
-<!--         <li><a href="">이벤트</a></li></ul><hr> -->
-<!--     </nav> -->
 	<c:import url="/header.jsp"></c:import>
+	
+	<nav>
+        <ul class="inlineUl">
+        <li><a class="selected_menu" style="cursor : pointer;" onclick="festivalBoardLoad(8, 0)" id="a_header_fv">전국의 행사</a></li>
+        <li><a href="" id="a_header_ev">이벤트</a></li></ul><hr>
+    </nav>
+	
+	
 	<section>
 		<div class="" id="div_boardList_searchbar">
 			<select class="select_loca" name="location" id="select_boardList">
@@ -45,20 +36,33 @@
 		</div>
 		
 		<div class="square_list" id="div_boardList_article">
+<<<<<<< HEAD
 		<c:forEach items="${list}" var ="list">	
 			<div class="" id="">
+=======
+		<c:forEach items="${list}" var ="list">
+			<div class="" id="" onclick="viewDetailFestival(${list.contentid}, 	${list.contenttypeid}, ${list.mapx}, ${list.mapy})">
+>>>>>>> board
 				<table id="tb_boardList">
-				<tr><td><img alt="no image" src="${list.firstimage}" id="img_boardList"></td></tr>
+				<tr><td><img alt="no image" src="${list.firstimage}" class="img_boardList"></td></tr>
 				<tr><td>${list.title}</td></tr>
 				</table>				
 			</div>
 		</c:forEach>
 		</div>
 		
-		<div class="" id=""><button class="btn-longbox">더보기</button></div>
+		<div class="" id=""><button id="btn_boardList_viewmore" onclick="boardListViewMore()" class="btn-longbox">더보기</button></div>
 	</section>
 	<c:import url="/footer.jsp"></c:import>
 	<div id="tothetop" class='tothetop'>▲</div>
+	
+	<form action="/festival/detail" method="POST" id="form_boardList">
+		<input type="hidden" id="input_boardList_contentid" name="contentid"/>
+		<input type="hidden" id="input_boardList_contenttypeid" name="contentTypeId"/>
+		<input type="hidden" id="input_boardList_mapx" name="mapx"/>
+		<input type="hidden" id="input_boardList_mapy" name="mapy"/>
+	</form>
+	
 </body>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
