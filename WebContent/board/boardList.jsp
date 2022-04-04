@@ -36,13 +36,10 @@
 		</div>
 		
 		<div class="square_list" id="div_boardList_article">
-<<<<<<< HEAD
 		<c:forEach items="${list}" var ="list">	
 			<div class="" id="">
-=======
 		<c:forEach items="${list}" var ="list">
 			<div class="" id="" onclick="viewDetailFestival(${list.contentid}, 	${list.contenttypeid}, ${list.mapx}, ${list.mapy})">
->>>>>>> board
 				<table id="tb_boardList">
 				<tr><td><img alt="no image" src="${list.firstimage}" class="img_boardList"></td></tr>
 				<tr><td>${list.title}</td></tr>

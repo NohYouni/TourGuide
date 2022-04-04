@@ -47,20 +47,9 @@ public class BoardController extends HttpServlet {
 		BoardSv bs = new BoardService();
 
 		if(cmd.equals("/festival/main")){
-<<<<<<< HEAD
 			request.getParameter("");
 			request.setAttribute("list", bs.getAll("20", "0"));
 			System.out.println(bs.getAll("20", "0"));
-			rd = request.getRequestDispatcher("/board/boardList.jsp");
-			rd.forward(request, response);
-			
-		}else if(cmd.equals("/festival/detail")){			
-			System.out.println("detail");		
-=======
-			String numOfRows = request.getParameter("numOfRows");
-			String location = request.getParameter("location");
-			request.setAttribute("list", bs.getAll(numOfRows, location));
-			
 			rd = request.getRequestDispatcher("/board/boardList.jsp");
 			rd.forward(request, response);
 			
@@ -74,7 +63,6 @@ public class BoardController extends HttpServlet {
 			request.setAttribute("seeSight", bs.getSight("10", mapx, mapy));
 			rd = request.getRequestDispatcher("/board/boardDetail.jsp");
 			rd.forward(request, response);
->>>>>>> board
 			
 		}
 	}
