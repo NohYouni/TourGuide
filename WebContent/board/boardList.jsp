@@ -36,8 +36,6 @@
 		</div>
 		
 		<div class="square_list" id="div_boardList_article">
-		<c:forEach items="${list}" var ="list">	
-			<div class="" id="">
 		<c:forEach items="${list}" var ="list">
 			<div class="" id="" onclick="viewDetailFestival(${list.contentid}, 	${list.contenttypeid}, ${list.mapx}, ${list.mapy})">
 				<table id="tb_boardList">
