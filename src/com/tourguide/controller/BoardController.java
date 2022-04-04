@@ -39,24 +39,22 @@ public class BoardController extends HttpServlet {
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 		RequestDispatcher rd = null;
 		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("utf8");
+		response.setCharacterEncoding("utf-8");
 		String reqURL = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String cmd = reqURL.substring(contextPath.length());
-		System.out.println("*** 경로 확인 : "+cmd);	
-		
+		System.out.println(cmd);	
 		BoardSv bs = new BoardService();
-		
+
 		if(cmd.equals("/festival/main")){
 			request.getParameter("");
 			request.setAttribute("list", bs.getAll("20", "0"));
-			System.out.println(bs.getAll("10", "0"));
-			
+			System.out.println(bs.getAll("20", "0"));
 			rd = request.getRequestDispatcher("/board/boardList.jsp");
 			rd.forward(request, response);
 			
 		}else if(cmd.equals("/festival/detail")){			
-			System.out.println("미개발 detail");		
+			System.out.println("detail");		
 			
 		}
 	}

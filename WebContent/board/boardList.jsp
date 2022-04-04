@@ -45,7 +45,7 @@
 		</div>
 		
 		<div class="square_list" id="div_boardList_article">
-		<c:forEach items="${list}" var ="list">
+		<c:forEach items="${list}" var ="list">	
 			<div class="" id="">
 				<table id="tb_boardList">
 				<tr><td><img alt="no image" src="${list.firstimage}" id="img_boardList"></td></tr>
