@@ -11,11 +11,8 @@
 
 <title>관리자페이지</title>
 <link rel="stylesheet" href="/css/board.css">
-<<<<<<< Updated upstream
 <link rel="stylesheet" href="adminCSS.css">
-=======
 <link rel="stylesheet" href="/css/review.css">
->>>>>>> Stashed changes
 </head>
 <%
 	request.setCharacterEncoding("utf-8");
@@ -84,9 +81,7 @@ int endReviewPage = review_current_paging * one_page_reviewNumbers;
 if (endReviewPage > total_review_page)
 	endReviewPage = total_review_page;
 %>
-<<<<<<< Updated upstream
 
-=======
 <style>
 td, th{
 	text-align: left;
@@ -224,14 +219,11 @@ ul li {
    display: none;
 }
 </style>
->>>>>>> Stashed changes
 
 <body>
 <c:import url="/header.jsp"></c:import>
 
-<<<<<<< HEAD
 <div class="">
-=======
 	<nav>
         <ul class="inlineUl">
         <li><a style="cursor : pointer;" onclick="festivalBoardLoad(8, 0)" id="a_header_fv">전국의 행사</a></li>
@@ -239,7 +231,6 @@ ul li {
     </nav>
 
 <div class="container">
->>>>>>> board
 	<ul class="tab_title">
 		<li class="on">회원 조회</li>
 		<li>리뷰 조회</li>
@@ -269,14 +260,14 @@ ul li {
 			<ul class="pagination">
 				<c:set var="current_page" value="<%=currentPage %>" />
 				<li class="disabled">
-					<c:if test="<%=!(startPage == 1)%>"><a href="adminPage.jsp?page=<%=startPage - 1%>"></c:if> 
+					<c:if test="<%=!(startPage == 1)%>"><a href="/admins/page?page=<%=startPage - 1%>"></c:if> 
 					<span>«</span></a>
 				</li>
 				<c:forEach var="i" begin="<%=startPage%>" end="<%=endPage%>">
-					<li><c:if test="${i != current_page}"><a href="adminPage.jsp?page=${i}"></c:if>${i}</a></li>					
+					<li><c:if test="${i != current_page}"><a href="/admins/page?page=${i}"></c:if>${i}</a></li>					
 				</c:forEach>
 				<li>
-					<c:if test="<%=total_member_page > endPage%>"><a href="adminPage.jsp?page=<%=endPage + 1%>"></c:if>
+					<c:if test="<%=total_member_page > endPage%>"><a href="/admins/page?page=<%=endPage + 1%>"></c:if>
 					<span>»</span></a>
 				</li>
 			</ul>
@@ -320,13 +311,13 @@ ul li {
 				<ul>
 					<li class="disabled"><c:if
 							test="<%=!(startReviewPage == 1)%>">
-							<a href="adminPage.jsp?page=<%=startReviewPage - 1%>">
+							<a href="/admins/page?page=<%=startReviewPage - 1%>">
 						</c:if> <span>«</span></a></li>
 					<c:forEach var="i" begin="<%=startPage%>" end="<%=endReviewPage%>">
-						<li><c:if test="${i != current_reviewPage}"><a href="adminPage.jsp?page=${i}"></c:if>${i}</a></li>		
+						<li><c:if test="${i != current_reviewPage}"><a href="/admins/page?page=${i}"></c:if>${i}</a></li>		
 					</c:forEach>
 					<li><c:if test="<%=total_review_page > endReviewPage%>">
-							<a href="adminPage.jsp?page=<%=endReviewPage + 1%>">
+							<a href="/admins/page?page=<%=endReviewPage + 1%>">
 						</c:if> <span>»</span></a></li>	
 				</ul>
 			</div>
@@ -356,7 +347,7 @@ $(document).ready(function() {
 $(document).ready(function() {
 	$(".tab_title li").click(function() {
 		var idx = $(this).index();
-		location.href = "adminPage.jsp?page=1";
+		location.href = "/admins/page?page=1";
 		
 		$(".tab_title li").removeClass("on");
 		$(".tab_title li").eq(idx).addClass("on");

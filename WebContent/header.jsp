@@ -9,9 +9,21 @@
 <header>
         <div id="" class="">
             <ul class="inlineUl rigthUl">
-              <li>로그아웃</li>
-              <li><a href="${pageContext.request.contextPath}/mypage/mypage.jsp">마이페이지</a></li>
-              <li><a href="${pageContext.request.contextPath}/admin/adminPage.jsp">관리자페이지</a></li>
+            	<c:choose>
+            		<c:when test="${sts == 1}">
+            			<li><a href="">마이페이지</a></li>
+            			<li><a href="">로그아웃</a></li>
+            		</c:when>
+            		<c:when test="${sts == 0}">
+            			<li><a href="/admins/page">관리자페이지</a></li>
+            			<li><a href="">로그아웃</a></li>
+            		</c:when>
+            		<c:otherwise>
+            			<li><a href="/login">로그인</a></li>
+            			<li><a href="/singUp">회원가입</a></li>
+            		</c:otherwise>
+            	</c:choose>
+            	
             </ul>
         </div>
         <div id="" class="siteName">
