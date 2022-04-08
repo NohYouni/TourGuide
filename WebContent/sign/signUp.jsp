@@ -40,11 +40,11 @@
 <body>
 	<h1>회원가입</h1>
 	<br />
-	<form action="">
+	<form action="/singUp" method="post">
 		<table>
 			<tr>
 				<td class="first"><label for="id">아 이 디 : </label></td>
-				<td class="second"><input type="text" id="id" class="input"
+				<td class="second"><input type="text" name="mmId" id="id" class="input"
 					placeholder="내용을 입력해주세요" /></td>
 				<td class="third"><input type="button"
 					class="btn_primary btn_middle" value="중복확인"></td>
@@ -59,7 +59,7 @@
 		<table>
 			<tr>
 				<td class="first"><label for="pwd">비 밀 번 호 : </label></td>
-				<td class="second"><input type="text" id="pwd" class="input"
+				<td class="second"><input type="text" name="mmPwd" id="pwd" class="input"
 					placeholder="내용을 입력해주세요" /></td>
 				<td class="third"></td>
 			</tr>
@@ -73,7 +73,7 @@
 		<table>
 			<tr>
 				<td class="first"><label for="pwdCk">비밀번호 확인 : </label></td>
-				<td class="second"><input type="text" id="pwdCk" class="input"
+				<td class="second"><input type="text"  id="pwdCk" class="input"
 					placeholder="내용을 입력해주세요" /></td>
 				<td class="third"></td>
 			</tr>
@@ -87,7 +87,7 @@
 		<table>
 			<tr>
 				<td class="first"><label for="email">이 메 일 : </label></td>
-				<td class="second"><input type="text" id="email" class="input"
+				<td class="second"><input type="text" name="mmEmail" id="email" class="input"
 					placeholder="내용을 입력해주세요" /></td>
 				<td class="third"><input type="button"
 					class="openBtn btn_primary btn_middle" value="이메일 인증" /></td>

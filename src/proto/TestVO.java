@@ -1,6 +1,8 @@
 package proto;
 
-public class TestVO {
+import java.io.Serializable;
+
+public class TestVO implements Serializable{
 	public String name;
 	public String email;
 	public TestVO() {

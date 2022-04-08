@@ -1,18 +1,18 @@
 <%@page import="proto.TestVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <meta charset="UTF-8">
+
 <title>관리자페이지</title>
-<link rel="stylesheet" href="/css/commonCss.css">
 <link rel="stylesheet" href="/css/board.css">
+<link rel="stylesheet" href="adminCSS.css">
+<link rel="stylesheet" href="/css/review.css">
 </head>
 <%
 	request.setCharacterEncoding("utf-8");
@@ -81,20 +81,8 @@ int endReviewPage = review_current_paging * one_page_reviewNumbers;
 if (endReviewPage > total_review_page)
 	endReviewPage = total_review_page;
 %>
+
 <style>
-.em {
-	width: 600px;
-}
-
-.image {
-	border: 2px solid black;
-	width: 200px;
-}
-
-.right {
-	text-align: right;
-}
-
 td, th{
 	text-align: left;
 
@@ -198,15 +186,31 @@ ul li {
    align-items: center;
    border-radius: 10px red;
 }
+.modal2 {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 10px red;
+}
 .modalBox {
    position: absolute;
    top: 30%;
    background-color: #fff;
    width: 400px;
-   height: 200px;
+   height: 250px;
    padding: 15px;
 }
 .modal .bg {
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.6);
+}
+.modal2 .bg {
    width: 100%;
    height: 100%;
    background-color: rgba(0, 0, 0, 0.6);
@@ -219,6 +223,7 @@ ul li {
 <body>
 <c:import url="/header.jsp"></c:import>
 
+<div class="">
 	<nav>
         <ul class="inlineUl">
         <li><a style="cursor : pointer;" onclick="festivalBoardLoad(8, 0)" id="a_header_fv">전국의 행사</a></li>
@@ -255,21 +260,21 @@ ul li {
 			<ul class="pagination">
 				<c:set var="current_page" value="<%=currentPage %>" />
 				<li class="disabled">
-					<c:if test="<%=!(startPage == 1)%>"><a href="adminPage.jsp?page=<%=startPage - 1%>"></c:if> 
+					<c:if test="<%=!(startPage == 1)%>"><a href="/admins/page?page=<%=startPage - 1%>"></c:if> 
 					<span>«</span></a>
 				</li>
 				<c:forEach var="i" begin="<%=startPage%>" end="<%=endPage%>">
-					<li><c:if test="${i != current_page}"><a href="adminPage.jsp?page=${i}"></c:if>${i}</a></li>					
+					<li><c:if test="${i != current_page}"><a href="/admins/page?page=${i}"></c:if>${i}</a></li>					
 				</c:forEach>
 				<li>
-					<c:if test="<%=total_member_page > endPage%>"><a href="adminPage.jsp?page=<%=endPage + 1%>"></c:if>
+					<c:if test="<%=total_member_page > endPage%>"><a href="/admins/page?page=<%=endPage + 1%>"></c:if>
 					<span>»</span></a>
 				</li>
 			</ul>
 			<div class="modal hidden">
 				<div class="bg"></div>
 				<div class="modalBox">
-					<c:import url="adminModal.jsp"></c:import>
+					<c:import url="memDelModal.jsp"></c:import>
 				</div>
 			</div>
 		</div>
@@ -295,7 +300,7 @@ ul li {
 						</tr>
 						<tr>
 							<td colspan="3"></td>
-							<td class="right"><button>리뷰 삭제</button></td>
+							<td class="right"><button onclick="openModal2()">리뷰 삭제</button></td>
 						</tr>
 					</table>
 					<hr />
@@ -306,20 +311,20 @@ ul li {
 				<ul>
 					<li class="disabled"><c:if
 							test="<%=!(startReviewPage == 1)%>">
-							<a href="adminPage.jsp?page=<%=startReviewPage - 1%>">
+							<a href="/admins/page?page=<%=startReviewPage - 1%>">
 						</c:if> <span>«</span></a></li>
 					<c:forEach var="i" begin="<%=startPage%>" end="<%=endReviewPage%>">
-						<li><c:if test="${i != current_reviewPage}"><a href="adminPage.jsp?page=${i}"></c:if>${i}</a></li>		
+						<li><c:if test="${i != current_reviewPage}"><a href="/admins/page?page=${i}"></c:if>${i}</a></li>		
 					</c:forEach>
 					<li><c:if test="<%=total_review_page > endReviewPage%>">
-							<a href="adminPage.jsp?page=<%=endReviewPage + 1%>">
+							<a href="/admins/page?page=<%=endReviewPage + 1%>">
 						</c:if> <span>»</span></a></li>	
 				</ul>
 			</div>
-			<div class="modal hidden">
+			<div class="modal2 hidden">
 				<div class="bg"></div>
 				<div class="modalBox">
-					<c:import url="adminModal.jsp"></c:import>
+					<c:import url="reviewDelModal.jsp"></c:import>
 				</div>
 			</div>
 		</div>
@@ -342,7 +347,7 @@ $(document).ready(function() {
 $(document).ready(function() {
 	$(".tab_title li").click(function() {
 		var idx = $(this).index();
-		location.href = "adminPage.jsp?page=1";
+		location.href = "/admins/page?page=1";
 		
 		$(".tab_title li").removeClass("on");
 		$(".tab_title li").eq(idx).addClass("on");
@@ -355,15 +360,17 @@ $(document).ready(function() {
 function openModal() {
 	document.querySelector(".modal").classList.remove("hidden");
 }
+function openModal2() {
+	document.querySelector(".modal2").classList.remove("hidden");
+}
 function closeModal() {
 	document.querySelector(".modal").classList.add("hidden");
+	document.querySelector(".modal2").classList.add("hidden");
 }
 
-document.querySelector(".bg").addEventListener("click", closeModal);
-		
-function test(e) {
-	console.log(e.serch);
-}
+document.querySelector(".modal .bg").addEventListener("click", closeModal);
+document.querySelector(".modal2 .bg").addEventListener("click", closeModal);	
+
 		
 </script>
 </body>

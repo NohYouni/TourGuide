@@ -21,7 +21,6 @@ public class BoardService implements BoardSv{
 	public <T> List<T> getAll(String numOfRows, String location) {
 //		System.out.println(numOfRows +" / "+ location );
 		SvcName svcName = SvcName.SFV; 
-		
 		SearchFestivalRequest requestParam = (SearchFestivalRequest) svcName.requestObj();
 		SearchFestivalResponse responseParam = (SearchFestivalResponse) svcName.responseObj();
 		
