@@ -6,46 +6,45 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.tourguide.dto.Rvdtl;
+import com.tourguide.dto.RvDtlVO;
+import com.tourguide.util.DBManager;
 
 public class BoardDaoImpl implements BoardDao {
-	GetConnection gc = new GetConnection();
+	DBManager gc = new DBManager();
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-	
-	
-	public List<Rvdtl> getReviewList(String contentId){
-		List<Rvdtl> rl = new ArrayList<Rvdtl>();
+		
+	public List<RvDtlVO> getReviewList(String contentId){
+		List<RvDtlVO> rl = new ArrayList<RvDtlVO>();
 		con = gc.getCon();
 		
-		String sql = "select * from rvdtl where fvno="+contentId;
+		String sql = "select * from RvDtlVO where fvno="+contentId;
 		try {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			
+			System.out.println(sql);	
 			while(rs.next()) {
-				Rvdtl rv = new Rvdtl();
-				rv.setMMID("");
-				rv.setFVNO("");
-				rv.setRVSUB("");
-				rv.setRVCNTS("");
-				rv.setRGTDATE("");
-				rv.setDELCODE(0);
-				rv.setDELDATE("");
-				rv.setIMG1("");
-				rv.setIMG2("");
-				rv.setIMG3("");
+				RvDtlVO rv = new RvDtlVO();
+				rv.setMmId		("");
+				rv.setFvNo		("");
+				rv.setRvSub		("");
+				rv.setRvCnts	("");
+				rv.setRgtDate	("");
+				rv.setDelCode	(0);
+				rv.setDelDate	("");
+				rv.setImg1		("");
+				rv.setImg2		("");
+				rv.setImg3		("");
 				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			gc.close(con, pstmt, rs);
 		}
 		
-		
-		System.out.println(sql);
 		return rl;		
 	}
 	
