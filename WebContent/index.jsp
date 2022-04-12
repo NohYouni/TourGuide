@@ -1,5 +1,4 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="proto.TestVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
@@ -11,25 +10,6 @@
 <title>Header</title>
 <link rel="stylesheet" href="/css/commonCss.css">
 </head>
-<%
-
-	List<TestVO> nameList = new ArrayList<TestVO>();
-	for(int i=0; i<13; i++){
-		TestVO test1 = new TestVO("test1 str1", "email1@naver.com");
-		TestVO test2 = new TestVO("test2 str2", "email2@naver.com");
-		TestVO test3 = new TestVO("test3 str3", "email3@naver.com");
-		TestVO test4 = new TestVO("test4 str4", "email4@naver.com");
-		TestVO test5 = new TestVO("test5 str5", "email5@naver.com");
-		nameList.add(test1);
-		nameList.add(test2);
-		nameList.add(test3);
-		nameList.add(test4);
-		nameList.add(test5);
-	}
-	
-	session.setAttribute("nameList", nameList);
-
-%>
 <style>
 .rigthUl{
   float: right;
