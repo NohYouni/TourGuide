@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 //			System.out.println("1111");
 			response.sendRedirect("/sign/login.jsp");
 		}else {
-			ses.setAttribute("loginUser", vo);
+			ses.setAttribute("mmId", vo.getMmId());
 			ses.setAttribute("sts", vo.getStsCode());
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
