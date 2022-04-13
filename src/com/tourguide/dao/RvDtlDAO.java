@@ -11,7 +11,6 @@ import com.tourguide.dto.RvDtlVO;
 import com.tourguide.util.DBManager;
 
 public class RvDtlDAO {
-   DBManager db = new DBManager();
    Connection con = null;
    PreparedStatement pstmt = null;
    ResultSet rs = null;
@@ -20,7 +19,7 @@ public class RvDtlDAO {
    public int rvDtlInsert(RvDtlVO vo, String fvNo) {
       String sql = "insert into rvDtl(mmId, fvNo, rvSub, rvCnts, rgtDate, img1, img2, img3) values(?, ?, ?, ?, sysdate, ?, ?, ?)";
       try {
-         con = db.getCon();
+         con = DBManager.getCon();
          pstmt = con.prepareStatement(sql);
          pstmt.setString(1, vo.getMmId());
          pstmt.setString(2, fvNo);
@@ -34,7 +33,7 @@ public class RvDtlDAO {
       }catch (SQLException e) {
          e.printStackTrace();
       }finally {
-         db.close(con, pstmt);
+    	  DBManager.close(con, pstmt);
       }
       return 0;      
    }
@@ -43,7 +42,7 @@ public class RvDtlDAO {
    public int rvDtlDelete(String id, String fvNo, int delCode) {
       String sql = "UPDATE rvDtl SET delCode=?, delDate=sysdate WHERE mmId = ? and fvNo=?";
       try {
-         con = db.getCon();
+         con = DBManager.getCon();
          pstmt = con.prepareStatement(sql);
          pstmt.setInt(1, delCode);
          pstmt.setString(2, id);
@@ -53,7 +52,7 @@ public class RvDtlDAO {
       }catch (SQLException e) {
          e.printStackTrace();
       }finally {
-         db.close(con, pstmt);
+    	  DBManager.close(con, pstmt);
       }
       return 0;
    }
@@ -63,7 +62,7 @@ public class RvDtlDAO {
       RvDtlVO vo = new  RvDtlVO();
       String sql = "select *from rvDtl where mmId=? and fvNo=?";
       try {
-         con = db.getCon();
+         con = DBManager.getCon();
          pstmt = con.prepareStatement(sql);
          pstmt.setString(1, id);
          pstmt.setString(2, fvNo);
@@ -83,7 +82,7 @@ public class RvDtlDAO {
       }catch (SQLException e) {
          e.printStackTrace();
       }finally {
-         db.close(con, pstmt, rs);
+    	  DBManager.close(con, pstmt, rs);
       }      
       return null;
    }
@@ -93,7 +92,7 @@ public class RvDtlDAO {
       List<RvDtlVO> voList = new ArrayList<RvDtlVO>();
       String sql = "select *from rvDtl where mmId=?";
       try {
-         con = db.getCon();
+         con = DBManager.getCon();
          pstmt = con.prepareStatement(sql);
          pstmt.setString(1, id);
          rs = pstmt.executeQuery();
@@ -115,7 +114,7 @@ public class RvDtlDAO {
       }catch (SQLException e) {
          e.printStackTrace();
       }finally {
-         db.close(con, pstmt, rs);
+    	  DBManager.close(con, pstmt, rs);
       }      
       return voList;      
    }
@@ -124,7 +123,7 @@ public class RvDtlDAO {
       List<RvDtlVO> voList = new ArrayList<RvDtlVO>();
       String sql = "select *from rvDtl";
       try {
-         con = db.getCon();
+         con = DBManager.getCon();
          pstmt = con.prepareStatement(sql);
          rs = pstmt.executeQuery();
          
@@ -145,7 +144,7 @@ public class RvDtlDAO {
       }catch (SQLException e) {
          e.printStackTrace();
       }finally {
-         db.close(con, pstmt, rs);
+    	  DBManager.close(con, pstmt, rs);
       }      
       return voList;   
    }

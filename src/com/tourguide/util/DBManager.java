@@ -22,11 +22,11 @@ public class DBManager {
 		return con;
 		
 	}
-	public void close(Connection con, PreparedStatement pstmt, ResultSet rs) {
+	public static void close(Connection con, PreparedStatement pstmt, ResultSet rs) {
 		if(rs!=null) try{rs.close();}catch(SQLException ex){}
 		close(con, pstmt);		
 	}
-	public void close(Connection con, PreparedStatement pstmt) {
+	public static void close(Connection con, PreparedStatement pstmt) {
 		try{
 			if(pstmt!=null)	pstmt.close();
 			if(con!=null)	con.close();

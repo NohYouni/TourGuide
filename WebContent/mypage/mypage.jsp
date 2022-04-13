@@ -27,19 +27,22 @@
 </head>
 	
 <body>
-
-
+<%
+	String mmId = (String)session.getAttribute("mmId");
+if(mmId==null){response.sendRedirect("../sign/login.jsp");}
+else{
+%>
 <table class="table">
 <tr>
-<td>iLoveDodari 님 . <button><a href="./passwordChk.jsp">내 정보 수정</a></button></td>
+<td>${mmId} 님 환영합니다. <button onclick="location.href='/mypage/checkPwd.jsp'">내 정보 수정</button></td>
 
 </tr>
 	<tr>
 		<td>내 리뷰 관리</td>
-		<td class="more"><a href="./review.jsp">더 보기</a></td>
+		<td class="more"><a href="../myReview">더 보기</a></td>
 		<td> &nbsp;&nbsp;&nbsp; </td>
 		<td>내 찜 관리</td>
-		<td class="more"><a href="./zzim.jsp">더보기</a></td>
+		<td class="more"><a href="../myZzim">더보기</a></td>
 	</tr>
 	<tr>
 	<td colspan=2 class="box">리뷰 박스</td>
@@ -51,4 +54,5 @@
 </table>
 </body>
 <footer><c:import url="/footer.jsp"></c:import></footer>
+<%} %>
 </html>
