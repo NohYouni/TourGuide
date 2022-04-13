@@ -11,7 +11,7 @@
 <body>
 	<h1>로그인</h1>
 	<br />
-	<form action="/login" method="post">
+	<form action="/login" method="post" name="frm">
 		<table>
 			<tr>
 				<td class="first"><label for="id">아 이 디  </label></td>
@@ -25,13 +25,14 @@
 					placeholder="비밀번호를 입력해주세요" /></td>
 			</tr>
 			<tr>
-				<td><input type="submit" value="로그인" class="btn_primary btn_middle"/></td>
-				<td><input type="reset" value="취소" class="btn_primary btn_middle" /></td>
+				<td><input type="submit" value="로그인" class="btn_primary btn_middle" onclick="return checkLogin()"/></td>
+				<td><input type="reset" value="취소" class="btn_primary btn_middle" onclick="location.href='../index.jsp'"/></td>
+				<td><input type="button" value="회원가입" class="btn_primary btn_middle" onclick="location.href='signUp.jsp'"></td>
 			</tr>
 		</table>
-		
+	</form>
 </body>
 <footer>
-	<c:import url="/footer.jsp"></c:import>
+	<c:import url="/footer.jsp" ></c:import>
 </footer>
 </html>
