@@ -6,22 +6,22 @@
 <html>
 <head>
 <style>
-.why{
-	
-	width : 200px;
-	height : 100px;
-    margin-left:auto; 
-    margin-right:auto;
-    margin-top: auto;
-    margin-bottom: auto;
+.check{
+
+	width: 200px;
+	height: 150px;
     text-align: center;
+    margin: auto;
 }
 .password{
 	text-align: center;
     margin-left:auto; 
     margin-right:auto;
 }
+.right{
+	text-align: right;
 
+}
         .modal {
           position: fixed;
           top: 0;
@@ -41,16 +41,13 @@
 
         .modalBox {
           position: absolute;
+          top: 50%;
+          left: 60%;
           background-color: #fff;
           width: 400px;
           height: 200px;
           padding: 15px;
-        }
 
-        .modalBox button {
-          display: block;
-          width: 80px;
-          margin: 0 auto;
         }
 
         .hidden {
@@ -72,15 +69,15 @@
 </form>
 <hr />
 <form action="" >
-<p class="out">회원탈퇴를 원하시면 회원 탈퇴 버튼을 눌러주세요. 
-<input type="button" class="openBtn" value="탈퇴하기" ></p>
+<p class="right">회원탈퇴를 원하시면 회원 탈퇴 버튼을 눌러주세요. 
+<input type="button" class="openBtn right" value="탈퇴하기" ></p>
 	<div class="modal hidden">
 	  <div class="bg"></div>
 		<div class="modalBox">
-			<table class="why">
+			<table class="check">
 			<form action="" >
 				<tr>
-					<td colspan="2">정말 탈퇴 하시겠습니까?</td>
+					<td colspan="2" >정말 탈퇴 하시겠습니까?</td>
 				</tr>
 				<tr>
 				<td><input type="button" class="closeBtn" value="취소" /></td>	

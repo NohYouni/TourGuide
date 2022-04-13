@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="header.jsp"></c:import>
+<c:import url="/header.jsp"></c:import>
 
 <style>
 .zzim{
@@ -19,20 +19,21 @@
 
 
 </style>
+<link rel="stylesheet" href="/css/commonCss.css">
 </head>
 	
 <body>
 
-<c:forEach end="5" begin="1" var="i">
-<table class="zzim">
-<tr>
-<td>&nbsp; <c:out value=" ${i}"/>번째행사 이름입니다.</td>
-<td class="right"><button >삭제</button></td>
-</tr>
-</table>
-<hr />	
+<c:forEach var="list" items="${lists}"> 
+	<table class="zzim">
+	
+			<tr>
+				<td> 행사번호는 ${list}</td>
+				<td class="right"><button>삭제</button></td>
+			</tr>
+	</table>
+	<hr />
 </c:forEach>
-
 </body>
-<footer><c:import url="footer.jsp"></c:import></footer>
+<footer><c:import url="/footer.jsp"></c:import></footer>
 </html>

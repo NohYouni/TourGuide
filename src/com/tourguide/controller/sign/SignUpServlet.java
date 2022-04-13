@@ -8,38 +8,30 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.tourguide.dao.MmMstDAO;
 import com.tourguide.dto.MmMstVO;
 
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/singUp")
+public class SignUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		MmMstVO vo = new MmMstVO();
-		String mmId = request.getParameter("mmId");
-		String mmPwd = request.getParameter("mmPwd");
-		
+		vo.setMmId(request.getParameter("mmId"));
+		vo.setMmPwd(request.getParameter("mmPwd"));
+		vo.setMmEmail(request.getParameter("mmEmail"));
 		MmMstDAO dao = new MmMstDAO();
-		int check= dao.mmMstcheckId(mmId, mmPwd);
-		System.out.println(check);
-		if(check == 1) {
-		vo = dao.mmMstGetOne(mmId);
-		
-		int stsCode = vo.getStsCode();
-
-		HttpSession session = request.getSession();
-		
-		session.setAttribute("mmId", mmId);
-		session.setAttribute("stsCode", stsCode );
-
-		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+		if (dao.mmMstInsert(vo) == 1)
+			System.out.println("성공");
+	
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 		dispatcher.forward(request, response);
 	}
 

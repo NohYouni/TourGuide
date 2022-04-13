@@ -6,21 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="header.jsp"></c:import>
-<style>
-.em{
-	width: 600px;
-}
-
-
-.image{
-	border: 2px solid black;
-	width: 200px;
-}
-.right{
-	text-align: right;
-}
-</style>
+<c:import url="/header.jsp"></c:import>
+<link rel="stylesheet" href="/css/review.css">
+<link rel="stylesheet" href="/css/commonCss.css">
 </head>
 	
 <body>
@@ -29,7 +17,7 @@
 <table>
 <tr>
 <td class="image" rowspan="4">이미지</td>
-<td>작성자 : 박나연</td>
+<td>작성자 : {mmId}</td>
 <td >작성일시 : 2022-01-24</td>
 
 </tr>
@@ -48,5 +36,5 @@
 <hr />	
 </c:forEach>
 </body>
-<footer><c:import url="footer.jsp"></c:import></footer>
+<footer><c:import url="/footer.jsp"></c:import></footer>
 </html>

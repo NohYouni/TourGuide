@@ -10,35 +10,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.tourguide.dao.MmMstDAO;
-import com.tourguide.dto.MmMstVO;
-
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+/**
+ * Servlet implementation class LogOutServelt
+ */
+@WebServlet("/logOut")
+public class LogOutServelt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		MmMstVO vo = new MmMstVO();
-		String mmId = request.getParameter("mmId");
-		String mmPwd = request.getParameter("mmPwd");
-		
-		MmMstDAO dao = new MmMstDAO();
-		int check= dao.mmMstcheckId(mmId, mmPwd);
-		System.out.println(check);
-		if(check == 1) {
-		vo = dao.mmMstGetOne(mmId);
-		
-		int stsCode = vo.getStsCode();
 
 		HttpSession session = request.getSession();
 		
-		session.setAttribute("mmId", mmId);
-		session.setAttribute("stsCode", stsCode );
-
-		}
+		session.removeAttribute("mmId");
+		session.removeAttribute("mmPwd");
+		session.removeAttribute("mmEmail");
+		session.removeAttribute("joinDate");
+		session.removeAttribute("llDate");
+		session.removeAttribute("stsCode");
+		session.removeAttribute("outDate");
+		session.removeAttribute("outCode");
+		
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 		dispatcher.forward(request, response);
 	}

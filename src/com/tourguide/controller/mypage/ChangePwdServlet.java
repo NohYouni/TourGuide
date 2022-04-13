@@ -1,4 +1,4 @@
-package com.tourguide.controller.sign;
+package com.tourguide.controller.mypage;
 
 import java.io.IOException;
 
@@ -8,31 +8,41 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.tourguide.dao.MmMstDAO;
 import com.tourguide.dto.MmMstVO;
 
-@WebServlet("/singUp")
-public class SingUpServlet extends HttpServlet {
+/**
+ * Servlet implementation class ChangePwdServlet
+ */
+@WebServlet("/changePwd")
+public class ChangePwdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		MmMstVO vo = new MmMstVO();
-		vo.setMmId(request.getParameter("mmId"));
-		vo.setMmPwd(request.getParameter("mmPwd"));
-		vo.setMmEmail(request.getParameter("mmEmail"));
 		MmMstDAO dao = new MmMstDAO();
-		if (dao.mmMstInsert(vo) == 1)
-			System.out.println("성공");
-	
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+		HttpSession session = request.getSession() ;
+		String id = (String) session.getAttribute("mmId");
+		String pwd = request.getParameter("mmPwd");
+		String newPwd = request.getParameter("newPwd");
+		int check = 0;
+		check = dao.mmMstcheckId(id, pwd);
+		
+		if(check == 1) {
+		dao.mmMstUpdate(id, newPwd);
+		}else {
+			System.out.println("비밀번호가 틀렸습니다.");
+			
+		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher("mypage/mypage.jsp");
 		dispatcher.forward(request, response);
+			
+		}
 	}
 
-}
+
