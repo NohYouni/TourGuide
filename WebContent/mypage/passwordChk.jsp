@@ -11,9 +11,10 @@
     margin-right:auto;
 }
 </style>
+<link rel="stylesheet" href="/css/commonCss.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="header.jsp"></c:import>
+<c:import url="/header.jsp"></c:import>
 </head>
 	
 <body>
@@ -21,8 +22,8 @@
 비밀번호 확인<input type="text" placeholder="내용을 입력해 주세요" /> <br />
 
 <input type="submit" value="확인" />
-<button><a href="mypage.jsp">취소</a></button>
+<button><a href="/mypage.jsp">취소</a></button>
 </form>
 </body>
-<footer><c:import url="footer.jsp"></c:import></footer>
+<footer><c:import url="/footer.jsp"></c:import></footer>
 </html>

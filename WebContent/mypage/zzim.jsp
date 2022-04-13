@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="header.jsp"></c:import>
+<c:import url="/header.jsp"></c:import>
 
 <style>
 .zzim{
@@ -19,6 +19,7 @@
 
 
 </style>
+<link rel="stylesheet" href="/css/commonCss.css">
 </head>
 	
 <body>
@@ -34,5 +35,5 @@
 </c:forEach>
 
 </body>
-<footer><c:import url="footer.jsp"></c:import></footer>
+<footer><c:import url="/footer.jsp"></c:import></footer>
 </html>

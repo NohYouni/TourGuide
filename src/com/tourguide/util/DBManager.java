@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class DBManager {
 	public static Connection getCon() {		
@@ -23,15 +22,15 @@ public class DBManager {
 		return con;
 		
 	}
-	public static void close(Connection con, PreparedStatement pstmt, ResultSet rs) {
-		if(con!=null) try {con.close();}catch(SQLException ex){}
-		if(pstmt!=null)	try{pstmt.close();}catch(SQLException ex){}
-		if(rs!=null) try{rs.close();}catch(SQLException ex){}		
+	public void close(Connection con, PreparedStatement pstmt, ResultSet rs) {
+		if(rs!=null) try{rs.close();}catch(SQLException ex){}
+		close(con, pstmt);		
 	}
-	public static void close(Connection con, PreparedStatement pstmt) {
-		if(con!=null) try {con.close();}catch(SQLException ex){}
-		if(pstmt!=null)	try{pstmt.close();}catch(SQLException ex){}
-		
+	public void close(Connection con, PreparedStatement pstmt) {
+		try{
+			if(pstmt!=null)	pstmt.close();
+			if(con!=null)	con.close();
+		}catch(SQLException ex){}
 	}
 
 	

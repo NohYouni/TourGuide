@@ -63,10 +63,7 @@
         <li><a href="" id="a_header_ev">이벤트</a></li></ul><hr>
     </nav>
 	<div class="main">
-    	<div class="rect leftUl">
-    	<a href="eventPage/event.jsp">행사</a>
-    	<a href="eventPage/dangchum.jsp">행사확인</a>
-    	</div>  	
+    	<div class="rect leftUl"><a href="eventPage/event.jsp">행사</a><a href="eventPage/dangchum.jsp">행사확인</a></div>  	
         <div class="rect rigthUl">
         	<div class="srect">검색탭</div>
             <div class="srect">이벤트</div>

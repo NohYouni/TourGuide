@@ -13,9 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.tourguide.service.BoardSv;
 import com.tourguide.service.BoardService;
 
-/**
- * Servlet implementation class BoardController
- */
+
 @WebServlet("/festival/*")
 public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
