@@ -15,28 +15,29 @@ public class BoardDaoImpl implements BoardDao {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 		
-	public List<RvDtlVO> getReviewList(String contentId){
+	@Override
+	public <T> List<T> getReviewList(String contentId){
 		List<RvDtlVO> rl = new ArrayList<RvDtlVO>();
 		con = gc.getCon();
 		
-		String sql = "select * from RvDtlVO where fvno="+contentId;
+		String sql = "select aa.* from (select rownum, mmId, fvNo, rvSub, rvCnts, rgtDate, delCode, img1, img2, img3 from RvDtl order by rgtDate) aa "
+				+ "where aa.delcode = 0 and fvno="+contentId;
 		try {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			System.out.println(sql);	
 			while(rs.next()) {
 				RvDtlVO rv = new RvDtlVO();
-				rv.setMmId		("");
-				rv.setFvNo		("");
-				rv.setRvSub		("");
-				rv.setRvCnts	("");
-				rv.setRgtDate	("");
-				rv.setDelCode	(0);
-				rv.setDelDate	("");
-				rv.setImg1		("");
-				rv.setImg2		("");
-				rv.setImg3		("");
-				
+				rv.setMmId		(rs.getString("mmId"));
+				rv.setFvNo		(rs.getString("fvNo"));
+				rv.setRvSub		(rs.getString("rvSub"));
+				rv.setRvCnts	(rs.getString("rvCnts"));
+				rv.setRgtDate	(rs.getString("rgtDate"));
+				rv.setDelCode	(Integer.parseInt(rs.getString("delCode")));
+				rv.setImg1		(rs.getString("img1"));
+				rv.setImg2		(rs.getString("img2"));
+				rv.setImg3		(rs.getString("img3"));
+				rl.add(rv);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -45,7 +46,28 @@ public class BoardDaoImpl implements BoardDao {
 			gc.close(con, pstmt, rs);
 		}
 		
-		return rl;		
+		return (List<T>) rl;		
+	}
+	
+	public int createReview(RvDtlVO vo) {
+		con = gc.getCon();
+		
+		String sql = "INSERT INTO rvDtl (mmId, fvNo, rvSub, rvCnts, rgtDate, delCode) "
+				+ "values('"+vo.getMmId()+"','"+vo.getFvNo()+"','"+vo.getRvSub()
+				+"','"+vo.getRvCnts()+"',sysdate, 0)" ;
+		
+		System.out.println(sql);	
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			gc.close(con, pstmt);
+		}
+		return 0;	
 	}
 	
 }

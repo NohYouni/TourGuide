@@ -32,7 +32,7 @@ public class AdminPageServlet extends HttpServlet {
 		String reqURL = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String cmd = reqURL.substring(contextPath.length());
-		System.out.println(cmd);
+		System.out.println("경로 : "+cmd);
 				
 		
 		//회원 조회

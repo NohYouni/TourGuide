@@ -1,4 +1,7 @@
-let data = 
+function selectLocation1(locaNum){
+	// location select 옵션 채우기 함수
+	
+	let data = 
 	[
 		{"locaNum": 0, "locaName":"전국"},
 		{"locaNum": 1, "locaName":"서울"},
@@ -20,9 +23,6 @@ let data =
 		{"locaNum": 39, "locaName":"제주도"}
 	]
 	
-	
-function selectLocation(locaNum){
-	// location select 옵션 채우기 함수
 	let mydata = JSON.parse(JSON.stringify(data));
 	let selectLoca = document.getElementById("select_boardList");
 	let options = '';
@@ -38,31 +38,6 @@ function selectLocation(locaNum){
 	selectLoca.innerHTML = options;
 }
 
-
-window.onload = function () {
-	selectLocation(0);
-	// 네비바의 메뉴명 선택해서 진하게 만들기
-	let a_header_fv = document.getElementById("a_header_fv");
-	a_header_fv.className = "selected_menu"
-}
-
-// 맨 위로 버튼
-$(function() { // 보이기 | 숨기기 
-	$(window).scroll(function() { 
-		if ($(this).scrollTop() > 150) { //250 넘으면 버튼이 보여짐니다. 
-			$('.tothetop').fadeIn(); 
-		} else { 
-			$('.tothetop').fadeOut(); 
-		} }); 
-			
-	// 버튼 클릭시 			
-	$(".tothetop").click(function() {
-		$('html, body').animate({ 
-			scrollTop : 0 // 0 까지 animation 이동합니다.
-		}, 400); // 속도 400 
-	return false; 
-	}); 
-});	
 
 function tabSwitch(event){
 	let tab1_boardDetail = document.getElementById('tab1_boardDetail');
@@ -83,30 +58,85 @@ function tabSwitch(event){
 	}
 }
 
-let reviewModalOpen = function (event){
+function reviewModalOpen (event){
 //	event.stopImmediatePropagation();
-	document.getElementById('modal_boardDetail').style.display = 'block';
-	
+	document.getElementById('modal_boardDetail').style.display = 'block';	
+	document.getElementById('modalBack_boardDetail').style.display = 'block';	
 }
+
 function reviewModalClose(){
 	document.getElementById('form_boardMdal').reset();
 	document.getElementById('modal_boardDetail').style.display = 'none';
+	document.getElementById('modalBack_boardDetail').style.display = 'none';	
 }
 
-function openModal() {
-	document.querySelector(".modal").classList.remove("hidden");
-}
-function closeModal() {
-	document.querySelector(".modal").classList.add("hidden");
-}
+//document.getElementById("modalBack_boardDetail").addEventListener("click", reviewModalClose);
 
-document.querySelector(".bg").addEventListener("click", closeModal);
 
+// 리뷰 제출
+function createReview(){
+	
+	let formData = new FormData(document.getElementById("form_boardModal"));
+	let data = {
+		"contentid" : formData.get('contentid'),
+		"mmId" : formData.get('mmId')
+	};
+		
+	//1. 한번 작성했던 적 있는 사람인가 확인
+	let request = new XMLHttpRequest();
+	request.open('POST', '/festival/reviewCheck', true);
+	request.setRequestHeader("Content-Type", "application/json");
+	request.send(JSON.stringify(data));
+	request.onreadystatechange = function(event) {
+		if (request.readyState == 4) {
+			if (request.status == 200) {
+				if(request.responseText =='success'){
+					alert("성공");
+					formData.submit();
+					
+				}else{
+					alert('실패');
+				}
+				
+			}
+		}
+	}	
+	
+	//2. 제목, 내용 있는지 확인
+	
+	
+	//3. 제출
+
+	
+}
 
 // 더보기 눌렀을 때
 
 function boardListViewMore(){
+	let hidden_boardList_totalCount = document.getElementById("hidden_boardList_totalCount");
+	let totalCnt = hidden_boardList_totalCount.value;
 	
+	let searchKeyword = document.getElementById("searchKeyword");
+	let keyword = searchKeyword.value;
+	
+	let location = document.getElementById("hidden_boardList_location").value;
+	
+	
+	let div_boardList_article = document.getElementById("div_boardList_article");
+	let length = div_boardList_article.children.length;
+	
+	let numOfRows = length+8;
+	
+	if(keyword !== '' && keyword !== undefined && keyword !== '/'){
+		let form_boardList_searchKeyword = document.getElementById("form_boardList_searchKeyword");
+		let hidden_boardList_numOfRows = document.getElementById("hidden_boardList_numOfRows");
+		hidden_boardList_numOfRows.value = numOfRows;
+		form_boardList_searchKeyword.submit;
+	}else{
+		 festivalBoardLoad(numOfRows, location);
+	}
+	document.getElementById("span_boardList_totalCount").innerText = String(numOfRows);
+
 }
 
 // 리스트에서 행사 눌러서 detail 보여주는 메서드
@@ -127,6 +157,42 @@ function viewDetailSeeSight(contentid, contentTypeId, mapx, mapy){
 	document.getElementById("input_boardDetail_mapx").value = mapx;
 	document.getElementById("input_boardDetail_mapy").value = mapy;
 	
-	form_boardDetail.submit();
-	
+	form_boardDetail.submit();	
 }
+
+function changeLocation(){
+	let selectLoca = document.getElementById("select_boardList");
+	let locaNum =selectLoca.options[selectLoca.selectedIndex].value;
+	
+	festivalBoardLoad(8, locaNum);
+	document.getElementById("hidden_boardList_location").value = locaNum;
+}
+
+function doSearchKey(){
+	let searchKeyword = document.getElementById("searchKeyword");
+	let val = searchKeyword.value;
+	let form_boardList_searchKeyword = document.getElementById("form_boardList_searchKeyword");
+	if(val !== '' && val !== undefined){
+		form_boardList_searchKeyword.submit;
+	}
+
+}
+
+// 맨 위로 버튼
+$(function() { // 보이기 | 숨기기 
+	$(window).scroll(function() { 
+		if ($(this).scrollTop() > 150) { //250 넘으면 버튼이 보여짐니다. 
+			$('.tothetop').fadeIn(); 
+		} else { 
+			$('.tothetop').fadeOut(); 
+		} }); 
+			
+	// 버튼 클릭시 			
+	$(".tothetop").click(function() {
+		$('html, body').animate({ 
+			scrollTop : 0 // 0 까지 animation 이동합니다.
+		}, 400); // 속도 400 
+	return false; 
+	}); 
+});	
+	

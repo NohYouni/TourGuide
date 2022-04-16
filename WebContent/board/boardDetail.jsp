@@ -27,8 +27,8 @@
 			<table>
 				<tr><td rowspan="5" colspan="2"><img src="${detail.firstimage }" alt="" class="img_boardDetail"/></td><td></td><td></td></tr>
 				<tr><td>행사 이름 </td><td>${detail.title}</td></tr>
-				<tr><td>연 락 처 </td><td>${detail.telname} ${detail1.tel}</td></tr>
-				<tr><td>주    소 </td><td>${detail.addr1} ${detail1.addr2}</td></tr>
+				<tr><td>연 락 처 </td><td>${detail.telname} ${detail.tel}</td></tr>
+				<tr><td>주    소 </td><td>${detail.addr1} ${detail.addr2}</td></tr>
 				<tr><td>홈페이지 </td><td>${detail.homepage}</td></tr>
 			</table>
 			<hr/>
@@ -59,24 +59,36 @@
 		<button class="btn_middle btn_primary" style="float: right" onclick="reviewModalOpen(event);">리뷰 쓰기</button>
 		</p>
 		<hr>
-			<c:forEach end="5" begin="1" var="i">
+		<c:choose>
+		<c:when test="${review != null}">
+			<c:forEach items="${review}" var="review">
 				<table>
 				<tr>
-				<td class="image" rowspan="4">이미지</td>
-				<td>작성자 : 박나연</td>
-				<td >작성일시 : 2022-01-24</td>
+				<td class="image" rowspan="4">${review.img1}</td>
+				<td>작성자 : ${review.mmId}</td>
+				<td >작성일시 : ${review.rgtDate}</td>
 				
 				</tr>
 					<tr>
-					<td colspan="5">제목 : 너무 재밌어요!!!!</td>
+					<td colspan="5">제목 : ${review.rvSub}</td>
 					</tr>
 					<tr>
-					<td colspan="5">가야 할 때가 언제인가를 분명히 알고 가는 이의 뒷모습은 얼마나 아름다운가. 봄 한 철 격정을 인내한 나의 사랑은 지고 있다. 분분한 낙화. 결별이 이룩하는 축복에 싸여 지금은 가야 할 때 무성한 녹음과 그리고 머지않아 열매 맺는 가을을 향하여 나의 청춘은 꽃답게 죽는다. 헤어지자 섬세한 손길을 흔들며 하롱하롱 꽃잎이 지는 어느 날 나의 사랑, 나의 결별 샘터에 물 고이듯 성숙하는 내 영혼의 슬픈 눈.</td>
+					<td colspan="5">${review.rvCnts}</td>
 					</tr>
 				</table>
-				<hr />	
+				<hr />
 			</c:forEach>
-			
+			</c:when>
+			<c:otherwise>
+				<table>
+					<tr>
+					<td >첫 리뷰를 작성해주세요. ^^</td>
+					</tr>
+				
+				</table>
+				<hr />
+			</c:otherwise>
+		</c:choose>
 		</div>
 		
 		<div class="tab_hidden" id="tab2_boardDetail">
@@ -102,16 +114,41 @@
 	</div>
 	</section>
 	
-	<form action="/festival/detail" method="POST" id="form_boardDetail">
-		<input type="hidden" id="input_boardDetail_contentid" name="contentid"/>
-		<input type="hidden" id="input_boardDetail_contenttypeid" name="contentTypeId"/>
-		<input type="hidden" id="input_boardDetail_mapx" name="mapx"/>
-		<input type="hidden" id="input_boardDetail_mapy" name="mapy"/>
-	</form>
-	
 	<c:import url="/footer.jsp"></c:import>
 	<div id="tothetop" class='tothetop'>▲</div>
-	<c:import url="/board/boardModal.jsp"></c:import>
+
+<div class="" id="modalBack_boardDetail"></div>
+<div class="" id="modal_boardDetail">	
+	<form action="/festival/createReview" method="post" id="form_boardModal">
+		<input type="hidden" style="width: 400px" name="contentid" value="${detail.contentid}"/>
+		<input type="hidden" style="width: 400px" name="mmId" value="${sessionScope.mmId}"/>
+		<input type="hidden" style="width: 400px" name="mapx" value="${detail.mapx}"/>
+		<input type="hidden" style="width: 400px" name="mapy" value="${detail.mapy}"/>
+		<table>
+			<tr>
+			<td><lable for="rvSb">제목 : </lable></td>
+			<td><input type="text" style="width: 400px" name="rvSb"/></td>
+			<td><button type="button" class="btn_middle" onclick="reviewModalClose()">X</button></td>
+			</tr>
+			<tr>
+			<td><lable for="file">사진 : </lable></td>
+			<td><input type="file" style="display: none" name=""/>
+				<input type="text" style="width: 400px"/></td>
+			<td><button type="button" class="btn_middle">찾아보기</button></td>
+			</tr>
+	
+			<tr>
+			<td colspan="3"><textarea rows="20" cols="100" style="width: 520px" name="rvCnts"></textarea></td>
+			</tr>
+			<tr>
+			<td colspan="3" style="text-align: center;">
+			<button type="button" onclick="createReview()" class="btn_middle btn_primary" >등록</button>&nbsp;&nbsp;
+			<button type="button" class="btn_middle" onclick="reviewModalClose()">취소</button></td>
+			</tr>
+		</table>
+	</form>
+	</div>
+
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/board/board.js"></script>

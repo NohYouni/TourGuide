@@ -5,6 +5,7 @@ function festivalBoardLoad(numOfRows, location){
 	
 	window.location.href= url;
 	let a_header_fv = document.getElementById("a_header_fv");
-	a_header_fv.className = "selected_menu"
+	a_header_fv.className = "selected_menu";
+	selectLocation(location);
 } 
 

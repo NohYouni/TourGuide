@@ -36,6 +36,7 @@ public class LoginServlet extends HttpServlet {
 		HttpSession ses = request.getSession();
 		System.out.println(vo.getStsCode());
 		ses.setAttribute("sts", vo.getStsCode());
+		ses.setAttribute("mmId", vo.getMmId());
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 		dispatcher.forward(request, response);
