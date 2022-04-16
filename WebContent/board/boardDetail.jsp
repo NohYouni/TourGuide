@@ -121,7 +121,7 @@
 <div class="" id="modal_boardDetail">	
 	<form action="/festival/createReview" method="post" id="form_boardModal">
 		<input type="hidden" style="width: 400px" name="contentid" value="${detail.contentid}"/>
-		<input type="hidden" style="width: 400px" name="mmId" value="${sessionScope.mmId}"/>
+		<input type="hidden" style="width: 400px" name="mmId" value="${sessionScope.mmId}" id="hidden_boardDetail_mmid"/>
 		<input type="hidden" style="width: 400px" name="mapx" value="${detail.mapx}"/>
 		<input type="hidden" style="width: 400px" name="mapy" value="${detail.mapy}"/>
 		<table>

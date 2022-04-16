@@ -101,12 +101,11 @@ public class BoardController extends HttpServlet {
 			
 		}else if(cmd.equals("/festival/searchKey")){		
 			String numOfRows = request.getParameter("numOfRows");
-//			System.out.println(numOfRows == null);
 			String searchKeyword = request.getParameter("searchKeyword");
 			String location = request.getParameter("location");
-			request.setAttribute("list", bs.searchKey(numOfRows, searchKeyword, location));
 			request.setAttribute("location", location);
 			request.setAttribute("searchKeyword", searchKeyword);
+			request.setAttribute("list", bs.searchKey(numOfRows, searchKeyword, location));
 			request.setAttribute("totalCount", bs.getTotalCount(numOfRows, searchKeyword, location));
 			rd = request.getRequestDispatcher("/board/boardList.jsp");
 			rd.forward(request, response);

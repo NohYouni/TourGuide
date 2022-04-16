@@ -1,14 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Login</title>
 <link rel="stylesheet" href="/css/commonCss.css">
-<c:import url="/header.jsp"></c:import>
+
 </head>
 <body>
+<c:import url="/header.jsp"></c:import>
+	<nav>
+        <ul class="inlineUl">
+        <li><a style="cursor : pointer;" onclick="festivalBoardLoad(8, 0)" id="a_header_fv">전국의 행사</a></li>
+        <li><a href="" id="a_header_ev">이벤트</a></li></ul><hr>
+    </nav>
 	<h1>로그인</h1>
 	<br />
 	<form action="/login" method="post">

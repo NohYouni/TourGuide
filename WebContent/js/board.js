@@ -60,12 +60,24 @@ function tabSwitch(event){
 
 function reviewModalOpen (event){
 //	event.stopImmediatePropagation();
+
+	let hidden_boardDetail_mmid = document.getElementById("hidden_boardDetail_mmid");
+	let mmId=hidden_boardDetail_mmid.value;
+	
+	if(mmId == null || mmId ==''){
+		url = '/login';
+	
+		window.location.href= url;
+		
+	}
+
+
 	document.getElementById('modal_boardDetail').style.display = 'block';	
 	document.getElementById('modalBack_boardDetail').style.display = 'block';	
 }
 
 function reviewModalClose(){
-	document.getElementById('form_boardMdal').reset();
+	document.getElementById('form_boardModal').reset();
 	document.getElementById('modal_boardDetail').style.display = 'none';
 	document.getElementById('modalBack_boardDetail').style.display = 'none';	
 }
