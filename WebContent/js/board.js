@@ -65,13 +65,9 @@ function reviewModalOpen (event){
 	let mmId=hidden_boardDetail_mmid.value;
 	
 	if(mmId == null || mmId ==''){
-		url = '/login';
-	
-		window.location.href= url;
-		
+		url = '/login';	
+		window.location.href= url;		
 	}
-
-
 	document.getElementById('modal_boardDetail').style.display = 'block';	
 	document.getElementById('modalBack_boardDetail').style.display = 'block';	
 }
