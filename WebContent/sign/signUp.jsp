@@ -35,9 +35,17 @@
 </style>
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/commonCss.css">
-<c:import url="/header.jsp"></c:import>
+
 </head>
 <body>
+
+	<c:import url="/header.jsp"></c:import>
+	<nav>
+        <ul class="inlineUl">
+        <li><a class="" style="cursor : pointer;" onclick="festivalBoardLoad(8, 0)" id="a_header_fv">전국의 행사</a></li>
+        <li><a href="" id="a_header_ev">이벤트</a></li></ul><hr>
+    </nav>
+    
 	<h1>회원가입</h1>
 	<br />
 	<form action="signUp" method="post">
@@ -104,9 +112,9 @@
 			</form>
 		</div>
 	</div>
+	
+	<c:import url="/footer.jsp"></c:import>
 </body>
 
-<footer>
-	<c:import url="/footer.jsp"></c:import>
-</footer>
+
 </html>

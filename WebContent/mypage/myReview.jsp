@@ -6,12 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="/header.jsp"></c:import>
 <link rel="stylesheet" href="/css/review.css">
 <link rel="stylesheet" href="/css/commonCss.css">
 </head>
 	
 <body>
+	<c:import url="/header.jsp"></c:import>
+	<nav>
+        <ul class="inlineUl">
+        <li><a class="" style="cursor : pointer;" onclick="festivalBoardLoad(8, 0)" id="a_header_fv">전국의 행사</a></li>
+        <li><a href="" id="a_header_ev">이벤트</a></li></ul><hr>
+    </nav>
+    
 <h1>내 리뷰 보기</h1>
 <c:forEach end="5" begin="1" var="i">
 <table>

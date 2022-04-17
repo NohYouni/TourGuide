@@ -10,12 +10,7 @@
 
 
 <link rel="stylesheet" href="/css/board.css">
-<style>
-
-
-
-
-</style>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
 <body>
 	<c:import url="/header.jsp"></c:import>
@@ -189,7 +184,7 @@
 		<form action="/festival/searchKey" method="Post" id="form_boardList_searchKeyword">
 			<input type="hidden" id="hidden_boardList_location" name="location" value="${location}"/>
 			<input type="hidden" id="hidden_boardList_numOfRows" name="numOfRows" value="${numOfRows}"/> 		 			
-			<input type="text" name="searchKeyword" id="searchKeyword" value =${searchKeyword}/> 
+			<input type="text" name="searchKeyword" id="searchKeyword" value ="${searchKeyword}"/> 
 			<button type="button" onclick="doSearchKey()" class="btn_middle btn_primary" >검색</button>
 		</form>		
 		

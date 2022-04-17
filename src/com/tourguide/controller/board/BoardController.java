@@ -52,6 +52,12 @@ public class BoardController extends HttpServlet {
 		if(cmd.equals("/festival/main")){
 			String location = request.getParameter("location");
 			String numOfRows = request.getParameter("numOfRows");
+			String searchKeyword = request.getParameter("searchKeyword");
+			if (searchKeyword!= null) {
+				searchKeyword = searchKeyword.indexOf("/") > -1 ? searchKeyword.replace("/", ""): searchKeyword;
+				System.out.println(searchKeyword);
+				request.setAttribute("searchKeyword", searchKeyword);
+			}
 			request.setAttribute("list", bs.getAll(numOfRows, location));
 			request.setAttribute("location", location);
 			request.setAttribute("numOfRows", numOfRows);
@@ -104,7 +110,12 @@ public class BoardController extends HttpServlet {
 			String searchKeyword = request.getParameter("searchKeyword");
 			String location = request.getParameter("location");
 			request.setAttribute("location", location);
-			request.setAttribute("searchKeyword", searchKeyword);
+
+			if (searchKeyword!= null) {
+				searchKeyword = searchKeyword.indexOf("/") > -1 ? searchKeyword.replace("/", ""): searchKeyword;
+				System.out.println(searchKeyword);
+				request.setAttribute("searchKeyword", searchKeyword);
+			}
 			request.setAttribute("list", bs.searchKey(numOfRows, searchKeyword, location));
 			request.setAttribute("totalCount", bs.getTotalCount(numOfRows, searchKeyword, location));
 			rd = request.getRequestDispatcher("/board/boardList.jsp");

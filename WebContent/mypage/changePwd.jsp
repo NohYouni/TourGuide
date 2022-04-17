@@ -59,10 +59,19 @@
 <link rel="stylesheet" href="/css/commonCss.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="/header.jsp"></c:import>
+
 </head>
 
 <body>
+
+
+	<c:import url="/header.jsp"></c:import>
+	<nav>
+        <ul class="inlineUl">
+        <li><a class="" style="cursor : pointer;" onclick="festivalBoardLoad(8, 0)" id="a_header_fv">전국의 행사</a></li>
+        <li><a href="" id="a_header_ev">이벤트</a></li></ul><hr>
+    </nav>
+    
 	<form action="../changePwd" class="password" method="post">
 		새 비밀번호번호 : <input type="text" placeholder="비밀번호를 입력해 주세요" name="mmPwd"/> <br /> 
 		비밀번호 확인 : <input type="text" placeholder="새 비밀번호를 입력해 주세요" name="newPwd"/> <br /> 
