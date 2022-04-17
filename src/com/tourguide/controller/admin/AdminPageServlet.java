@@ -64,18 +64,7 @@ public class AdminPageServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 		
-		//회원 탈퇴
-		else if(cmd.equals("/admins/delete")){
-			String rsns = "";
-			for(int i=1; i<9; i++) {
-				if(request.getParameter("rsn" + i) != null)
-					rsns = rsns+request.getParameter("rsn" + i);
-			}
-			int rsn = Integer.parseInt(rsns);
-			System.out.println(rsn);
-			MmMstDAO dao = new MmMstDAO();
-			
-		}
+		
 		//리뷰 삭제
 	}
 	

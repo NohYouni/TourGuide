@@ -1,3 +1,4 @@
+<%@page import="com.tourguide.dto.MmMstVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
@@ -16,7 +17,6 @@
 
 <body>
 <c:import url="/header.jsp"></c:import>
-
 <div class="">
 	<nav>
         <ul class="inlineUl">
@@ -29,8 +29,6 @@
 		<li class="on">회원 조회</li>
 		<li>리뷰 조회</li>
 	</ul>
-	<!-- <button class="btn-tab selected_tab">회원조회</button>
-	<button class="btn-tab ">리뷰조회</button> -->
 	<div class="tab_cont">
 		<div class="on">
 			<form action="" onsubmit="test()">
@@ -42,15 +40,28 @@
 					<th width="45%">아이디</th>
 					<th width="45%">이메일</th>
 					<th width="10%"></th>
-				</tr>
+				</tr>				
 				<c:forEach var="serchNumber" items="${mm_currentList}" varStatus="status">
-					<tr>
-						<td style="border-bottom: 1px solid black;">${serchNumber.mmId}</td>
-						<td style="border-bottom: 1px solid black;">${serchNumber.mmEmail}</td>
-						<td class="openBtn" style="border-bottom: 1px solid black;"><button onclick="openModal()">삭제</button></td>
-					</tr>						
+					<c:choose>
+						<c:when test="${serchNumber.outCode == 0 }">
+							<tr>
+								<td style="border-bottom: 1px solid black;">${serchNumber.mmId}</td>
+								<td style="border-bottom: 1px solid black;">${serchNumber.mmEmail}</td>
+								<td style="border-bottom: 1px solid black;"><button onclick="memberDelete('${serchNumber.mmId}')">삭제</button></td>
+							</tr>	
+						</c:when>
+						<c:otherwise>
+							<tr style="color: red;">
+								<td style="border-bottom: 1px solid black;">${serchNumber.mmId}</td>
+								<td style="border-bottom: 1px solid black;">${serchNumber.mmEmail}</td>
+								<td style="border-bottom: 1px solid black;"><button onclick="memberDeleteRsn('${serchNumber.outCode}')">삭제 이유</button></td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
+					
 				</c:forEach>
 			</table>
+			
 			<ul class="pagination">
 				<c:set var="current_page" value="${mm_currentPage}" />
 				<li class="disabled">
@@ -65,38 +76,55 @@
 					<span>»</span></a>
 				</li>
 			</ul>
-			<div class="modal hidden">
-				<div class="bg"></div>
-				<div class="modalBox">
-					<c:import url="memDelModal.jsp">
-						<c:param name="memId" value="${serchNumber.mmId}"></c:param>
-					</c:import>
-				</div>
-			</div>
 		</div>
 
 		<div>
 			<input type="text" name="serch"> <input type="submit" value="검색"> <br>
 			<div class="reviewCon">
 				<c:forEach var="serchNumber" items="${rv_currentList }" varStatus="status">
-					<table>
-						<tr>
-							<td class="image" rowspan="4">이미지</td>
-							<td>작성자 : ${serchNumber.mmId}</td>
-							<td>작성일시 : ${serchNumber.rgtDate }</td>
-						</tr>
-						<tr>
-							<td colspan="5">제목 : ${serchNumber.rvSub}</td>
-						</tr>
-						<tr>
-							<td colspan="5">${serchNumber.rvCnts}</td>
-						</tr>
-						<tr>
-							<td colspan="3"></td>
-							<td class="right"><button onclick="openModal2()">리뷰 삭제</button></td>
-						</tr>
-					</table>
-					<hr />
+					<c:choose>
+						<c:when test="${serchNumber.delCode == 0}">
+							<table>
+								<tr>
+									<td class="image" rowspan="4">이미지</td>
+									<td>작성자 : ${serchNumber.mmId}</td>
+									<td>작성일시 : ${serchNumber.rgtDate }</td>
+								</tr>
+								<tr>
+									<td colspan="5">제목 : ${serchNumber.rvSub}</td>
+								</tr>
+								<tr>
+									<td colspan="5">${serchNumber.rvCnts}</td>
+								</tr>
+								<tr>
+									<td colspan="3"></td>
+									<td class="right"><button onclick="reviewDelete('${serchNumber.mmId}', '${serchNumber.fvNo}')">삭제</button></td>
+								</tr>
+							</table>
+							<hr />
+						</c:when>
+						<c:otherwise>
+							<table style="color: red;">
+								<tr>
+									<td class="image" rowspan="4">이미지</td>
+									<td>작성자 : ${serchNumber.mmId}</td>
+									<td>작성일시 : ${serchNumber.rgtDate }</td>
+								</tr>
+								<tr>
+									<td colspan="5">제목 : ${serchNumber.rvSub}</td>
+								</tr>
+								<tr>
+									<td colspan="5">${serchNumber.rvCnts}</td>
+								</tr>
+								<tr>
+									<td colspan="3"></td>
+									<td class="right"><button onclick="reviewDeleteRsn('${serchNumber.delCode}')">삭제 이유</button></td>
+								</tr>
+							</table>
+							<hr />
+						</c:otherwise>
+					</c:choose>
+					
 				</c:forEach>
 				<ul class="pagination">
 					<c:set var="current_reviewPage" value="${rv_currentPage }" />
@@ -111,24 +139,15 @@
 							<a href="/admins/page?page=${rv_endPage+1 }">
 						</c:if> <span>»</span></a></li>	
 				</ul>
-			</div>			
-				
-			<div class="modal2 hidden">
-				<div class="bg"></div>
-				<div class="modalBox">
-					<c:import url="reviewDelModal.jsp"></c:import>
-				</div>
-			</div>
+			</div>						
 		</div>
 				
 		<c:import url="/footer.jsp"></c:import>
 	</div>
 </div>
-
 		
 
 <script>
-
 $(document).ready(function() {
 	var tab = sessionStorage.getItem('tabSelect');
 	$(".tab_title li").removeClass("on");
@@ -148,23 +167,26 @@ $(document).ready(function() {
 		$(".tab_cont > div").eq(idx).show();
 		sessionStorage.setItem('tabSelect', idx);
 	})
-});
+});	
 
-function openModal() {
-	document.querySelector(".modal").classList.remove("hidden");
+let winX = 400;
+let winY = 300;
+let x = (window.innerWidth)/2 - (winX/2);
+let y = (window.innerHeight)/2 - (winY/2);
+
+function memberDelete(mmId) {	
+	const myWin = window.open('/adminMemDel?id=' + mmId + ' ','win0','left=' + x + '  ,top=' + y +' , width='+ winX +',height='+ winY +',status=no,toolbar=no');	
 }
-function openModal2() {
-	document.querySelector(".modal2").classList.remove("hidden");
-}
-function closeModal() {
-	document.querySelector(".modal").classList.add("hidden");
-	document.querySelector(".modal2").classList.add("hidden");
+function memberDeleteRsn(rsn) {
+	const myWin = window.open('/adminDeleteRsn?rsn=' + rsn + ' ','win0','left=' + x + '  ,top=' + y +' , width='+ winX +',height='+ winY +',status=no,toolbar=no');	
 }
 
-document.querySelector(".modal .bg").addEventListener("click", closeModal);
-document.querySelector(".modal2 .bg").addEventListener("click", closeModal);	
-
-		
+function reviewDelete(rmmId, rfvno) {
+	const myWin = window.open('/adminRvDel?id=' + rmmId + '&no=' + rfvno + ' ','win0','left=' + x + '  ,top=' + y +' , width='+ winX +',height='+ winY +',status=no,toolbar=no');	
+}
+function reviewDeleteRsn(rsn) {
+	const myWin = window.open('/adminDeleteRsn?rsn=' + rsn + ' ','win0','left=' + x + '  ,top=' + y +' , width='+ winX +',height='+ winY +',status=no,toolbar=no');	
+}
 </script>
 </body>
 </html>

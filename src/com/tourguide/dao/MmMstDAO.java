@@ -199,5 +199,26 @@ public class MmMstDAO {
 
 		return null;
 	}
+	//회원 삭제 이유들 가져오기
+	public List<String> outRsnGetAll(){
+		List<String> rsnList = new ArrayList<String>();
+		String sql = "select *from outrsn";
+		
+		try {
+			con = DBManager.getCon();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) 
+				rsnList.add(rs.getString("outName"));
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+		
+		return rsnList;
+	}
+	
 
 }
