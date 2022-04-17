@@ -26,6 +26,8 @@ public interface BoardSv {
 
 	int getTotalCount(String numOfRows, String searchKeyword, String location);
 
+	String getBestContentId();
+
 
 
 }

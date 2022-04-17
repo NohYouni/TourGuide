@@ -186,4 +186,10 @@ public class BoardService implements BoardSv{
 		}
 		return Integer.parseInt(GetApi.getTotalCount(requestParam, svcName));
 	}
+
+	@Override
+	public String getBestContentId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

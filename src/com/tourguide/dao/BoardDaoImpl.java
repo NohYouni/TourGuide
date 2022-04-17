@@ -15,10 +15,11 @@ public class BoardDaoImpl implements BoardDao {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 		
+	@SuppressWarnings("unchecked")
 	@Override
 	public <T> List<T> getReviewList(String contentId){
 		List<RvDtlVO> rl = new ArrayList<RvDtlVO>();
-		con = gc.getCon();
+		con = DBManager.getCon();
 		
 		String sql = "select aa.* from (select rownum, mmId, fvNo, rvSub, rvCnts, rgtDate, delCode, img1, img2, img3 from RvDtl order by rgtDate) aa "
 				+ "where aa.delcode = 0 and fvno="+contentId;
@@ -43,7 +44,7 @@ public class BoardDaoImpl implements BoardDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			gc.close(con, pstmt, rs);
+			DBManager.close(con, pstmt, rs);
 		}
 		
 		return (List<T>) rl;		
