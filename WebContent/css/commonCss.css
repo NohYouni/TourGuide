@@ -1,0 +1,133 @@
+@charset "UTF-8";
+:root {
+    --primary-color: #25d8d8;
+    --darker-color : #1a9999;
+    --lighter-color : #7ce9e9;
+    --white-color: #ffffff;
+    --black-color: #000000;
+    --primary-font: Arial, Helvetica, sans-serif;
+  }
+
+/*   header.jsp */
+body{
+	width: 980px;
+	margin: 0 auto;
+}
+a{
+	text-decoration : none;
+	color: var(--black-color);
+}
+header{
+	  display: grid;
+	  grid-template-rows: auto;
+	}
+footer{
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+}
+	
+	
+	/* 버튼 */
+	
+.btn_middle{
+    position: relative;
+    height : 2em;
+    width : 80px;
+    border: none;
+    display: inline-block;
+/*     padding: 0px 30px; */
+    border-radius: 10px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    cursor: pointer;
+ }
+.btn-long{
+    position: relative;
+    height : 2em;
+    width : 200px;
+    border: none;
+    display: inline-block;
+/*     padding: 0px 60px; */
+    border-radius: 10px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    cursor: pointer;
+}
+.btn-longbox{
+    position: relative;
+    height : 3em;
+    border: 1px ;
+    width : 100%;
+    display: inline-block;
+    border-radius: 5px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    cursor: pointer;
+}
+.btn_primary{
+	background-color: var(--primary-color);
+	color : var(--white-color);
+}
+.btn_tab{
+    position: relative;
+    height : 3em;
+    border: 1px ;
+    width : 49%;
+    display: inline-block;
+    border-radius: 5px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    cursor: pointer;
+    font-weight: bold;
+	color: var(--darker-color);
+}
+
+.selected_tab{
+	background-color: var(--primary-color);
+	color: var(--white-color);
+}
+
+.selected_menu{
+	font-weight: bold;
+	color: var(--darker-color);
+	text-decoration : none;
+}
+
+/* input */
+
+[type='text']{
+	border-radius: 10px;
+	height : 2em;
+	width: 400px;
+ 
+	
+} 
+
+.inlineUl li{
+  list-style-type: none;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 100px;
+}
+.rigthUl{
+  float: right;
+}
+.siteName{
+	font-size: 50px;
+    text-align: center;
+    padding-bottom : 30px;
+}
+
