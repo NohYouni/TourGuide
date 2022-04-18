@@ -219,6 +219,37 @@ public class MmMstDAO {
 		
 		return rsnList;
 	}
-	
+	//검색된 회원 리스트 불러오기
+	public List<MmMstVO> mmMstSerch(String str){
+		List<MmMstVO> voList = new ArrayList<MmMstVO>();
+		str = "%"+str+"%";
+		String sql = "select * from mmmst where mmId like ?";
+		try {
+			con = DBManager.getCon();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, str);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				MmMstVO vo = new MmMstVO();
+				vo.setMmId(rs.getString("mmId"));
+				vo.setMmPwd(rs.getString("mmPwd"));
+				vo.setMmEmail(rs.getString("mmEmail"));
+				vo.setJoinDate(rs.getString("joinDate"));
+				vo.setLlDate(rs.getString("llDate"));
+				vo.setStsCode(rs.getInt("stsCode"));
+				vo.setOutDate(rs.getString("outDate"));
+				vo.setOutCode(rs.getInt("outCode"));
+				voList.add(vo);
+			}
+
+			return voList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+
+		return null;
+	}
 
 }

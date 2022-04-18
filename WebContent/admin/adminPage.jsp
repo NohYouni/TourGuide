@@ -31,7 +31,7 @@
 	</ul>
 	<div class="tab_cont">
 		<div class="on">
-			<form action="" onsubmit="test()">
+			<form action="/admins/page" name="mmMstSerch" >
 				<input type="text" name="serch"> 
 				<input type="submit" value="검색"><br>
 			</form>
@@ -187,6 +187,7 @@ function reviewDelete(rmmId, rfvno) {
 function reviewDeleteRsn(rsn) {
 	const myWin = window.open('/adminDeleteRsn?rsn=' + rsn + ' ','win0','left=' + x + '  ,top=' + y +' , width='+ winX +',height='+ winY +',status=no,toolbar=no');	
 }
+
 </script>
 </body>
 </html>
