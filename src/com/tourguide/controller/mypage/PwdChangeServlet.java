@@ -1,8 +1,8 @@
 package com.tourguide.controller.mypage;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,42 +11,43 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.tourguide.dao.MmMstDAO;
-import com.tourguide.dto.MmMstVO;
 
 /**
  * Servlet implementation class ChangePwdServlet
  */
-@WebServlet("/changePwd")
-public class ChangePwdServlet extends HttpServlet {
+@WebServlet("/pwdChange")
+public class PwdChangeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		MmMstVO vo = new MmMstVO();
+		PrintWriter out = response.getWriter();
 		MmMstDAO dao = new MmMstDAO();
 		HttpSession session = request.getSession() ;
-		String id = (String) session.getAttribute("mmId");
+		String mmId = (String) session.getAttribute("mmId");
+		if(mmId==null) {
+			response.sendRedirect("/sign/login.jsp");
+		}else {
 		String pwd = request.getParameter("mmPwd");
 		String newPwd = request.getParameter("newPwd");
 		int check = 0;
-		check = dao.mmMstPwdCheck(id, pwd);
+		check = dao.mmMstPwdCheck(mmId, pwd);
 		if(!pwd.equals(newPwd)) {
 		
 		if(check == 1) {
-		dao.mmMstUpdate(id, newPwd);
+		dao.mmMstUpdate(mmId, newPwd);
+		out.print("<script>alert('비밀번호가 변경되었습니다'); location.href='mypage';</script>");
 		}else {
+			out.print("<script>alert('비밀번호가 틀렸습니다'); location.href='mypage/pwdChange.jsp';</script>");
 			System.out.println("비밀번호가 틀렸습니다.");
-			
 		}
 		}else {
-			System.out.println("기존비밀번호와 신규 비밀번호가 같음");
-		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("mypage/mypage.jsp");
-		dispatcher.forward(request, response);
-			
+			out.print("<script>alert('기존비밀번호와 새 비밀번호가 같습니다.'); location.href='mypage/pwdChange.jsp';</script>");
+			System.out.println("기존비밀번호와 새 비밀번호가 같음");
+		}			
 		}
 	}
-
+}
 

@@ -38,6 +38,28 @@ public class RvDtlDAO {
       return 0;      
    }
    
+   //리뷰 수정
+   public int rvDtlUpdate(RvDtlVO vo) {
+	      String sql = "UPDATE rvDtl SET rvsub=?,rvcnts=?,img1=?  WHERE mmId = ? and fvNo=?";
+
+	      try {
+	         con = DBManager.getCon();
+	         pstmt = con.prepareStatement(sql);
+	         pstmt.setString(1, vo.getRvSub());
+	         pstmt.setString(2, vo.getRvCnts());
+	         pstmt.setString(3, vo.getImg1());
+	         pstmt.setString(4, vo.getMmId());
+	         pstmt.setString(5, vo.getFvNo());
+	         return pstmt.executeUpdate();
+	      }catch (SQLException e) {
+	         e.printStackTrace();
+	      }finally {
+	    	  DBManager.close(con, pstmt);
+	      }
+	      return 0;
+	   }
+   
+   
    //리뷰 삭제 : 본인삭제 | 관리자 삭제
    public int rvDtlDelete(String id, String fvNo, int delCode) {
       String sql = "UPDATE rvDtl SET delCode=?, delDate=sysdate WHERE mmId = ? and fvNo=?";

@@ -13,13 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.tourguide.dao.FvLkDAO;
-import com.tourguide.dao.MmMstDAO;
 
 /**
  * Servlet implementation class MyZzimServlet
  */
-@WebServlet("/myZzim")
-public class MyZzimServlet extends HttpServlet {
+@WebServlet("/myZzimList")
+public class MyZzimListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
@@ -28,20 +27,22 @@ public class MyZzimServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("mmId");
-
-		List<String> lists = new ArrayList<String>();
+		String mmId = (String) session.getAttribute("mmId");
+		if(mmId==null) {
+			response.sendRedirect("/sign/login.jsp");
+		}else {
+		List<String> zzlists = new ArrayList<String>();
 		FvLkDAO dao = new FvLkDAO();
 
-		lists = dao.FvLkMyList(id);
+		zzlists = dao.FvLkMyList(mmId);
 		
-		request.setAttribute("lists", lists);
+		request.setAttribute("zzlists", zzlists);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("mypage/myZzim.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/mypage/myZzim.jsp");
 		dispatcher.forward(request, response);
 			
 	
+		}
 	}
-
 
 }
