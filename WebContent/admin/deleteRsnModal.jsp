@@ -6,16 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-.cheakPage{
-	width: 300px;
-	margin: 0 auto;
-	text-align: center;
-}
-body{
-	overflow: hidden;
-}
-</style>
+<link rel="stylesheet" href="/admin/adminModalCss.css">
 </head>
 <body>
 <div class="cheakPage">
@@ -24,7 +15,7 @@ body{
 		${rsn}<br/>
 	</c:forEach>
 	<br/>
-	<button onclick="pageClose()">확인</button>
+	<button class="btn_middle btn_primary" onclick="pageClose()">확인</button>
 </div>
 <script>
 	function pageClose() {

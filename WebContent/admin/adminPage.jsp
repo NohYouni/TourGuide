@@ -33,7 +33,7 @@
 		<div class="on">
 			<form action="/admins/page" name="mmMstSerch" >
 				<input type="text" name="serch"> 
-				<input type="submit" value="검색"><br>
+				<input class="btn_middle btn_primary" type="submit" value="검색"><br>
 			</form>
 			<table width="90%" class="memeberT" >
 				<tr>
@@ -47,14 +47,14 @@
 							<tr>
 								<td style="border-bottom: 1px solid black;">${serchNumber.mmId}</td>
 								<td style="border-bottom: 1px solid black;">${serchNumber.mmEmail}</td>
-								<td style="border-bottom: 1px solid black;"><button onclick="memberDelete('${serchNumber.mmId}')">삭제</button></td>
+								<td style="border-bottom: 1px solid black;"><button class="btn_middle btn_primary" onclick="memberDelete('${serchNumber.mmId}')">삭제</button></td>
 							</tr>	
 						</c:when>
 						<c:otherwise>
 							<tr style="color: red;">
 								<td style="border-bottom: 1px solid black;">${serchNumber.mmId}</td>
 								<td style="border-bottom: 1px solid black;">${serchNumber.mmEmail}</td>
-								<td style="border-bottom: 1px solid black;"><button onclick="memberDeleteRsn('${serchNumber.outCode}')">삭제 이유</button></td>
+								<td style="border-bottom: 1px solid black;"><button class="btn_middle btn_primary" onclick="memberDeleteRsn('${serchNumber.outCode}')">삭제 이유</button></td>
 							</tr>
 						</c:otherwise>
 					</c:choose>
@@ -65,30 +65,33 @@
 			<ul class="pagination">
 				<c:set var="current_page" value="${mm_currentPage}" />
 				<li class="disabled">
-					<c:if test="${!(mm_startPage == 1) }"><a href="/admins/page?page=${mm_startPage-1 }"></c:if> 
+					<c:if test="${!(mm_startPage == 1) }"><a href="/admins/page?page=${mm_startPage-1 }&serch=${mm_serch}"></c:if> 
 					<span>«</span></a>
 				</li>
 				<c:forEach var="i" begin="${mm_startPage}" end="${mm_endPage}">
-					<li><c:if test="${i != mm_currentPage}"><a href="/admins/page?page=${i}"></c:if>${i}</a></li>					
+					<li><c:if test="${i != mm_currentPage}"><a href="/admins/page?page=${i}&serch=${mm_serch}"></c:if>${i}</a></li>					
 				</c:forEach>
 				<li>
-					<c:if test="${mm_total_member_page > mm_endPage}"><a href="/admins/page?page=${mm_endPage+1}"></c:if>
+					<c:if test="${mm_total_member_page > mm_endPage}"><a href="/admins/page?page=${mm_endPage+1}&serch=${mm_serch}"></c:if>
 					<span>»</span></a>
 				</li>
 			</ul>
 		</div>
 
 		<div>
-			<input type="text" name="serch"> <input type="submit" value="검색"> <br>
+			<form action="/admins/page" name="mmMstSerch" >
+				<input type="text" name="serch"> 
+				<input class="btn_middle btn_primary" type="submit" value="검색"><br>
+			</form>
 			<div class="reviewCon">
 				<c:forEach var="serchNumber" items="${rv_currentList }" varStatus="status">
 					<c:choose>
 						<c:when test="${serchNumber.delCode == 0}">
-							<table>
+							<table style="width: 980px;">
 								<tr>
 									<td class="image" rowspan="4">이미지</td>
-									<td>작성자 : ${serchNumber.mmId}</td>
-									<td>작성일시 : ${serchNumber.rgtDate }</td>
+									<td >작성자 : ${serchNumber.mmId}</td>
+									<td >작성일시 : ${serchNumber.rgtDate }</td>
 								</tr>
 								<tr>
 									<td colspan="5">제목 : ${serchNumber.rvSub}</td>
@@ -98,13 +101,13 @@
 								</tr>
 								<tr>
 									<td colspan="3"></td>
-									<td class="right"><button onclick="reviewDelete('${serchNumber.mmId}', '${serchNumber.fvNo}')">삭제</button></td>
+									<td class="right"><button class="btn_middle btn_primary" onclick="reviewDelete('${serchNumber.mmId}', '${serchNumber.fvNo}')">삭제</button></td>
 								</tr>
 							</table>
 							<hr />
 						</c:when>
 						<c:otherwise>
-							<table style="color: red;">
+							<table style="color: red; width: 980px;">
 								<tr>
 									<td class="image" rowspan="4">이미지</td>
 									<td>작성자 : ${serchNumber.mmId}</td>
@@ -118,7 +121,7 @@
 								</tr>
 								<tr>
 									<td colspan="3"></td>
-									<td class="right"><button onclick="reviewDeleteRsn('${serchNumber.delCode}')">삭제 이유</button></td>
+									<td class="right"><button class="btn_middle btn_primary" onclick="reviewDeleteRsn('${serchNumber.delCode}')">삭제 이유</button></td>
 								</tr>
 							</table>
 							<hr />
@@ -170,7 +173,7 @@ $(document).ready(function() {
 });	
 
 let winX = 400;
-let winY = 300;
+let winY = 330;
 let x = (window.innerWidth)/2 - (winX/2);
 let y = (window.innerHeight)/2 - (winY/2);
 

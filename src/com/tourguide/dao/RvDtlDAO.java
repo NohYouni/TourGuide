@@ -97,9 +97,10 @@ public class RvDtlDAO {
          vo.setRvCnts(rs.getString("rvCnts"));
          vo.setRgtDate(rs.getString("rgtDate"));
          vo.setDelCode(rs.getInt("delCode"));
-         vo.setImg1(rs.getString("delDate"));
-         vo.setImg2(rs.getString("img1"));
-         vo.setImg3(rs.getString("img2"));
+         vo.setDelDate(rs.getString("delDate"));
+         vo.setImg1(rs.getString("img1"));
+         vo.setImg2(rs.getString("img2"));
+         vo.setImg3(rs.getString("img3"));
          return vo;
       }catch (SQLException e) {
          e.printStackTrace();
@@ -127,9 +128,10 @@ public class RvDtlDAO {
             vo.setRvCnts(rs.getString("rvCnts"));
             vo.setRgtDate(rs.getString("rgtDate"));
             vo.setDelCode(rs.getInt("delCode"));
-            vo.setImg1(rs.getString("delDate"));
-            vo.setImg2(rs.getString("img1"));
-            vo.setImg3(rs.getString("img2"));
+            vo.setDelDate(rs.getString("delDate"));
+            vo.setImg1(rs.getString("img1"));
+            vo.setImg2(rs.getString("img2"));
+            vo.setImg3(rs.getString("img3"));
             voList.add(vo);
          }
                   
@@ -157,6 +159,40 @@ public class RvDtlDAO {
             vo.setRvCnts(rs.getString("rvCnts"));
             vo.setRgtDate(rs.getString("rgtDate"));
             vo.setDelCode(rs.getInt("delCode"));
+            vo.setDelDate(rs.getString("delDate"));
+            vo.setImg1(rs.getString("img1"));
+            vo.setImg2(rs.getString("img2"));
+            vo.setImg3(rs.getString("img3"));
+            voList.add(vo);
+         }
+                  
+      }catch (SQLException e) {
+         e.printStackTrace();
+      }finally {
+    	  DBManager.close(con, pstmt, rs);
+      }      
+      return voList;   
+   }
+   
+ // 검색된 리뷰 조회
+   public List<RvDtlVO> rvSerchGetAll(String str){
+      List<RvDtlVO> voList = new ArrayList<RvDtlVO>();
+      String sql = "select *from rvDtl where mmId like ?";
+      try {
+    	 str = "%"+str+"%";
+         con = DBManager.getCon();
+         pstmt = con.prepareStatement(sql);
+         pstmt.setString(1, str);
+         rs = pstmt.executeQuery();
+         
+         while(rs.next()) {
+            RvDtlVO vo = new  RvDtlVO();
+            vo.setMmId(rs.getString("mmId"));
+            vo.setFvNo(rs.getString("fvNo"));
+            vo.setRvSub(rs.getString("rvSub"));
+            vo.setRvCnts(rs.getString("rvCnts"));
+            vo.setRgtDate(rs.getString("rgtDate"));
+            vo.setDelCode(rs.getInt("delCode"));
             vo.setImg1(rs.getString("delDate"));
             vo.setImg2(rs.getString("img1"));
             vo.setImg3(rs.getString("img2"));
@@ -170,4 +206,5 @@ public class RvDtlDAO {
       }      
       return voList;   
    }
+   
 }
