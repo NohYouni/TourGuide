@@ -3,7 +3,6 @@ package com.tourguide.controller.mypage;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,10 +22,10 @@ public class MyZzimOffServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("mmid");
+		String mmId = (String) session.getAttribute("mmId");
 		String fvno = request.getParameter("fvNo") ; 
 		FvLkDAO dao = new FvLkDAO();
-		int result = dao.FvLkOff(id, fvno);
+		int result = dao.FvLkOff(mmId, fvno);
 		System.out.println(result);
 		if(result==1) {
 			System.out.println("정상적으로 삭제됨");

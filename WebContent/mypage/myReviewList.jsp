@@ -18,21 +18,21 @@
 <table style="width : 980px;">
 <tr>
 <td rowspan="4">
-<c:if test="${empty rvlist.img1}"> <img style="width: 200px; height: 200px;" src="images/noimage.png" alt="이미지" /> </c:if>
+<c:if test="${empty rvlist.img1}"> <img style="width: 200px; height: 200px;" src="images/noimage.jpg" alt="이미지" /> </c:if>
 <c:if test="${not empty rvlist.img1}"><img style="width: 200px; height: 200px;" src="images/${rvlist.img1}" alt="이미지" /> </c:if> </td>
 <td>작성자 : ${rvlist.mmId}</td>
-<td >작성일시 : ${rvlist.rgtDate}</td>
+<td>작성일시 : ${rvlist.rgtDate}</td>
 </tr>
 	<tr>
-	<td colspan="5">제목 : ${rvlist.rvSub}</td>
+	<td colspan="5"> 제목 : ${rvlist.rvSub}</td>
 	</tr>
 	<tr>
 	<td colspan="5">${rvlist.rvCnts}</td>
 	</tr>
 	<tr>
 	<td colspan="3"></td>
-		<td class="right"><button class="btn_middle btn_primary" style="float: right" onclick="rvu_popup(${rvlist.fvNo})">리뷰 수정</button></td>
-		<td class="right"><button class="btn_middle btn_primary"  style="float: right" onclick="rvd_popup(${rvlist.fvNo})">리뷰 삭제</button>
+		<td class="right"><button class="btn_middle btn_primary" style="float: right;" onclick="rvu_popup(${rvlist.fvNo});">리뷰 수정</button></td>
+		<td class="right"><button class="btn_middle btn_primary" style="float: right;" onclick="rvd_popup(${rvlist.fvNo});">리뷰 삭제</button></td>
 	</tr>
 </table>
 <hr />	
@@ -43,4 +43,6 @@
 <footer><c:import url="/footer.jsp"></c:import></footer>
 <script type="text/javascript" src="/mypage/myReviewDeletePopup.js"></script>
 <script type="text/javascript" src="/mypage/myReviewUpdatePopup.js"></script>
+
+
 </html>

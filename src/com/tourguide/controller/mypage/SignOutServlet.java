@@ -16,6 +16,8 @@ import com.tourguide.dao.MmMstDAO;
 @WebServlet("/signOut")
 public class SignOutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
@@ -28,8 +30,8 @@ public class SignOutServlet extends HttpServlet {
 		//상태코드는 비회원으로 변경
 		dao.mmMstDelete(mmId, 2);
 		session.removeAttribute("sts");
-		session.removeAttribute("mmid");
-		out.print("<script>alert('정상적으로 회원탈퇴 되었습니다.'); location.href='/index.jsp';</script>");
+		session.removeAttribute("mmId");
+		out.print("<script>alert('정상적으로 회원탈퇴 되었습니다.'); location.href='/index.jsp'; </script>");
 		}
 	}
 
