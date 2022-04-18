@@ -13,7 +13,7 @@ import com.tourguide.service.BoardSv;
 /**
  * Servlet implementation class HomController
  */
-@WebServlet("/")
+@WebServlet("/.....")
 public class HomController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,7 +32,7 @@ public class HomController extends HttpServlet {
 		BoardSv bs = new BoardService();
 		
 		String contentid = bs.getBestContentId();		
-		request.setAttribute("festival", bs.getOne1(contentid);
+		request.setAttribute("festival", bs.getOne1(contentid));
 	}
 
 	/**
