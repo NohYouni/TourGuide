@@ -27,14 +27,14 @@ public class MyZzimListServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
-		String mmid = (String) session.getAttribute("mmid");
-		if(mmid==null) {
+		String mmId = (String) session.getAttribute("mmId");
+		if(mmId==null) {
 			response.sendRedirect("/sign/login.jsp");
 		}else {
 		List<String> zzlists = new ArrayList<String>();
 		FvLkDAO dao = new FvLkDAO();
 
-		zzlists = dao.FvLkMyList(mmid);
+		zzlists = dao.FvLkMyList(mmId);
 		
 		request.setAttribute("zzlists", zzlists);
 

@@ -48,7 +48,7 @@ public class SignUpServlet extends HttpServlet {
 			System.out.println("회원가입에 실패했습니다");
 		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("sign/login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 		dispatcher.forward(request, response);
 	}			
 }

@@ -23,7 +23,7 @@
 }
 
 .third {
-	width: 200px;
+	width: 150px;
 	text-align: left;
 }
 
@@ -33,21 +33,23 @@
 
 
 </style>
-<title>Insert title here</title>
+<title>회원가입 페이지</title>
 <link rel="stylesheet" href="/css/commonCss.css">
+<script type="text/javascript" src="/js/mmmst.js"></script>
 <c:import url="/header.jsp"></c:import>
 </head>
 <body>
 	<h1>회원가입</h1>
 	<br />
-	<form action="signUp" method="post">
+	<form action="/signUp" method="post" name="frm">
 		<table>
 			<tr>
 				<td class="first"><label for="id">아 이 디 : </label></td>
 				<td class="second"><input type="text" name="mmId" id="id" class="input"
 					placeholder="내용을 입력해주세요" /></td>
+				<td><input type="hidden" name="checkId">
 				<td class="third"><input type="button"
-					class="btn_primary btn_middle" value="중복확인"></td>
+					class="btn_primary btn_middle" value="중복체크" onclick="chkId()"></td>
 			</tr>
 		</table>
 		<hr />
@@ -63,7 +65,7 @@
 		<table>
 			<tr>
 				<td class="first"><label for="pwdCk">비밀번호 확인 : </label></td>
-				<td class="second"><input type="password"  id="pwdCk" class="input"
+				<td class="second"><input type="password"  name="mmPwdChk"id="pwdChk" class="input"
 					placeholder="내용을 입력해주세요" /></td>
 				<td class="third"></td>
 			</tr>
@@ -78,20 +80,15 @@
 					class="openBtn btn_primary btn_middle" value="이메일 인증" /></td>
 			</tr>
 			<tr>
-				<td><label for="check">인 증 번 호 : </label></td>
-				<td><input type="text" id="check" class="input"
+				<td class="first"><label for="check">인 증 번 호 : </label></td>
+				<td class="second"><input type="text" id="check" class="input"
 					placeholder="내용을 입력해주세요" /></td>
-				<td><button class="btn_primary btn_middle">확인</button></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>인증번호가 일치하지 않습니다.</td>
-				<td></td>
+				<td class="third"><button class="btn_primary btn_middle">확인</button></td>
 			</tr>
 		</table>
 		<hr />
 		<div class="center">
-			<input type="submit" class="btn_primary btn_middle" value="가입" /> 
+			<input type="submit" class="btn_primary btn_middle" value="가입" onclick="return chkSignUp()"/> 
 			<input type="button" class="btn_primary btn_middle" value="취소" onclick="location.href='../index.jsp'"/>
 		</div>
 	</form>

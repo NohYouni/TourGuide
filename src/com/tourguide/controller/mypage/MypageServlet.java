@@ -26,17 +26,17 @@ public class MypageServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 
-		String mmid = (String)session.getAttribute("mmid");
-		System.out.println(mmid);
+		String mmId = (String)session.getAttribute("mmId");
+		System.out.println(mmId);
 
-		if(mmid==null) {
+		if(mmId==null) {
 			response.sendRedirect("/sign/login.jsp");
 		}else {
 		//마이페이지에 노출될 리뷰목록 가져오기
 
 		RvDtlDAO rdao = new RvDtlDAO();
 		List<RvDtlVO> rvlists = new ArrayList<RvDtlVO>();
-		rvlists = rdao.rvDtlGetMember(mmid);
+		rvlists = rdao.rvDtlGetMember(mmId);
 		
 		request.setAttribute("rvlists", rvlists);
 		
@@ -44,7 +44,7 @@ public class MypageServlet extends HttpServlet {
 		//마이페이지 노출될 찜목록 가져오기
 		FvLkDAO ldao = new FvLkDAO();
 		List<String> zzlists = new ArrayList<String>();
-		zzlists = ldao.FvLkMyList(mmid);
+		zzlists = ldao.FvLkMyList(mmId);
 		request.setAttribute("zzlists", zzlists);
 
 		

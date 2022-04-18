@@ -23,13 +23,13 @@ public class PwdCheckServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		MmMstDAO dao = new MmMstDAO();
 		HttpSession session = request.getSession();
-		String mmid = (String) session.getAttribute("mmid");
-		if(mmid==null) {
+		String mmId = (String) session.getAttribute("mmId");
+		if(mmId==null) {
 			response.sendRedirect("/sign/login.jsp");
 		}else {
 		String pwd = request.getParameter("pwd");
 		
-		int result = dao.mmMstPwdCheck(mmid, pwd);
+		int result = dao.mmMstPwdCheck(mmId, pwd);
 		
 		if(result ==1) {
 		System.out.println("정상적인 비밀번호");

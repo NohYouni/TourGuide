@@ -10,7 +10,7 @@
 	<title>리뷰 수정 팝업</title>
 </head>
 <body>
-	<form action="../myReviewUpdate?fvNo=${param.fvNo}" method="post"  enctype="multipart/form-data">
+	<form action="/myReviewUpdate?fvNo=${param.fvNo}" method="post"  enctype="multipart/form-data">
 		<table class="table">
 			<tr>
 			<td><label for="rvSub">제목 : </label></td>

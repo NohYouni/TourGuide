@@ -27,13 +27,13 @@ public class MyReviewListServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
-		String mmid = (String) session.getAttribute("mmid");
-		if(mmid==null) {
+		String mmId = (String) session.getAttribute("mmId");
+		if(mmId==null) {
 			response.sendRedirect("/sign/login.jsp");
 		}else {
 		RvDtlDAO rdao = new RvDtlDAO();
 		List<RvDtlVO> rvlists = new ArrayList<RvDtlVO>();
-		rvlists = rdao.rvDtlGetMember(mmid);
+		rvlists = rdao.rvDtlGetMember(mmId);
 		request.setAttribute("rvlists", rvlists);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/mypage/myReviewList.jsp");
 		dispatcher.forward(request, response);

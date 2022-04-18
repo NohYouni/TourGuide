@@ -37,6 +37,7 @@ public class RvDtlDAO {
       }
       return 0;      
    }
+   
    //리뷰 수정
    public int rvDtlUpdate(RvDtlVO vo) {
 	      String sql = "UPDATE rvDtl SET rvsub=?,rvcnts=?,img1=?  WHERE mmId = ? and fvNo=?";
@@ -57,7 +58,6 @@ public class RvDtlDAO {
 	      }
 	      return 0;
 	   }
-   
    
    
    //리뷰 삭제 : 본인삭제 | 관리자 삭제
@@ -127,6 +127,7 @@ public class RvDtlDAO {
             vo.setRvCnts(rs.getString("rvCnts"));
             vo.setRgtDate(rs.getString("rgtDate"));
             vo.setDelCode(rs.getInt("delCode"));
+            vo.setDelDate(rs.getString("delDate"));
             vo.setImg1(rs.getString("img1"));
             vo.setImg2(rs.getString("img2"));
             vo.setImg3(rs.getString("img3"));

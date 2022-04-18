@@ -31,7 +31,7 @@ public class MyReviewUpdateServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
-		String mmid = (String) session.getAttribute("mmid");
+		String mmId = (String) session.getAttribute("mmId");
 		
 		RvDtlDAO rdao = new RvDtlDAO();
 		
@@ -50,7 +50,7 @@ public class MyReviewUpdateServlet extends HttpServlet {
 		String rvSub = multi.getParameter("rvSub");
 		String rvCnts = multi.getParameter("rvCnts");
 		System.out.println("이미지:"+img1);
-		vo.setMmId(mmid);
+		vo.setMmId(mmId);
 		vo.setFvNo(fvNo);
 		vo.setRvSub(rvSub);
 		vo.setRvCnts(rvCnts);

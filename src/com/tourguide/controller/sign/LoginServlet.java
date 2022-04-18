@@ -1,6 +1,7 @@
 package com.tourguide.controller.sign;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.text.Document;
 
 import com.tourguide.dao.MmMstDAO;
 import com.tourguide.dto.MmMstVO;
@@ -26,9 +28,10 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
 		
-		String id = request.getParameter("mmId");
-		String pwd = request.getParameter("mmPwd");
+		String mmId = request.getParameter("mmId");
+		String mmPwd = request.getParameter("mmPwd");
 				
 		// 데이터 베이스에서 회원 정보를 select하요 값을 비교하고 로그인 수정 : 아직 구현전
 //		String url = "/login.jsp"; 
@@ -36,17 +39,20 @@ public class LoginServlet extends HttpServlet {
 		HttpSession ses = request.getSession(); // 세션 객체 생성
 		
 		MmMstDAO dao = new MmMstDAO();
-		MmMstVO vo = dao.mmMstLogin(id, pwd);
+		MmMstVO vo = dao.mmMstLogin(mmId, mmPwd);
 		// checkMem() 함수구현
-		if(vo.getMmId() == null) {
+		if(vo.getMmId() != null) {
 //			System.out.println("1111");
-			response.sendRedirect("/sign/login.jsp");
-		}else {
-			ses.setAttribute("mmid", vo.getMmId());
+			ses.setAttribute("mmId", vo.getMmId());
 			ses.setAttribute("sts", vo.getStsCode());
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 			dispatcher.forward(request, response);
+		}else {
+			System.out.println("로그인 실패");
+			
+			ses.setAttribute("errMsg", "로그인 정보가 잘못됐습니다.");
+			response.sendRedirect("/sign/login.jsp");
 		}
 		
 

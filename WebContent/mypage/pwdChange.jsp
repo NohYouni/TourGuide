@@ -16,15 +16,15 @@
 <hr />
 <br />
 <body>
-	<form action="pwdChange" method="post">
+	<form action="/pwdChange" method="post">
 		<table class="password">
 			<tr>
-				<td>새 비밀번호번호 :</td>
-				<td><input type="text" placeholder="비밀번호를 입력해 주세요" name="mmPwd" /></td>
+				<td>새 비밀번호 :</td>
+				<td><input type="text" placeholder="새 비밀번호를 입력해 주세요" name="newPwd" /></td>
 			</tr>
 			<tr>
-				<td>&nbsp;&nbsp;&nbsp;비밀번호 확인 :</td>
-				<td><input type="text" placeholder="새 비밀번호를 입력해 주세요" name="newPwd" /></td>
+				<td>새 비밀번호 확인 :</td>
+				<td><input type="text" placeholder="새 비밀번호를 한번더 입력해 주세요" name="newPwdCheck" /></td>
 			</tr>
 			<tr>
 			<td colspan="2"><input  class="btn_middle btn_primary" type="submit" value="변경" />&nbsp;&nbsp;&nbsp; <input  class="btn_middle btn_primary" type="button" value="취소" onclick="location.href='mypage'"> </td>	

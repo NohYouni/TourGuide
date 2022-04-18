@@ -17,7 +17,7 @@ public class MmMstDAO {
 
 	// 회원가입
 	public int mmMstInsert(MmMstVO vo) {
-		int result = 0 ;
+		int result = -1 ;
 		String sql = "insert into mmMst(mmId, mmPwd, mmEmail, joinDate, llDate, stsCode)"
 				+ " values (?, ?, ?, sysdate, sysdate, 1)";
 		try {
@@ -27,7 +27,7 @@ public class MmMstDAO {
 			pstmt.setString(2, vo.getMmPwd());
 			pstmt.setString(3, vo.getMmEmail());
 
-			 result= pstmt.executeUpdate();
+			result= pstmt.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -146,11 +146,7 @@ public class MmMstDAO {
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 		
-
-
-			while (rs.next()) {
-
-	
+			if (rs.next()) {
 				vo.setMmId(rs.getString("mmId"));
 				vo.setMmPwd(rs.getString("mmPwd"));
 				vo.setMmEmail(rs.getString("mmEmail"));
@@ -199,5 +195,84 @@ public class MmMstDAO {
 
 		return null;
 	}
+	// 아이디 중복확인
+	public int MmMstIdChk(String mmId) {
+		String sql = "select mmId from MmMst where mmId=?"; 
+	
+		int result = -1;
+		
+		try {
+			con = DBManager.getCon();
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mmId);
 
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+//				rs.getString("mmId");
+				return 1;
+			}else {
+				return -1;
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(con, pstmt, rs);
+		}
+		return result;
+	}
+	//회원 삭제 이유들 가져오기
+		public List<String> outRsnGetAll(){
+			List<String> rsnList = new ArrayList<String>();
+			String sql = "select *from outrsn";
+			
+			try {
+				con = DBManager.getCon();
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				while (rs.next()) 
+					rsnList.add(rs.getString("outName"));
+						
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(con, pstmt, rs);
+			}
+			
+			return rsnList;
+		}
+		//검색된 회원 리스트 불러오기
+		public List<MmMstVO> mmMstSerch(String str){
+			List<MmMstVO> voList = new ArrayList<MmMstVO>();
+			str = "%"+str+"%";
+			String sql = "select * from mmmst where mmId like ?";
+			try {
+				con = DBManager.getCon();
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, str);
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					MmMstVO vo = new MmMstVO();
+					vo.setMmId(rs.getString("mmId"));
+					vo.setMmPwd(rs.getString("mmPwd"));
+					vo.setMmEmail(rs.getString("mmEmail"));
+					vo.setJoinDate(rs.getString("joinDate"));
+					vo.setLlDate(rs.getString("llDate"));
+					vo.setStsCode(rs.getInt("stsCode"));
+					vo.setOutDate(rs.getString("outDate"));
+					vo.setOutCode(rs.getInt("outCode"));
+					voList.add(vo);
+				}
+
+				return voList;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(con, pstmt, rs);
+			}
+
+			return null;
+		}
+	
 }

@@ -13,7 +13,7 @@
 <hr />
 	<table class="table">
 		<tr>
-			<td><p>${mmid}님 환영합니다. &nbsp;<button class="btn_five btn_primary" onclick="location.href='/mypage/pwdCheck.jsp'">내 정보 수정</button></p>
+			<td><p>${mmId}님 환영합니다. &nbsp;<button class="btn_five btn_primary" onclick="location.href='/mypage/pwdCheck.jsp'">내 정보 수정</button></p>
 			</td>
 			
 		</tr>
