@@ -39,10 +39,10 @@
 
 	<nav>
         <ul class="inlineUl">
-        <li><a style="cursor : pointer;" onclick="festivalBoardLoad(8, 0)" id="a_header_fv">전국의 행사</a></li>
-        ${festival.firstimage}
-        <li><a href="" id="a_header_ev">이벤트</a></li></ul><hr>
+        <li><a class="selected_menu" style="cursor : pointer;" onclick="festivalBoardLoad(8, 0)" id="a_header_fv">전국의 행사</a></li>
+        <li><a class="selected_menu" style="cursor : pointer;" href="/eventPage/event.jsp" id="a_header_ev">&nbsp;&nbsp;이벤트</a></li></ul><hr>
     </nav>
+	
 	<div class="main">
     	<div class="rect leftUl"><a href="eventPage/event.jsp">행사</a><a href="eventPage/dangchum.jsp">행사확인</a></div>  	
         <div class="rect rigthUl">
