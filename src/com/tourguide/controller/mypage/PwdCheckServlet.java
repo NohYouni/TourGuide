@@ -27,13 +27,13 @@ public class PwdCheckServlet extends HttpServlet {
 		if(mmId==null) {
 			response.sendRedirect("/sign/login.jsp");
 		}else {
-		String pwd = request.getParameter("pwd");
+		String mmPwd = request.getParameter("mmPwd");
 		
-		int result = dao.mmMstPwdCheck(mmId, pwd);
+		int result = dao.mmMstPwdCheck(mmId, mmPwd);
 		
 		if(result ==1) {
 		System.out.println("정상적인 비밀번호");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/mypage/pwdChange.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/mypage/pwdChange.jsp?mmPwd="+mmPwd);
 			dispatcher.forward(request, response);
 		
 		}else {

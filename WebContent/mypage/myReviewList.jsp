@@ -5,9 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>내 리뷰</title>
+<title>내 리뷰 목록</title>
 <c:import url="/header.jsp"></c:import>
-<link rel="stylesheet" href="/mypage/mypage.css">
+<link rel="stylesheet" href="/css/mypage.css">
 </head>
 <body>
 <hr />
@@ -18,8 +18,8 @@
 <table style="width : 980px;">
 <tr>
 <td rowspan="4">
-<c:if test="${empty rvlist.img1}"> <img style="width: 200px; height: 200px;" src="images/noimage.jpg" alt="이미지" /> </c:if>
-<c:if test="${not empty rvlist.img1}"><img style="width: 200px; height: 200px;" src="images/${rvlist.img1}" alt="이미지" /> </c:if> </td>
+<c:if test="${empty rvlist.img1}"> <img style="width: 200px; height: 200px;" src="/images/noimage.jpg" alt="이미지" /> </c:if>
+<c:if test="${not empty rvlist.img1}"><img style="width: 200px; height: 200px;" src="/images/${rvlist.img1}" alt="이미지" /> </c:if> </td>
 <td>작성자 : ${rvlist.mmId}</td>
 <td>작성일시 : ${rvlist.rgtDate}</td>
 </tr>
@@ -41,8 +41,8 @@
 <br />
 </body>
 <footer><c:import url="/footer.jsp"></c:import></footer>
-<script type="text/javascript" src="/mypage/myReviewDeletePopup.js"></script>
-<script type="text/javascript" src="/mypage/myReviewUpdatePopup.js"></script>
+<script type="text/javascript" src="/js/mypage.js"></script>
+
 
 
 </html>

@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지</title>
-<link rel="stylesheet" href="/mypage/mypage.css">
+<link rel="stylesheet" href="/css/mypage.css">
 <c:import url="/header.jsp"></c:import>
 </head>
 <body>
