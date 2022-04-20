@@ -14,12 +14,12 @@
 
 <body>
 	<c:import url="/header.jsp"></c:import>
+
 	<nav>
         <ul class="inlineUl">
         <li><a class="selected_menu" style="cursor : pointer;" onclick="festivalBoardLoad(8, 0)" id="a_header_fv">전국의 행사</a></li>
-        <li><a class="selected_menu" style="cursor : pointer;" href="/eventPage/event.jsp" id="a_header_ev">이벤트</a></li></ul><hr>
+        <li><a class="selected_menu" style="cursor : pointer;" href="/eventPage/event.jsp" id="a_header_ev">&nbsp;&nbsp;이벤트</a></li></ul><hr>
     </nav>
-	
     
 	<section>
 	
@@ -32,7 +32,7 @@
 				<tr><td>행사 이름 </td><td>${detail.title}</td></tr>
 				<tr><td>연 락 처 </td><td>${detail.telname} ${detail.tel}</td></tr>
 				<tr><td>주    소 </td><td>${detail.addr1} ${detail.addr2}</td></tr>
-				<tr><td>홈페이지 </td><td><a>${detail.homepage}</a></td></tr>
+				<tr><td>홈페이지 </td><td>${detail.homepage}</td></tr>
 			</table>
 			<hr/>
 			<table>
@@ -63,8 +63,8 @@
 		</p>
 		<hr>
 		<c:choose>
-		<c:when test="${review != null}">
-			<c:forEach items="${review}" var="review">
+			<c:when test="${review != null}">
+				<c:forEach items="${review}" var="review">
 					<c:if test="${review.delCode==0}">
 						<table style="width: 980px;">
 							<tr>
@@ -92,14 +92,14 @@
 			<c:otherwise>
 				<table>
 					<tr>
-					<td >첫 리뷰를 작성해주세요. ^^</td>
+						<td>첫 리뷰를 작성해주세요. ^^</td>
 					</tr>
-				
+
 				</table>
 				<hr />
 			</c:otherwise>
 		</c:choose>
-		</div>
+			</div>
 		
 		<div class="tab_hidden" id="tab2_boardDetail">
 		<!-- 주변 관광지 -->
@@ -124,18 +124,10 @@
 	</div>
 	</section>
 	
-<!-- 주변관광지 상세  --> 	
-	<form action="/festival/detail" method="POST" id="form_boardDetail">
-		<input type="hidden" id="input_boardDetail_contentid" name="contentid"/>
-		<input type="hidden" id="input_boardDetail_contenttypeid" name="contentTypeId"/>
-		<input type="hidden" id="input_boardDetail_mapx" name="mapx"/>
-		<input type="hidden" id="input_boardDetail_mapy" name="mapy"/>
-	</form>
-	
 	<c:import url="/footer.jsp"></c:import>
 	<div id="tothetop" class='tothetop'>▲</div>
 
-<div class="" id="modalBack_boardDetail"></div>
+<%-- <div class="" id="modalBack_boardDetail"></div>
 <div class="" id="modal_boardDetail">	
 	<form action="/festival/createReview" method="post" id="form_boardModal">
 		<input type="hidden" style="width: 400px" name="contentid" value="${detail.contentid}"/>
@@ -166,7 +158,7 @@
 		</table>
 	</form>
 	</div>
-
+ --%>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/board/board.js"></script>

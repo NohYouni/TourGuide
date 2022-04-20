@@ -17,7 +17,7 @@ public class RvDtlDAO {
    
    //리뷰 작성
    public int rvDtlInsert(RvDtlVO vo, String fvNo) {
-      String sql = "insert into rvDtl(mmId, fvNo, rvSub, rvCnts, rgtDate, img1, img2, img3) values(?, ?, ?, ?, sysdate, ?, ?, ?)";
+      String sql = "insert into rvDtl(mmId, fvNo, rvSub, rvCnts, rgtDate, delCode ,img1, img2, img3) values(?, ?, ?, ?, sysdate,0,?, ?, ?)";
       try {
          con = DBManager.getCon();
          pstmt = con.prepareStatement(sql);
