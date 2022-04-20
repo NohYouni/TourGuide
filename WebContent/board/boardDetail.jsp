@@ -59,28 +59,35 @@
 		<div class="tab_view" id="tab1_boardDetail">
 		<!-- 리뷰 보기 -->
 		<p>이 곳을 방문하셨다면 리뷰를 남겨 보세요. 		
-		<button class="btn_middle btn_primary" style="float: right" onclick="reviewModalOpen(event);">리뷰 쓰기</button>
+		<button class="btn_middle btn_primary" style="float: right" onclick="brwPopup('${mmId}','${fvNo}')">리뷰 쓰기</button>
 		</p>
 		<hr>
 		<c:choose>
 		<c:when test="${review != null}">
 			<c:forEach items="${review}" var="review">
-				<table>
-				<tr>
-				<td class="image" rowspan="4">${review.img1}</td>
-				<td>작성자 : ${review.mmId}</td>
-				<td >작성일시 : ${review.rgtDate}</td>
-				
-				</tr>
-					<tr>
-					<td colspan="5">제목 : ${review.rvSub}</td>
-					</tr>
-					<tr>
-					<td colspan="5">${review.rvCnts}</td>
-					</tr>
-				</table>
-				<hr />
-			</c:forEach>
+					<c:if test="${review.delCode==0}">
+						<table style="width: 980px;">
+							<tr>
+								<td rowspan="4"><c:if test="${empty review.img1}">
+										<img style="width: 200px; height: 200px;"
+											src="/images/noimage.jpg" alt="이미지" />
+									</c:if> <c:if test="${not empty review.img1}">
+										<img style="width: 200px; height: 200px;"
+											src="/images/${review.img1}" alt="이미지" />
+									</c:if></td>
+								<td>작성자 : ${review.mmId}</td>
+								<td>작성일시 : ${review.rgtDate}</td>
+							</tr>
+							<tr>
+								<td colspan="5">제목 : ${review.rvSub}</td>
+							</tr>
+							<tr>
+								<td colspan="5">${review.rvCnts}</td>
+							</tr>
+						</table>
+						<hr />
+					</c:if>
+				</c:forEach>
 			</c:when>
 			<c:otherwise>
 				<table>

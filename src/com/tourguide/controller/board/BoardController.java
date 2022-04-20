@@ -72,6 +72,7 @@ public class BoardController extends HttpServlet {
 			String mapy = request.getParameter("mapy");
 			
 			System.out.println(bs.getReview(contentid));
+			request.setAttribute("fvNo", contentid);
 			request.setAttribute("detail", bs.getOne1(contentid).get(0));
 			request.setAttribute("review", bs.getReview(contentid));
 			if(!mapx.equals("undefined")) {
@@ -81,27 +82,27 @@ public class BoardController extends HttpServlet {
 			rd = request.getRequestDispatcher("/board/boardDetail.jsp");
 			rd.forward(request, response);
 			
-		}else if(cmd.equals("/festival/createReview")){		
-			String contentid = request.getParameter("contentid");
-			
-			RvDtlVO vo = new RvDtlVO();
-			HttpSession session = request.getSession();
-			vo.setMmId((String)session.getAttribute("mmId"));
-			vo.setFvNo(contentid);
-			vo.setRvSub(request.getParameter("rvSb"));
-			vo.setRvCnts(request.getParameter("rvCnts"));
-			
-			bs.createReview(vo);
+//		}else if(cmd.equals("/festival/createReview")){		
+//			String contentid = request.getParameter("contentid");
+//			
+//			RvDtlVO vo = new RvDtlVO();
+//			HttpSession session = request.getSession();
+//			vo.setMmId((String)session.getAttribute("mmId"));
+//			vo.setFvNo(contentid);
+//			vo.setRvSub(request.getParameter("rvSb"));
+//			vo.setRvCnts(request.getParameter("rvCnts"));
+//			
+//			bs.createReview(vo);
 //			String file = request.getParameter("file");
-			
-			
-			request.setAttribute("contentid", contentid);
-			request.setAttribute("mapx", request.getParameter("mapx"));
-			request.setAttribute("mapy",  request.getParameter("mapy"));
-			
-			rd = request.getRequestDispatcher("/festival/detail");
-			rd.forward(request, response);
-			
+//			
+//			
+//			request.setAttribute("contentid", contentid);
+//			request.setAttribute("mapx", request.getParameter("mapx"));
+//			request.setAttribute("mapy",  request.getParameter("mapy"));
+//			
+//			rd = request.getRequestDispatcher("/festival/detail");
+//			rd.forward(request, response);
+//			
 		}else if(cmd.equals("/festival/reviewCheck")){		
 			response.getWriter().append(bs.reviewCheck(request));
 			
