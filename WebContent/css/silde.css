@@ -5,7 +5,7 @@ index_fv {
 }
 /* 보여줄 구간의 높이와 넓이 설정 */
 #slideShow {
-    width: 500px;
+    width: 300px;
     height: 300px;
     position: relative;
     margin: 50px auto;
@@ -22,7 +22,7 @@ index_fv {
 }
 /* 첫 번째 슬라이드 가운데에 정렬하기위해 첫번째 슬라이드만 margin-left조정 */
 .square_lists .index_fv:first-child {
-    margin-left: 50px;
+   /* margin-left: 50px;*/
 }
 /* 슬라이드들 옆으로 정렬 */
 .square_lists .index_fv:not(:last-child) {
