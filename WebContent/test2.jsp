@@ -78,10 +78,10 @@
 						</div>				
 					</c:forEach>
 				</div>	
-					<p class="index_fv_controller">
+				<p class="index_fv_controller">
 					<span class="index_fv_prev">뒤로</span> 
 					<span class="index_fv_next">앞으로</span>
-					</p>		
+				</p>			
 			</div>		
 				
 		</div>

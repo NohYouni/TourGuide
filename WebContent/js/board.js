@@ -154,6 +154,7 @@ function viewDetailFestival(contentid, contentTypeId, mapx, mapy){
 	document.getElementById("input_boardList_contenttypeid").value = contentTypeId;
 	document.getElementById("input_boardList_mapx").value = mapx;
 	document.getElementById("input_boardList_mapy").value = mapy;
+	
 	form_boardList.submit();	
 }
 
@@ -204,7 +205,6 @@ $(function() { // 보이기 | 숨기기
 	return false; 
 	}); 
 });	
-<<<<<<< HEAD
 //리뷰작성 팝업창 열기
 function brwPopup(mmid,fvno){
 	if(!mmid){
@@ -222,16 +222,3 @@ function brwPopup(mmid,fvno){
 }
 
 	
-=======
-
-//찜 추가
-function fvLkSelect(contentid, contentTypeId, fvLk, mapx, mapy){
-	let form_fvLk = document.getElementById("form_fvLk");
-	document.getElementById("input_form_fvLk_contentid").value = contentid;
-	document.getElementById("input_form_fvLk_contenttypeid").value = contentTypeId;
-	document.getElementById("input_form_fvLk_mapx").value = mapx;
-	document.getElementById("input_form_fvLk_mapy").value = mapy;
-	document.getElementById("input_form_fvLk_fvLk").value = fvLk;
-	form_fvLk.submit();	
-}
->>>>>>> admin/save
