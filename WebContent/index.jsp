@@ -87,9 +87,7 @@
 
 	<div class="main">
 		<div class="rect leftUl">
-			<a class="selected_menu" style="cursor: pointer;"
-				onclick="festivalBoardLoad(8, 0)" id="a_header_fv">
-				 <img src="${list.firstimage}">행사확인</a>
+			<img onclick="location.href='/festival/detail?contentid=2816651&mapx=128.2843721009&mapy=35.9188087503'" style="width: 100%; height: 100%;" src="/board/noImages.jpg" alt="" />
 		</div>
 		<div class="rect rigthUl">
 			<div class="srect1">

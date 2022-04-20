@@ -220,5 +220,14 @@ function brwPopup(mmid,fvno){
 	}
 	
 }
-
+//찜 추가
+function fvLkSelect(contentid, contentTypeId, fvLk, mapx, mapy){
+	let form_fvLk = document.getElementById("form_fvLk");
+	document.getElementById("input_form_fvLk_contentid").value = contentid;
+	document.getElementById("input_form_fvLk_contenttypeid").value = contentTypeId;
+	document.getElementById("input_form_fvLk_mapx").value = mapx;
+	document.getElementById("input_form_fvLk_mapy").value = mapy;
+	document.getElementById("input_form_fvLk_fvLk").value = fvLk;
+	form_fvLk.submit();	
+}
 	

@@ -78,7 +78,7 @@ public class BoardController extends HttpServlet {
 			if(!mapx.equals("undefined")) {
 				request.setAttribute("seeSight", bs.getSight("10", mapx, mapy));
 			}
-			
+			System.out.println(mapx + "/" + mapy);
 			rd = request.getRequestDispatcher("/board/boardDetail.jsp");
 			rd.forward(request, response);
 			

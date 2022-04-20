@@ -26,7 +26,7 @@
 final String user = "nasproject2233@gmail.com"; //발신자의 이메일 아이디를 입력 
 final String password = "NtourAguideS1"; //발신자 이메일의 패스워드를 입력
 
-/*
+
 Properties prop = new Properties();
 prop.put("mail.smtp.host", "smtp.gmail.com");
 prop.put("mail.smtp.port", 465);
@@ -34,7 +34,7 @@ prop.put("mail.smtp.auth", "true");
 prop.put("mail.smtp.ssl.enable", "true");
 prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
 
-*/
+/*
 Properties prop = new Properties();
 prop.put("mail.transport.protocol", "smtp");
 prop.put("mail.smtp.host", "smtp.gmail.com");
@@ -42,7 +42,7 @@ prop.put("mail.smtp.port", 465);
 prop.put("mail.smtp.starttls.enable", "true");
 prop.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 prop.put("mail.smtp.auth", "true");
-
+*/
 
 Session ses = Session.getInstance(prop, new javax.mail.Authenticator() {
     protected PasswordAuthentication getPasswordAuthentication() {

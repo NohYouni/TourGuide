@@ -29,7 +29,8 @@
 
 			<table>
 				<tr><td rowspan="5" colspan="2"><img src="${detail.firstimage }" alt="" class="img_boardDetail"/></td><td></td><td></td></tr>
-				<tr><td>행사 이름 </td><td>${detail.title}</td></tr>
+				<tr><td>행사 이름 </td><td>${detail.title}</td>
+					<td><button onclick="fvLkSelect(${detail.contentid },${detail.contenttypeid},'y')">찜하기</button></td></tr>
 				<tr><td>연 락 처 </td><td>${detail.telname} ${detail.tel}</td></tr>
 				<tr><td>주    소 </td><td>${detail.addr1} ${detail.addr2}</td></tr>
 				<tr><td>홈페이지 </td><td>${detail.homepage}</td></tr>
@@ -123,6 +124,21 @@
 		</div>
 	</div>
 	</section>
+<!-- 주변관광지 상세  --> 	
+	<form action="/festival/detail" method="POST" id="form_boardDetail">
+		<input type="hidden" id="input_boardDetail_contentid" name="contentid"/>
+		<input type="hidden" id="input_boardDetail_contenttypeid" name="contentTypeId"/>
+		<input type="hidden" id="input_boardDetail_mapx" name="mapx"/>
+		<input type="hidden" id="input_boardDetail_mapy" name="mapy"/>
+	</form>
+<!-- 찜 폼 -->	
+	<form action="/fvLkInsert" method="POST" id="form_fvLk">
+		<input type="hidden" id="input_form_fvLk_contentid" name="contentid"/>
+		<input type="hidden" id="input_form_fvLk_contenttypeid" name="contentTypeId"/>
+		<input type="hidden" id="input_form_fvLk_mapx" name="mapx"/>
+		<input type="hidden" id="input_form_fvLk_mapy" name="mapy"/>
+		<input type="hidden" id="input_form_fvLk_fvLk" name="fvLk"/>
+	</form>
 	
 	<c:import url="/footer.jsp"></c:import>
 	<div id="tothetop" class='tothetop'>▲</div>
