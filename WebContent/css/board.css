@@ -1,4 +1,7 @@
 @charset "UTF-8";
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+
 .tothetop{
 	position: fixed; /* 포지션 고정 */ 
 	right: 10%; /* 오른쪽에서 2% - %도 할수 있음*/ 
@@ -94,3 +97,7 @@
 	margin-bottom: 20px;
 }
 
+.img_indexboard {
+	width : 30px;
+	height : 300px;
+}

@@ -24,19 +24,34 @@ public class AdminDeleteRsnServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		String rsn = request.getParameter("rsn");
-		MmMstDAO dao = new MmMstDAO();
-		List<String> rsnList = dao.outRsnGetAll();
+		String type = request.getParameter("type");
+		
 		List<String> rsns = new ArrayList<String>();
-
-		if(rsn.equals("10")) {
-			rsns.add(rsnList.get(0));
+		
+		if(type.equals("mm")) {
+			MmMstDAO dao = new MmMstDAO();
+			List<String> rsnList = dao.outRsnGetAll();
+			if(rsn.equals("10")) {
+				rsns.add(rsnList.get(0));
+			}else {
+				for(int i=0; i<rsn.length(); i++) {
+					int result = rsn.charAt(i)-'0';
+					rsns.add(rsnList.get(result+1));
+				}
+			}
 		}else {
-			for(int i=0; i<rsn.length(); i++) {
-				int result = rsn.charAt(i)-'0';
-				rsns.add(rsnList.get(result+1));
+			RvDtlDAO dao = new RvDtlDAO();
+			List<String> rsnList = dao.outRsnGetAll();
+			if(rsn.equals("10")) {
+				rsns.add(rsnList.get(0));
+			}else {
+				for(int i=0; i<rsn.length(); i++) {
+					int result = rsn.charAt(i)-'0';
+					rsns.add(rsnList.get(result+1));
+				}
 			}
 		}
-
+		
 		request.setAttribute("rsns", rsns);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/deleteRsnModal.jsp");

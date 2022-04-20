@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>info</title>
-<link rel="stylesheet" href="/admin/adminModalCss.css">
+<link rel="stylesheet" href="/css/adminModalCss.css">
 </head>
 <body>
 <div class="cheakPage">
@@ -13,10 +13,7 @@
 	<button class="btn_middle btn_primary" onclick="pageClose()">확인</button>
 
 </div>
-<script>
-	function pageClose() {
-		window.close();
-	}
-</script>
+<script type="text/javascript" src="/js/admin.js"></script>	
+
 </body>
 </html>

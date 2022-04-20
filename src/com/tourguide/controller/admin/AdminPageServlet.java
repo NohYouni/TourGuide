@@ -16,6 +16,8 @@ import com.tourguide.dao.MmMstDAO;
 import com.tourguide.dao.RvDtlDAO;
 import com.tourguide.dto.MmMstVO;
 import com.tourguide.dto.RvDtlVO;
+import com.tourguide.service.BoardService;
+import com.tourguide.service.BoardSv;
 
 @WebServlet("/admins/*")
 public class AdminPageServlet extends HttpServlet {
@@ -78,6 +80,11 @@ public class AdminPageServlet extends HttpServlet {
 					mmMstPageing(request, response, 10, 5);
 				}													
 			}
+			
+			BoardSv bs = new BoardService();
+			
+			
+			
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/adminPage.jsp");
 			dispatcher.forward(request, response);
