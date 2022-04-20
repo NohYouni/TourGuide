@@ -5,10 +5,6 @@
 <link rel="stylesheet" href="/css/commonCss.css">
 <link rel="stylesheet" href="/css/board.css">
 <link rel="stylesheet" href="/css/modal.css">
-<style>
-
-
-</style>
 
 <header>
         <div id="test1" class="">

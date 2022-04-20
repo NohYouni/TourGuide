@@ -17,8 +17,9 @@ body{
 }
 a{
 	text-decoration : none;
-	color: var(--black-color);
+	color: var(--darker-color);
 }
+
 header{
 	  display: grid;
 	  grid-template-rows: auto;
@@ -27,8 +28,22 @@ footer{
 	display: inline-block;
 	width: 100%;
 	text-align: center;
+	font-family: 'Nanum Pen Script', cursive;
+	font-size: 25px;
+	color: var(--primary-color);
+	font-weight: bold;
 }
-	
+.siteName{
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 80px;
+    color:  var(--primary-color);
+    text-align: center;
+}
+
+h1 {
+	 font-family: 'Nanum Pen Script', cursive;
+	 font-size: 50px;	
+}	
 	
 	/* 버튼 */
 	
@@ -130,16 +145,11 @@ footer{
   list-style-type: none;
   display: inline-block;
   box-sizing: border-box;
-  width: 100px;
+  width: 120px;
+  text-align: center;
 }
 .rigthUl{
   float: right;
 }
 
-.siteName{
-     font-family: 'Nanum Pen Script', cursive;
-     font-size: 80px;
-     color:  var(--primary-color);
-     text-align: center;
-}
 

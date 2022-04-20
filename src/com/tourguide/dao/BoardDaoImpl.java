@@ -17,12 +17,12 @@ public class BoardDaoImpl implements BoardDao {
 		
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T> List<T> getReviewList(String contentId){
+	public <T> List<T> getReviewList(String contentid){
 		List<RvDtlVO> rl = new ArrayList<RvDtlVO>();
 		con = DBManager.getCon();
 		
 		String sql = "select aa.* from (select rownum, mmId, fvNo, rvSub, rvCnts, rgtDate, delCode, img1, img2, img3 from RvDtl order by rgtDate) aa "
-				+ "where aa.delcode = 0 and fvno="+contentId;
+				+ "where aa.delcode = 0 and fvno=to_char("+contentid+")";
 		try {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -51,7 +51,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 	
 	public int createReview(RvDtlVO vo) {
-		con = gc.getCon();
+		con = DBManager.getCon();
 		
 		String sql = "INSERT INTO rvDtl (mmId, fvNo, rvSub, rvCnts, rgtDate, delCode) "
 				+ "values('"+vo.getMmId()+"','"+vo.getFvNo()+"','"+vo.getRvSub()
@@ -66,7 +66,7 @@ public class BoardDaoImpl implements BoardDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			gc.close(con, pstmt);
+			DBManager.close(con, pstmt);
 		}
 		return 0;	
 	}
