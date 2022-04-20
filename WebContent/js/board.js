@@ -205,4 +205,20 @@ $(function() { // 보이기 | 숨기기
 	return false; 
 	}); 
 });	
+//리뷰작성 팝업창 열기
+function brwPopup(mmid,fvno){
+	if(!mmid){
+	alert('로그인이 필요한 서비스입니다.');
+	location.href='/sign/login.jsp';
+	}else{
+	var width = 550;
+	var height = 400;
+	var left = Math.ceil(( window.screen.width - width )/2);
+	var top = Math.ceil(( window.screen.height - height )/2); 
+	
+	window.open('/board/boardReviewWritePopup.jsp?fvNo='+fvno,'리뷰삭제하는팝업','width='+width+', height='+height+', top='+top+', left='+left);
+	}
+	
+}
+
 	

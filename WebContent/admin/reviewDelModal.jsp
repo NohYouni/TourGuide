@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>review Delete Modal</title>
-<link rel="stylesheet" href="/admin/adminModalCss.css">
+<link rel="stylesheet" href="/css/adminModalCss.css">
 
 </head>
 <body>
@@ -55,31 +55,7 @@
 	</form>
 
 </div>
-<script>
-	function pageClose() {
-		window.close();
-	}
-	function check(){
-		let ch = false;
-		for(var i =0; i<8; i++){
-			if(document.frm.elements[i].checked)
-				ch = true;									
-		}
-		
-		let winX = 400;
-		let winY = 150;
-		let x = opener.window.innerWidth/2;
-		let y = opener.window.innerHeight/2 - winY/2;
-		
-		if(ch == false){
-			const myWin = window.open('/admin/deleteInfo.jsp','win1','left=' + x + '  ,top=' + y +' , width='+ winX +',height='+ winY +',status=no,toolbar=no');
-			return false;
-		}else{
-			return true;
-		}
-			
-		
-	}
-</script>
+<script type="text/javascript" src="/js/admin.js"></script>	
+
 </body>
 </html>

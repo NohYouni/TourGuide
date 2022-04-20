@@ -15,18 +15,22 @@
 <body>
 	<c:import url="/header.jsp"></c:import>
 	
+<!-- 	<nav>
+        <ul class="inlineUl">
+        <li><a style="cursor : pointer;" onclick="festivalBoardLoad(8, 0)" id="a_header_fv">전국의 행사</a></li>
+        <li><a class="selected_menu"  href="" id="a_header_ev">이벤트</a></li></ul><hr>
+    </nav> -->
 	<nav>
         <ul class="inlineUl">
         <li><a class="selected_menu" style="cursor : pointer;" onclick="festivalBoardLoad(8, 0)" id="a_header_fv">전국의 행사</a></li>
-        <li><a href="" id="a_header_ev">이벤트</a></li></ul><hr>
+        <li><a class="selected_menu" style="cursor : pointer;" href="/eventPage/event.jsp" id="a_header_ev">이벤트</a></li></ul><hr>
     </nav>
-	
 	
 	<section>
 		<div class="" id="div_boardList_searchbar">
 			<select class="select_loca" name="location" id="select_boardList" onchange="changeLocation()">
 				<c:choose>
-<c:when test="${location == '0' }">
+	<c:when test="${location == '0' }">
 		<option value="0" selected="selected">전국</option>	<option value="1">서울</option>	<option value="2">인천</option>	
 		<option value="3">대전</option>	<option value="4">대구</option>	<option value="5">광주</option>	
 		<option value="6">부산</option>	<option value="7">울산</option>	<option value="8">세종특별자치시</option>	
@@ -230,7 +234,7 @@
 		</c:forEach>
 		</div>
 		
-		<div class="" id=""><button id="btn_boardList_viewmore" onclick="boardListViewMore()" class="btn-longbox">더보기 (총 ${numOfRows} / ${ totalCount}개)</button></div>
+		<div class="" id=""><button id="btn_boardList_viewmore" onclick="boardListViewMore()" class="btn-longbox btn_primary">더보기 (총 ${numOfRows} / ${ totalCount}개)</button></div>
 		<input type="hidden" id="hidden_boardList_totalCount" value="${ totalCount}"/>
 	</section>
 

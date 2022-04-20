@@ -17,7 +17,7 @@ public class RvDtlDAO {
    
    //리뷰 작성
    public int rvDtlInsert(RvDtlVO vo, String fvNo) {
-      String sql = "insert into rvDtl(mmId, fvNo, rvSub, rvCnts, rgtDate, img1, img2, img3) values(?, ?, ?, ?, sysdate, ?, ?, ?)";
+      String sql = "insert into rvDtl(mmId, fvNo, rvSub, rvCnts, rgtDate, delCode ,img1, img2, img3) values(?, ?, ?, ?, sysdate,0,?, ?, ?)";
       try {
          con = DBManager.getCon();
          pstmt = con.prepareStatement(sql);
@@ -206,5 +206,25 @@ public class RvDtlDAO {
       }      
       return voList;   
    }
+   //리뷰 삭제 이유 출력
+   public List<String> outRsnGetAll(){
+		List<String> rsnList = new ArrayList<String>();
+		String sql = "select *from rvdelRsn";
+		
+		try {
+			con = DBManager.getCon();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) 
+				rsnList.add(rs.getString("delName"));
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+		
+		return rsnList;
+	}
    
 }

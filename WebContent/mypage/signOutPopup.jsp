@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="/mypage/mypage.css">
+<title>회원탈퇴팝업</title>
+<link rel="stylesheet" href="/css/mypage.css">
 </head>
 <body>
 

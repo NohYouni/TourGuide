@@ -11,7 +11,7 @@
 
 <title>관리자페이지</title>
 <link rel="stylesheet" href="/css/board.css">
-<link rel="stylesheet" href="/admin/adminCSS.css">
+<link rel="stylesheet" href="/css/adminCSS.css">
 <link rel="stylesheet" href="/css/review.css">
 </head>
 
@@ -89,7 +89,10 @@
 						<c:when test="${serchNumber.delCode == 0}">
 							<table style="width: 980px;">
 								<tr>
-									<td class="image" rowspan="4">이미지</td>
+									<td class="image" rowspan="4">
+										<c:if test="${empty serchNumber.img1}"> <img style="width: 200px; height: 200px;" src="/images/noimage.jpg" alt="이미지" /> </c:if>
+										<c:if test="${not empty serchNumber.img1}"><img style="width: 200px; height: 200px;" src="/images/${rvlist.img1}" alt="이미지" /> </c:if>
+									</td>
 									<td >작성자 : ${serchNumber.mmId}</td>
 									<td >작성일시 : ${serchNumber.rgtDate }</td>
 								</tr>
@@ -109,7 +112,10 @@
 						<c:otherwise>
 							<table style="color: red; width: 980px;">
 								<tr>
-									<td class="image" rowspan="4">이미지</td>
+									<td class="image" rowspan="4">
+										<c:if test="${empty serchNumber.img1}"> <img style="width: 200px; height: 200px;" src="/images/noimage.jpg" alt="이미지" /> </c:if>
+										<c:if test="${not empty serchNumber.img1}"><img style="width: 200px; height: 200px;" src="/images/${serchNumber.img1}" alt="이미지" /> </c:if>
+									</td>
 									<td>작성자 : ${serchNumber.mmId}</td>
 									<td>작성일시 : ${serchNumber.rgtDate }</td>
 								</tr>
@@ -133,64 +139,21 @@
 					<c:set var="current_reviewPage" value="${rv_currentPage }" />
 					<li class="disabled"><c:if
 							test="${!(rv_startPage == 1) }">
-							<a href="/admins/page?page=${rv_startPage-1 }">
+							<a href="/admins/page?page=${rv_startPage-1 }&serch=${rv_serch}">
 						</c:if> <span>«</span></a></li>
 					<c:forEach var="i" begin="${rv_startPage }" end="${rv_endPage }">
-						<li><c:if test="${i != rv_currentPage}"><a href="/admins/page?page=${i}"></c:if>${i}</a></li>		
+						<li><c:if test="${i != rv_currentPage}"><a href="/admins/page?page=${i}&serch=${rv_serch}"></c:if>${i}</a></li>		
 					</c:forEach>
 					<li><c:if test="${rv_total_member_page > rv_endPage}">
-							<a href="/admins/page?page=${rv_endPage+1 }">
+							<a href="/admins/page?page=${rv_endPage+1 }&serch=${rv_serch}">
 						</c:if> <span>»</span></a></li>	
 				</ul>
 			</div>						
 		</div>
-				
+			
 		<c:import url="/footer.jsp"></c:import>
 	</div>
 </div>
-		
-
-<script>
-$(document).ready(function() {
-	var tab = sessionStorage.getItem('tabSelect');
-	$(".tab_title li").removeClass("on");
-	$(".tab_title li").eq(tab).addClass("on");
-	$(".tab_cont > div").hide();
-	$(".tab_cont > div").eq(tab).show();
-});
-
-$(document).ready(function() {
-	$(".tab_title li").click(function() {
-		var idx = $(this).index();
-		location.href = "/admins/page?page=1&tab="+idx;
-		
-		$(".tab_title li").removeClass("on");
-		$(".tab_title li").eq(idx).addClass("on");
-		$(".tab_cont > div").hide();
-		$(".tab_cont > div").eq(idx).show();
-		sessionStorage.setItem('tabSelect', idx);
-	})
-});	
-
-let winX = 400;
-let winY = 330;
-let x = (window.innerWidth)/2 - (winX/2);
-let y = (window.innerHeight)/2 - (winY/2);
-
-function memberDelete(mmId) {	
-	const myWin = window.open('/adminMemDel?id=' + mmId + ' ','win0','left=' + x + '  ,top=' + y +' , width='+ winX +',height='+ winY +',status=no,toolbar=no');	
-}
-function memberDeleteRsn(rsn) {
-	const myWin = window.open('/adminDeleteRsn?rsn=' + rsn + ' ','win0','left=' + x + '  ,top=' + y +' , width='+ winX +',height='+ winY +',status=no,toolbar=no');	
-}
-
-function reviewDelete(rmmId, rfvno) {
-	const myWin = window.open('/adminRvDel?id=' + rmmId + '&no=' + rfvno + ' ','win0','left=' + x + '  ,top=' + y +' , width='+ winX +',height='+ winY +',status=no,toolbar=no');	
-}
-function reviewDeleteRsn(rsn) {
-	const myWin = window.open('/adminDeleteRsn?rsn=' + rsn + ' ','win0','left=' + x + '  ,top=' + y +' , width='+ winX +',height='+ winY +',status=no,toolbar=no');	
-}
-
-</script>
+<script type="text/javascript" src="/js/admin.js"></script>	
 </body>
 </html>

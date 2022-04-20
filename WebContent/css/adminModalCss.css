@@ -1,0 +1,49 @@
+@charset "UTF-8";
+:root {
+    --primary-color: #25d8d8;
+    --darker-color : #1a9999;
+    --lighter-color : #7ce9e9;
+    --white-color: #ffffff;
+    --black-color: #000000;
+    --primary-font: Arial, Helvetica, sans-serif;
+  }
+.reviewRemove{
+	width: 200px;
+	margin: 0 auto;
+}
+.memberRemove{
+	width: 250px;
+	margin: 0 auto;
+}
+.cheakPage{
+	width: 300px;
+	margin: 0 auto;
+	text-align: center;
+}
+body{
+	overflow: hidden;
+}
+.center{
+	text-align: center;
+}
+
+.btn_middle{
+    height : 2em;
+    width : 80px;
+    border: none;
+ /*   display: inline-block;*/
+    border-radius: 10px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    cursor: pointer;
+    background-color: var(--primary-color);
+	color : var(--white-color);
+    
+ }
+ .btn_primary:hover{
+	background-color: var(--white-color);
+	color : var(--black-color);
+}

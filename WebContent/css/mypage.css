@@ -1,0 +1,121 @@
+@charset "UTF-8";
+:root {
+    --primary-color: #25d8d8;
+    --darker-color : #1a9999;
+    --lighter-color : #7ce9e9;
+    --white-color: #ffffff;
+    --black-color: #000000;
+    --primary-font: Arial, Helvetica, sans-serif;
+  }
+/*마이페이지 메인  */
+.table{
+    margin-left:auto; 
+    margin-right:auto;
+	}
+.more {
+	float: right;
+}
+.box {
+  	width: 400px;
+  	height: 400px;
+  	border: 2px solid black;
+ 	margin: 15px;
+}
+/* 찜 */
+.zzim {
+	width: 900px;
+}
+/* 클래스딴에서 오른쪽으로 정렬하고싶은경우  */
+.right {
+	text-align: right;
+}
+/* 비밀번호 확인 및 새 비밀번호 입력창 가운데 정렬하기 */
+.password{
+	text-align: center;
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+/* 버튼이 5글자라서 common으로는 커버가 안됨 해서 새로만듬  */
+.btn_five{
+    position: relative;
+    height : 2em;
+    width : 100px;
+    border: none;
+    display: inline-block;
+/*     padding: 0px 30px; */
+    border-radius: 10px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    cursor: pointer;
+ }
+ /* 팝업창안의 테이블 크기 조정  */
+ .popup {
+	width: 250px;
+	height: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+	margin-bottom: auto;
+	text-align: center;
+}
+.btn_middle{
+    position: relative;
+    height : 2em;
+    width : 80px;
+    border: none;
+    display: inline-block;
+/*     padding: 0px 30px; */
+    border-radius: 10px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    cursor: pointer;
+ }
+.btn-long{
+    position: relative;
+    height : 2em;
+    width : 200px;
+    border: none;
+    display: inline-block;
+/*     padding: 0px 60px; */
+    border-radius: 10px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    cursor: pointer;
+}
+.btn-longbox{
+    position: relative;
+    height : 3em;
+    border: 1px ;
+    width : 100%;
+    display: inline-block;
+    border-radius: 5px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    cursor: pointer;
+}
+.btn_primary{
+	background-color: var(--primary-color);
+	color : var(--white-color);
+}
+
+/* input태그 안의 text  */
+[type='text']{
+	border-radius: 10px;
+	height : 2em;
+	width: 400px;
+ 
+	
+} 
