@@ -14,12 +14,12 @@
 
 <body>
 	<c:import url="/header.jsp"></c:import>
-
 	<nav>
         <ul class="inlineUl">
         <li><a class="selected_menu" style="cursor : pointer;" onclick="festivalBoardLoad(8, 0)" id="a_header_fv">전국의 행사</a></li>
-        <li><a class="selected_menu" style="cursor : pointer;" href="/eventPage/event.jsp" id="a_header_ev">&nbsp;&nbsp;이벤트</a></li></ul><hr>
+        <li><a class="selected_menu" style="cursor : pointer;" href="/eventPage/event.jsp" id="a_header_ev">이벤트</a></li></ul><hr>
     </nav>
+	
     
 	<section>
 	
@@ -33,7 +33,7 @@
 					<td><button onclick="fvLkSelect(${detail.contentid },${detail.contenttypeid},'y')">찜하기</button></td></tr>
 				<tr><td>연 락 처 </td><td>${detail.telname} ${detail.tel}</td></tr>
 				<tr><td>주    소 </td><td>${detail.addr1} ${detail.addr2}</td></tr>
-				<tr><td>홈페이지 </td><td>${detail.homepage}</td></tr>
+				<tr><td>홈페이지 </td><td><a>${detail.homepage}</a></td></tr>
 			</table>
 			<hr/>
 			<table>
@@ -118,8 +118,6 @@
 	</div>
 	</section>
 	
-<<<<<<< Updated upstream
-=======
 <!-- 주변관광지 상세  --> 	
 	<form action="/festival/detail" method="POST" id="form_boardDetail">
 		<input type="hidden" id="input_boardDetail_contentid" name="contentid"/>
@@ -138,7 +136,6 @@
 	</form>
 
 
->>>>>>> Stashed changes
 	<c:import url="/footer.jsp"></c:import>
 	<div id="tothetop" class='tothetop'>▲</div>
 
