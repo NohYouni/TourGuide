@@ -42,7 +42,8 @@
 		</table>
 	</form>
 	<br>
-	<div id="errMsg" style="color:red"><%= errMsg %></div>
+	<div id="errMsg" style="color:#1a9999; font-family: 'Nanum Pen Script', cursive;
+				font-size:25px;"><%= errMsg %></div>
 </body>
 <footer>
 	<c:import url="/footer.jsp" ></c:import>

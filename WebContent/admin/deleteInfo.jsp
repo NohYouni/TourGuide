@@ -5,27 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>info</title>
-<style>
-.cheakPage{
-	width: 300px;
-	margin: 0 auto;
-	text-align: center;
-}
-body{
-	overflow: hidden;
-}
-</style>
+<link rel="stylesheet" href="/css/adminModalCss.css">
 </head>
 <body>
 <div class="cheakPage">
 	<h3>이유를 한 개 이상 선택해 주세요.</h3>
-	<button onclick="pageClose()">확인</button>
+	<button class="btn_middle btn_primary" onclick="pageClose()">확인</button>
 
 </div>
-<script>
-	function pageClose() {
-		window.close();
-	}
-</script>
+<script type="text/javascript" src="/js/admin.js"></script>	
+
 </body>
 </html>

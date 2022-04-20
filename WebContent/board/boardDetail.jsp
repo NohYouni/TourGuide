@@ -18,8 +18,9 @@
 	<nav>
         <ul class="inlineUl">
         <li><a class="selected_menu" style="cursor : pointer;" onclick="festivalBoardLoad(8, 0)" id="a_header_fv">전국의 행사</a></li>
-        <li><a href="" id="a_header_ev">이벤트</a></li></ul><hr>
+        <li><a class="selected_menu" style="cursor : pointer;" href="/eventPage/event.jsp" id="a_header_ev">&nbsp;&nbsp;이벤트</a></li></ul><hr>
     </nav>
+    
 	<section>
 	
 	<div class="" id="">
@@ -58,40 +59,47 @@
 		<div class="tab_view" id="tab1_boardDetail">
 		<!-- 리뷰 보기 -->
 		<p>이 곳을 방문하셨다면 리뷰를 남겨 보세요. 		
-		<button class="btn_middle btn_primary" style="float: right" onclick="reviewModalOpen(event);">리뷰 쓰기</button>
+		<button class="btn_middle btn_primary" style="float: right" onclick="brwPopup('${mmId}','${fvNo}')">리뷰 쓰기</button>
 		</p>
 		<hr>
 		<c:choose>
-		<c:when test="${review != null}">
-			<c:forEach items="${review}" var="review">
-				<table>
-				<tr>
-				<td class="image" rowspan="4">${review.img1}</td>
-				<td>작성자 : ${review.mmId}</td>
-				<td >작성일시 : ${review.rgtDate}</td>
-				
-				</tr>
-					<tr>
-					<td colspan="5">제목 : ${review.rvSub}</td>
-					</tr>
-					<tr>
-					<td colspan="5">${review.rvCnts}</td>
-					</tr>
-				</table>
-				<hr />
-			</c:forEach>
+			<c:when test="${review != null}">
+				<c:forEach items="${review}" var="review">
+					<c:if test="${review.delCode==0}">
+						<table style="width: 980px;">
+							<tr>
+								<td rowspan="4"><c:if test="${empty review.img1}">
+										<img style="width: 200px; height: 200px;"
+											src="/images/noimage.jpg" alt="이미지" />
+									</c:if> <c:if test="${not empty review.img1}">
+										<img style="width: 200px; height: 200px;"
+											src="/images/${review.img1}" alt="이미지" />
+									</c:if></td>
+								<td>작성자 : ${review.mmId}</td>
+								<td>작성일시 : ${review.rgtDate}</td>
+							</tr>
+							<tr>
+								<td colspan="5">제목 : ${review.rvSub}</td>
+							</tr>
+							<tr>
+								<td colspan="5">${review.rvCnts}</td>
+							</tr>
+						</table>
+						<hr />
+					</c:if>
+				</c:forEach>
 			</c:when>
 			<c:otherwise>
 				<table>
 					<tr>
-					<td >첫 리뷰를 작성해주세요. ^^</td>
+						<td>첫 리뷰를 작성해주세요. ^^</td>
 					</tr>
-				
+
 				</table>
 				<hr />
 			</c:otherwise>
 		</c:choose>
-		</div>
+			</div>
 		
 		<div class="tab_hidden" id="tab2_boardDetail">
 		<!-- 주변 관광지 -->
@@ -119,7 +127,7 @@
 	<c:import url="/footer.jsp"></c:import>
 	<div id="tothetop" class='tothetop'>▲</div>
 
-<div class="" id="modalBack_boardDetail"></div>
+<%-- <div class="" id="modalBack_boardDetail"></div>
 <div class="" id="modal_boardDetail">	
 	<form action="/festival/createReview" method="post" id="form_boardModal">
 		<input type="hidden" style="width: 400px" name="contentid" value="${detail.contentid}"/>
@@ -150,7 +158,7 @@
 		</table>
 	</form>
 	</div>
-
+ --%>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/board/board.js"></script>

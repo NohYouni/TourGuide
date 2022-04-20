@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>찜 취소 팝업</title>
-<link rel="stylesheet" href="/mypage/mypage.css">
+<link rel="stylesheet" href="/css/mypage.css">
 </head>
 <body>
 	<table class="popup">

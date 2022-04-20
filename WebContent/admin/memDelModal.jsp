@@ -5,20 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>member Delete Modal</title>
-
-<style>
-.memberRemove{
-	width: 250px;
-	margin: 0 auto;
-}
-body{
-	overflow: hidden;
-}
-.center{
-	text-align: center;
-}
-
-</style>
+<link rel="stylesheet" href="/css/adminModalCss.css">
 </head>
 <body>
 <div class="memberRemove">
@@ -57,40 +44,16 @@ body{
 				<td><input type="radio" value="8" name="rsn8"></td>
 				<td>기타</td>
 			</tr>
-		</table>
+		</table><br/>
 		<div class="center">
 		<input type="hidden" value=${memId } name="memId"/>
-		<input type="submit" value="탈퇴">
-		<input type="button" onclick="pageClose()" value="취소">
+		<input class="btn_middle btn_primary" type="submit" value="탈퇴">
+		<input class="btn_middle btn_primary" type="button" onclick="pageClose()" value="취소">
 		</div>
 	</form>
 
 </div>
-<script>
-	function pageClose() {
-		window.close();
-	}
-	function check(){
-		let ch = false;
-		for(var i =0; i<8; i++){
-			if(document.frm.elements[i].checked)
-				ch = true;									
-		}
-		
-		let winX = 400;
-		let winY = 150;
-		let x = opener.window.innerWidth/2;
-		let y = opener.window.innerHeight/2 - winY/2;
-		
-		if(ch == false){
-			const myWin = window.open('/admin/deleteInfo.jsp','win1','left=' + x + '  ,top=' + y +' , width='+ winX +',height='+ winY +',status=no,toolbar=no');
-			return false;
-		}else{
-			return true;
-		}
-			
-		
-	}
-</script>
+<script type="text/javascript" src="/js/admin.js"></script>	
+
 </body>
 </html>

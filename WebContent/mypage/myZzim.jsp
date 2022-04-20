@@ -5,9 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>내 찜</title>
+<title>내 찜 목록</title>
 <c:import url="/header.jsp"></c:import>
-<link rel="stylesheet" href="/mypage/mypage.css">
+<link rel="stylesheet" href="/css/mypage.css">
 </head>
 <hr />
 <h1>내가 찜한 목록</h1>
@@ -24,7 +24,8 @@
 	</c:forEach>
 	<br />
 </body>
-	<script type="text/javascript" src="/mypage/myZzimPopup.js"></script><footer>
+<script type="text/javascript" src="/js/mypage.js"></script>
+	<footer>
 	<c:import url="/footer.jsp"></c:import>
 </footer>
 </html>
