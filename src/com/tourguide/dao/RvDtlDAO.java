@@ -206,5 +206,25 @@ public class RvDtlDAO {
       }      
       return voList;   
    }
+   //리뷰 삭제 이유 출력
+   public List<String> outRsnGetAll(){
+		List<String> rsnList = new ArrayList<String>();
+		String sql = "select *from rvdelRsn";
+		
+		try {
+			con = DBManager.getCon();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) 
+				rsnList.add(rs.getString("delName"));
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+		
+		return rsnList;
+	}
    
 }
