@@ -33,6 +33,7 @@ public class FvLkInsertServlet extends HttpServlet {
 		String mapy = request.getParameter("mapy");
 		BoardSv bs = new BoardService();
 		
+		request.setAttribute("fvNo", contentid);
 		request.setAttribute("detail", bs.getOne1(contentid).get(0));
 		request.setAttribute("review", bs.getReview(contentid));
 		
