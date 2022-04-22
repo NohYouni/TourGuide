@@ -1,4 +1,14 @@
 @charset "UTF-8";
+@import url(//fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+
+:root {
+    --primary-color: #25d8d8;
+    --darker-color : #1a9999;
+    --lighter-color : #7ce9e9;
+    --white-color: #ffffff;
+    --black-color: #000000;
+/*    --primary-font: Arial, Helvetica, sans-serif; */
+  }
 .image {
 	border: 2px solid black;
 	width: 200px;
