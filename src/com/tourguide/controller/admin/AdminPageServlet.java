@@ -38,9 +38,8 @@ public class AdminPageServlet extends HttpServlet {
 		String reqURL = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String cmd = reqURL.substring(contextPath.length());
-		System.out.println(cmd);
 				
-		
+		System.out.println(cmd);
 		//회원 조회
 		if(cmd.equals("/admins/page")){	
 			
@@ -80,15 +79,17 @@ public class AdminPageServlet extends HttpServlet {
 					mmMstPageing(request, response, 10, 5);
 				}													
 			}
-			
-			BoardSv bs = new BoardService();
-			
-			
-			
-			
+
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/adminPage.jsp");
-			dispatcher.forward(request, response);
+			dispatcher.forward(request, response);			
 			
+		}else if(cmd.equals("/admins/detail")) {
+			String mmId = request.getParameter("mmId");
+			MmMstDAO dao = new MmMstDAO();
+			MmMstVO vo = dao.mmMstGetOne(mmId);
+			request.setAttribute("vo", vo);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/adminMemDetail.jsp");
+			dispatcher.forward(request, response);	
 		}
 		
 		

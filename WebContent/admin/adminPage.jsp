@@ -45,14 +45,14 @@
 					<c:choose>
 						<c:when test="${serchNumber.outCode == 0 }">
 							<tr>
-								<td style="border-bottom: 1px solid black;">${serchNumber.mmId}</td>
+								<td style="border-bottom: 1px solid black;"><a href="javascript:void(0);" onclick="memberDetail('${serchNumber.mmId}')">${serchNumber.mmId}</a></td>
 								<td style="border-bottom: 1px solid black;">${serchNumber.mmEmail}</td>
 								<td style="border-bottom: 1px solid black;"><button class="btn_middle btn_primary" onclick="memberDelete('${serchNumber.mmId}')">삭제</button></td>
 							</tr>	
 						</c:when>
 						<c:otherwise>
 							<tr style="color: red;">
-								<td style="border-bottom: 1px solid black;">${serchNumber.mmId}</td>
+								<td style="border-bottom: 1px solid black;"><a href="javascript:void(0);" onclick="memberDetail('${serchNumber.mmId}')">${serchNumber.mmId}</a></td>
 								<td style="border-bottom: 1px solid black;">${serchNumber.mmEmail}</td>
 								<td style="border-bottom: 1px solid black;"><button class="btn_middle btn_primary" onclick="memberDeleteRsn('${serchNumber.outCode}')">삭제 이유</button></td>
 							</tr>

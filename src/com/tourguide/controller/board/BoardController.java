@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.tourguide.dao.FvLkDAO;
 import com.tourguide.dto.RvDtlVO;
 import com.tourguide.service.BoardService;
 import com.tourguide.service.BoardSv;
@@ -78,7 +79,10 @@ public class BoardController extends HttpServlet {
 			if(!mapx.equals("undefined")) {
 				request.setAttribute("seeSight", bs.getSight("10", mapx, mapy));
 			}
-			System.out.println(mapx + "/" + mapy);
+			
+			FvLkDAO fvLk = new FvLkDAO();
+			request.setAttribute("like", fvLk.fvLkCount(contentid));
+			
 			rd = request.getRequestDispatcher("/board/boardDetail.jsp");
 			rd.forward(request, response);
 			

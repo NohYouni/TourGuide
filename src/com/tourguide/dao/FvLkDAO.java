@@ -84,5 +84,25 @@ public class FvLkDAO {
 	return result;
 	
 	}
+	
+	//지금 행사의 찜 개수 출력
+	public int fvLkCount(String fvNo) {
+		String sql="select count(*) as count from fvlk where fvno = ?";
+		int result=0;
+		con = DBManager.getCon();
+		try {
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, fvNo);
+			rs = pstmt.executeQuery();
+			rs.next();
+			result = rs.getInt("count");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBManager.close(con, pstmt, rs);
+		}
+		return result;
+	}
 
 }

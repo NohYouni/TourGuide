@@ -274,5 +274,23 @@ public class MmMstDAO {
 
 			return null;
 		}
+		
+		public int mmMstDateUpdate(String mmId) {
+			int result = 0;
+			String sql = "UPDATE mmMst SET llDate=sysdate where mmId=?";
+			try {
+				con = DBManager.getCon();
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, mmId);
+				result = pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(con, pstmt);
+			}
+			
+			return result;
+		}
 	
 }

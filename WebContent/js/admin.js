@@ -37,6 +37,11 @@ function reviewDelete(rmmId, rfvno) {
 function reviewDeleteRsn(rsn) {
 	const myWin = window.open('/adminDeleteRsn?rsn=' + rsn + '&type=rv ','win0','left=' + x + '  ,top=' + y +' , width='+ winX +',height='+ winY +',status=no,toolbar=no');	
 }
+function memberDetail(mmId) {
+	console.log(mmId);
+	const myWin = window.open('/admins/detail?mmId=' + mmId + ' ','win0','left=' + x + '  ,top=' + y +' , width='+ winX +',height='+ winY +',status=no,toolbar=no');	
+}
+
 function pageClose() {
 	window.close();
 }

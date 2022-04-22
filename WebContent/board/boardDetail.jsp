@@ -30,7 +30,7 @@
 			<table>
 				<tr><td rowspan="5" colspan="2"><img src="${detail.firstimage }" alt="" class="img_boardDetail"/></td><td></td><td></td></tr>
 				<tr><td>행사 이름 </td><td>${detail.title}</td>
-					<td><button onclick="fvLkSelect(${detail.contentid },${detail.contenttypeid},'y')">찜하기</button></td></tr>
+					<td>&nbsp;&nbsp;${like }&nbsp;<button onclick="fvLkSelect(${detail.contentid },${detail.contenttypeid},'y')">찜하기</button></td></tr>
 				<tr><td>연 락 처 </td><td>${detail.telname} ${detail.tel}</td></tr>
 				<tr><td>주    소 </td><td>${detail.addr1} ${detail.addr2}</td></tr>
 				<tr><td>홈페이지 </td><td>${detail.homepage}</td></tr>

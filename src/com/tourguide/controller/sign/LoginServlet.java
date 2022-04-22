@@ -52,6 +52,7 @@ public class LoginServlet extends HttpServlet {
 				ses.setAttribute("errMsg", "로그인 정보가 잘못됐습니다.");
 				response.sendRedirect("/sign/login.jsp");
 			}else {
+				dao.mmMstDateUpdate(vo.getMmId());
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 				dispatcher.forward(request, response);
 			}

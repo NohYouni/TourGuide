@@ -51,7 +51,8 @@ public class FvLkInsertServlet extends HttpServlet {
 			out.print("</script>");
 		}
 
-		
+		FvLkDAO fvLk = new FvLkDAO();
+		request.setAttribute("like", fvLk.fvLkCount(contentid));
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/board/boardDetail.jsp");
 		dispatcher.forward(request, response);
