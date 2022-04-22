@@ -20,8 +20,6 @@
 </head>
 <body>
 	<%
-		//final String user = "superm0527@gmail.com"; //발신자의 이메일 아이디를 입력 
-	//final String password = "rladkfla1!"; //발신자 이메일의 패스워드를 입력
 	final String user = "nasproject2233@gmail.com"; //발신자의 이메일 아이디를 입력 
 	final String password = "NtourAguideS1"; //발신자 이메일의 패스워드를 입력
 
