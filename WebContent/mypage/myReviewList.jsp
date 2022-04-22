@@ -30,7 +30,7 @@
 <table style="width : 980px;">
 <tr>
 <td rowspan="4">
-<c:if test="${empty rvlist.img1}"> <img style="width: 200px; height: 200px;" src="/images/noimage.jpg" alt="이미지" /> </c:if>
+<c:if test="${empty rvlist.img1}"> <img style="width: 200px; height: 200px;" src="/noImage.png" alt="이미지" /> </c:if>
 <c:if test="${not empty rvlist.img1}"><img style="width: 200px; height: 200px;" src="/images/${rvlist.img1}" alt="이미지" /> </c:if> </td>
 <td>작성자 : ${rvlist.mmId}</td>
 <td>작성일시 : ${rvlist.rgtDate}</td>

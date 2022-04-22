@@ -72,7 +72,7 @@
 							<tr>
 								<td rowspan="4"><c:if test="${empty review.img1}">
 										<img style="width: 200px; height: 200px;"
-											src="/images/noimage.jpg" alt="이미지" />
+											src="/noImage.png" alt="이미지" />
 									</c:if> <c:if test="${not empty review.img1}">
 										<img style="width: 200px; height: 200px;"
 											src="/images/${review.img1}" alt="이미지" />

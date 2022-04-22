@@ -207,7 +207,7 @@
 						<tr><td><img alt="${list.title}" src="${list.firstimage}" class="img_boardList"></td></tr>
 					</c:when>
 					<c:otherwise>
-						<tr><td><img alt="${list.title}" src="/board/noImages.jpg" class="img_boardList"></td></tr>
+						<tr><td><img alt="${list.title}" src="/noImage.png" class="img_boardList"></td></tr>
 					</c:otherwise>
 				</c:choose>
 					<tr><td>${list.title}</td></tr>
@@ -222,7 +222,7 @@
 						<tr><td><img alt="${list.title}" src="${list.firstimage}" class="img_boardList"></td></tr>
 					</c:when>
 					<c:otherwise>
-						<tr><td><img alt="${list.title}" src="/board/noImages.jpg" class="img_boardList"></td></tr>
+						<tr><td><img alt="${list.title}" src="/noImage.png" class="img_boardList"></td></tr>
 					</c:otherwise>
 				</c:choose>
 				<tr><td>${list.title}</td></tr>
