@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원탈퇴팝업</title>
+<title>회원 탈퇴 팝업</title>
 <link rel="stylesheet" href="/css/mypage.css">
 </head>
 <body>

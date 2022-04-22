@@ -13,16 +13,22 @@
 <link rel="stylesheet" href="/css/board.css">
 <link rel="stylesheet" href="/css/adminCSS.css">
 <link rel="stylesheet" href="/css/review.css">
+<link rel="stylesheet" href="/css/commonCss.css">
 </head>
 
 <body>
 <c:import url="/header.jsp"></c:import>
-<div class="">
+
 	<nav>
-        <ul class="inlineUl">
-        <li><a style="cursor : pointer;" onclick="festivalBoardLoad(8, 0)" id="a_header_fv">전국의 행사</a></li>
-        <li><a href="" id="a_header_ev">이벤트</a></li></ul><hr>
-    </nav>
+		<ul class="inlineUl">
+			<li><a class="selected_menu" style="cursor: pointer;"
+				onclick="festivalBoardLoad(8, 0)" id="a_header_fv">전국의 행사</a></li>
+			<li><a class="selected_menu" style="cursor: pointer;"
+				href="/eventPage/event.jsp" id="a_header_ev">이벤트</a></li>
+		</ul>
+		<hr>
+	</nav>
+
 
 <div class="container">
 	<ul class="tab_title">
@@ -54,7 +60,7 @@
 							<tr style="color: red;">
 								<td style="border-bottom: 1px solid black;"><a href="javascript:void(0);" onclick="memberDetail('${serchNumber.mmId}')">${serchNumber.mmId}</a></td>
 								<td style="border-bottom: 1px solid black;">${serchNumber.mmEmail}</td>
-								<td style="border-bottom: 1px solid black;"><button class="btn_middle btn_primary" onclick="memberDeleteRsn('${serchNumber.outCode}')">삭제 이유</button></td>
+								<td style="border-bottom: 1px solid black;"><button class="btn_middle1 btn_primary" onclick="memberDeleteRsn('${serchNumber.outCode}')">삭제 이유</button></td>
 							</tr>
 						</c:otherwise>
 					</c:choose>
@@ -127,7 +133,7 @@
 								</tr>
 								<tr>
 									<td colspan="3"></td>
-									<td class="right"><button class="btn_middle btn_primary" onclick="reviewDeleteRsn('${serchNumber.delCode}')">삭제 이유</button></td>
+									<td class="right"><button class="btn_middle1 btn_primary" onclick="reviewDeleteRsn('${serchNumber.delCode}')">삭제 이유</button></td>
 								</tr>
 							</table>
 							<hr />

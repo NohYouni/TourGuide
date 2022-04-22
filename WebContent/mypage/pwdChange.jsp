@@ -20,11 +20,11 @@
 		<table class="password">
 			<tr>
 				<td>새 비밀번호 :</td>
-				<td><input type="text" placeholder="새 비밀번호를 입력해 주세요" id="newPwd" name="newPwd" /></td>
+				<td><input type="password" placeholder="새 비밀번호를 입력해 주세요" id="newPwd" name="newPwd" /></td>
 			</tr>
 			<tr>
 				<td>새 비밀번호 확인 :</td>
-				<td><input type="text" placeholder="새 비밀번호를 한번더 입력해 주세요" id="newPwdCheck" name="newPwdCheck" /></td>
+				<td><input type="password" placeholder="새 비밀번호를 한번더 입력해 주세요" id="newPwdCheck" name="newPwdCheck" /></td>
 			</tr>
 			<tr>
 			<td colspan="2"><input type="submit" class="btn_middle btn_primary" value="변경" onclick="return pwdChange('${param.mmPwd}')" />&nbsp;&nbsp;&nbsp; <input  class="btn_middle btn_primary" type="button" value="취소" onclick="location.href='mypage'"> </td>	

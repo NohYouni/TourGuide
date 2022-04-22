@@ -6,12 +6,24 @@
 <head>
 <meta charset="UTF-8">
 <title>내 리뷰 목록</title>
-<c:import url="/header.jsp"></c:import>
+
+<link rel="stylesheet" href="/css/commonCss.css">
 <link rel="stylesheet" href="/css/mypage.css">
 </head>
 <body>
-<hr />
-<h1>내 리뷰 목록</h1>
+	<c:import url="/header.jsp"></c:import>
+
+	<nav>
+		<ul class="inlineUl">
+			<li><a class="selected_menu" style="cursor: pointer;"
+				onclick="festivalBoardLoad(8, 0)" id="a_header_fv">전국의 행사</a></li>
+			<li><a class="selected_menu" style="cursor: pointer;"
+				href="/eventPage/event.jsp" id="a_header_ev">이벤트</a></li>
+		</ul>
+		<hr>
+	</nav>
+
+<h1>내 리뷰</h1>
 <br />
 <c:forEach var="rvlist" items="${rvlists}">
 <c:if test="${rvlist.delCode==0}">

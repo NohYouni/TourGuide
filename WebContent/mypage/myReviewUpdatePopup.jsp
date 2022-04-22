@@ -6,6 +6,7 @@
 <head>
 <link rel="stylesheet" href="/css/mypage.css">
 
+
 	<meta charset="UTF-8" />
 	<title>리뷰 수정 팝업</title>
 </head>

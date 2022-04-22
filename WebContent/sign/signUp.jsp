@@ -6,10 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <style type="text/css">
-.input {
-	width: 80%;
+
+[type='password']{
 	border-radius: 10px;
-	height: 2em;
+	height : 2em;
+	width: 400px;
+	
 }
 
 .first {
@@ -30,7 +32,6 @@
 .center {
 	text-align: center;
 }
-
 
 </style>
 <title>회원가입 페이지</title>

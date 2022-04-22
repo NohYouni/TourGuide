@@ -16,7 +16,7 @@
 <hr />
 <br />
 <form action="../pwdCheck" class="password" method="post">
-<label for="check">비밀번호 확인 :</label> <input type="text" id="check" placeholder="내용을 입력해 주세요" name="mmPwd" /> <br /><br />
+<label for="check">비밀번호 확인 :</label> <input type="password" id="check" placeholder="내용을 입력해 주세요" name="mmPwd" /> <br /><br />
 <input class="btn_middle btn_primary" type="submit" value="확인" />&nbsp;
 <input class="btn_middle btn_primary" type="button" value="취소" onClick="location.href='../mypage'">
 </form>

@@ -87,7 +87,9 @@
 
 	<div class="main">
 		<div class="rect leftUl">
-			<img onclick="location.href='/festival/detail?contentid=2816651&mapx=128.2843721009&mapy=35.9188087503'" style="width: 100%; height: 100%;" src="/board/noImages.jpg" alt="" />
+			<a style="cursor: pointer;">
+				<img onclick="location.href='/festival/detail?contentid=2816651&mapx=128.2843721009&mapy=35.9188087503'" style="width: 100%; height: 100%;" src="/2.jpg" alt="추천행사" />
+			</a>
 		</div>
 		<div class="rect rigthUl">
 			<div class="srect1">

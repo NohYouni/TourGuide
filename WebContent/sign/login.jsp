@@ -15,7 +15,16 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/commonCss.css">
 <script type="text/javascript" src="/js/mmmst.js"></script>
+<style type="text/css">
 
+[type='password']{
+	border-radius: 10px;
+	height : 2em;
+	width: 400px;
+	
+} 
+
+</style>
 </head>
 <body>
 	<c:import url="/header.jsp"></c:import>
@@ -31,7 +40,7 @@
 		
 			<tr>
 				<td class="first"><label for="pwd">비 밀 번 호  </label></td>
-				<td class="second"><input type="text" name="mmPwd" id="pwd" class="input"
+				<td class="second"><input type="password" name="mmPwd" id="pwd" class="input"
 					placeholder="비밀번호를 입력해주세요" /></td>
 			</tr>
 			<tr>

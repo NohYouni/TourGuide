@@ -5,32 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<style type="text/css">
-[type='text']{
-	border-radius: 10px;
-	height : 2em;
-	width: 300px;	
-}
-.btn_primary{
-	background-color: #25d8d8;
-	color : #ffffff;
-}
-.btn_middle{
-    position: relative;
-    height : 2em;
-    width : 80px;
-    border: none;
-    display: inline-block;
-/*     padding: 0px 30px; */
-    border-radius: 10px;
-    font-family: "paybooc-Light", sans-serif;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.25s;
-    cursor: pointer;
- }
-</style>
+<link rel="stylesheet" href="/css/commonCss.css">
+
 <title>아이디 중복확인창</title>
 <script type="text/javascript" src="/js/mmmst.js"></script>
 </head>
