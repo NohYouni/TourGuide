@@ -114,7 +114,7 @@
 						<tr><td><img alt="${seeSight.title}" src="${seeSight.firstimage}" class="img_boardList"></td></tr>
 						</c:when>
 						<c:otherwise>
-						<tr><td><img alt="${seeSight.title}" src="/board/noImages.jpg" class="img_boardList"></td></tr>
+						<tr><td><img alt="${seeSight.title}" src="/noImage.png" class="img_boardList"></td></tr>
 						</c:otherwise>
 						</c:choose>
 						<tr><td>${seeSight.title}</td></tr>
