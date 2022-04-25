@@ -193,9 +193,10 @@ public class RvDtlDAO {
             vo.setRvCnts(rs.getString("rvCnts"));
             vo.setRgtDate(rs.getString("rgtDate"));
             vo.setDelCode(rs.getInt("delCode"));
-            vo.setImg1(rs.getString("delDate"));
-            vo.setImg2(rs.getString("img1"));
-            vo.setImg3(rs.getString("img2"));
+            vo.setDelDate(rs.getString("delDate"));
+            vo.setImg1(rs.getString("img1"));
+            vo.setImg2(rs.getString("img2"));
+            vo.setImg3(rs.getString("img3"));
             voList.add(vo);
          }
                   
