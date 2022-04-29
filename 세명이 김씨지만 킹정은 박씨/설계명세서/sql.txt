@@ -1,0 +1,188 @@
+1. ddl
+
+--회원
+create table mmMst(
+    mmId    	VARCHAR2(50) 	not NULL,
+    mmPwd   	VARCHAR2(50) 	not NULL,
+    mmEmail 	VARCHAR2(100)	not null UNIQUE,
+    joinDate 	date    	 	not null,
+    llDate  	date     	 	not null,
+    stsCode   	number   		not null,
+    outDate 	date,
+    outCode  	number,
+    CONSTRAINT mmMst_pk PRIMARY KEY (mmId),
+    CONSTRAINT mmMst_stsCode_fk FOREIGN key (stsCode) REFERENCES stsMst(stsCode)
+);
+-- 회원 상태
+create table stsMst(
+    stsCode   number 			not null,
+    stsName   VARCHAR2(30) 		not null,
+    CONSTRAINT stsMst_pk PRIMARY KEY (stsCode)
+);
+--탈퇴 이유
+create table outRsn(
+    outCode   number 			not null,
+    outName   VARCHAR2(50) 		not null,
+    CONSTRAINT outRsn_pk PRIMARY KEY (outCode)
+);
+-- 리뷰
+CREATE TABLE rvDtl(
+    rvNo 		NUMBER 			NOT NULL,
+    mmId 		VARCHAR2(50) 	NOT NULL,
+    fvNo		VARCHAR2(50) 	NOT NULL,
+    rvSub 		VARCHAR2(100) 	NOT NULL,
+    rvCnts 		VARCHAR2(2000)	NOT NULL,
+    rgtDate		DATE 			NOT NULL,
+    delCode		NUMBER,
+    delDate 	DATE,
+    CONSTRAINT rvDtl_pk PRIMARY KEY (rvNo),
+    CONSTRAINT rvDtl_mmId_fk FOREIGN KEY (mmId) REFERENCES mmMst(mmId)
+);
+-- 리뷰 사진
+create table rvPic(
+    rvNo    number   not null,
+    img1    VARCHAR2(50),
+    img2    VARCHAR2(50),
+    img3    VARCHAR2(50),
+    CONSTRAINT rvPic_pk PRIMARY KEY (rvNo)
+);
+-- 리뷰 삭제 이유
+create table rvDelRsn(
+    delCode   number 		not null,
+   	delName   VARCHAR2(80) 	not null,
+    CONSTRAINT rvDelRsn_pk PRIMARY KEY (delCode)
+);
+-- 찜
+create table fvLk(
+    mmId    VARCHAR2(50) 	not null,
+    fvNo    VARCHAR2(50) 	not null,
+    CONSTRAINT fvLk_pk primary key (mmId, fvNo),
+    CONSTRAINT fvLk_mmId_fk FOREIGN key (mmId) REFERENCES mmMst(mmId)
+);
+-- 이벤트
+create table evApp(
+    evCode  VARCHAR2(50) 	not null,
+    mmId    VARCHAR2(50) 	not null,
+    evDate  date 			not null,
+    evCnts  VARCHAR2(500) 	not null,
+    etc     VARCHAR2(500),
+    CONSTRAINT evApp_pk PRIMARY KEY (evCode),
+    CONSTRAINT evApp_mmId_fk FOREIGN key (mmId) REFERENCES mmMst(mmId)
+);
+
+============================================================================
+2. dml - insert 
+-- 회원 상태
+INSERT INTO STSMST VALUES (0, '관리자');
+INSERT INTO STSMST VALUES (1, '회원');
+INSERT INTO STSMST VALUES (2, '비회원');
+
+--탈퇴 이유
+INSERT INTO OUTRSN VALUES (0,'본인탈퇴');
+INSERT INTO OUTRSN VALUES (1,'욕설');
+INSERT INTO OUTRSN VALUES (2,'음란성 게시물');
+INSERT INTO OUTRSN VALUES (3,'폭력성 게시물');
+INSERT INTO OUTRSN VALUES (4,'괴롭힘');
+INSERT INTO OUTRSN VALUES (5,'도용');
+INSERT INTO OUTRSN VALUES (6,'도배');
+INSERT INTO OUTRSN VALUES (7,'홍보성 게시물');
+INSERT INTO OUTRSN VALUES (8,'기타');
+
+-- 리뷰 삭제 이유
+INSERT INTO rvDelRsn VALUES (0,'본인삭제');
+INSERT INTO rvDelRsn VALUES (1,'욕설');
+INSERT INTO rvDelRsn VALUES (2,'음란성 게시물');
+INSERT INTO rvDelRsn VALUES (3,'폭력성 게시물');
+INSERT INTO rvDelRsn VALUES (4,'괴롭힘');
+INSERT INTO rvDelRsn VALUES (5,'도용');
+INSERT INTO rvDelRsn VALUES (6,'도배');
+INSERT INTO rvDelRsn VALUES (7,'홍보성 게시물');
+INSERT INTO rvDelRsn VALUES (8,'기타');
+
+--회원
+CREATE SEQUENCE EX_SEQ --시퀀스이름 EX_SEQ
+INCREMENT BY 1 --증감숫자 1
+START WITH 1 --시작숫자 1
+MINVALUE 1 --최소값 1
+;
+
+INSERT INTO mmMst (mmid, mmPwd, mmEmail, joinDate, llDate, stsCode)
+VALUES	(concat('idblabla',EX_SEQ.nextval),'1234',concat(concat('blabla',EX_SEQ.nextval),'@mail.com'), sysdate, sysdate,'1');
+
+INSERT into mmMst 
+VALUES ('kimry1234', 'kim5', 'kim5@gmail.com', SYSDATE, sysdate, 2, sysdate, 0);--비회원 + 본인탈퇴
+INSERT into mmMst 
+VALUES ('kimry5678', 'kim6', 'kim6@gmail.com', sysdate, sysdate, 2, sysdate, 7);--비회원 + 강퇴
+INSERT into mmMst(mmId, mmPwd, mmEmail, joinDate, llDate, stsCode) 
+VALUES ('kimry90', 'kim7', 'kim7@gmail.com', sysdate, sysdate, 1);--회원
+INSERT into mmMst(mmId, mmPwd, mmEmail, joinDate, llDate, stsCode) 
+VALUES ('kimry44', 'kim44', 'kim44@gmail.com', sysdate, sysdate, 0);--관리자
+
+-- 리뷰
+INSERT INTO rvDtl (MMID, FVNO, rvSub,rvCnts, RGTDATE)
+values('idblabla1','2733528','재미있어요!!!!!!!!','왕잼탱 넘잼탱 졸잼탱',sysdate);
+INSERT INTO rvDtl (MMID, FVNO, rvSub,rvCnts, RGTDATE, DELCODE, DELDATE)
+values('idblabla2','910544','내가 삭제한 리뷰','리뷰를 내가 삭제했도다!!!',sysdate,0 ,sysdate);
+INSERT INTO rvDtl (MMID, FVNO, rvSub,rvCnts, RGTDATE, DELCODE, DELDATE)
+values('idblabla3','2733528','도용한 댓글','남의 것을 도용했습니다',sysdate,5 ,sysdate);
+
+-- 찜
+INSERT INTO fvLk (MMID, FVNO) 
+VALUES ('idblabla1', '2733528');
+INSERT INTO fvLk (MMID, FVNO) 
+VALUES ('idblabla5', '910544');
+
+-- 이벤트
+insert into evApp(evCode, evNo, mmId, evDate, evCnts) VALUES (1, 1, 'kimry90',      sysdate, '5555');
+insert into evApp(evCode, evNo, mmId, evDate, evCnts) VALUES (2, 1, 'idblabla9',    sysdate, '1234');
+insert into evApp(evCode, evNo, mmId, evDate, evCnts) VALUES (3, 1, 'idblabla10',   sysdate, '4452');
+insert into evApp(evCode, evNo, mmId, evDate, evCnts) VALUES (4, 1, 'idblabla4',    sysdate, '1234');
+
+insert into evApp(evCode, evNo, mmId, evDate, evCnts) VALUES (5, 2, 'kimry90',      sysdate, '5555');
+insert into evApp(evCode, evNo, mmId, evDate, evCnts) VALUES (6, 2, 'idblabla1',    sysdate, '5554');
+insert into evApp(evCode, evNo, mmId, evDate, evCnts) VALUES (7, 2, 'idblabla2',    sysdate, '5554');
+insert into evApp(evCode, evNo, mmId, evDate, evCnts) VALUES (8, 2, 'idblabla4',    sysdate, '1234');
+============================================================================
+3. dml - update & delete
+
+-- 회원
+-- 1) 회원 비밀번호 수정
+UPDATE mmMst SET mmPwd = '5678' WHERE mmId = 'idblabla1';
+-- 2) 회원 자가 탈퇴
+UPDATE mmMst SET stscode = 2, outdate = sysdate, outcode = 0
+WHERE mmId = 'idblabla2' and mmPwd = '1234';
+-- 3) 회원 강퇴
+UPDATE mmMst SET stscode = 2, outdate = sysdate, outcode = 2
+WHERE mmId = 'idblabla3' and mmPwd = '1234';
+
+-- 리뷰
+-- 1) 제목, 내용
+UPDATE rvDtl SET RVSUB = '랄랄랄라 즐거웠어요', RVCNTS = '짱신남 너무 재미있었음' WHERE MMID ='idblabla1' AND FVNO ='2733528';
+-- 2) 삭제
+UPDATE rvDtl SET DELCODE = 2, DELDATE = sysdate WHERE MMID ='idblabla3' AND FVNO ='910544';
+UPDATE rvDtl SET DELCODE = 0, DELDATE = sysdate WHERE MMID ='idblabla4' AND FVNO ='2733528';
+
+--찜삭제
+DELETE FROM fvLk WHERE mmId = 'idblabla1' and fvno = 1;
+DELETE FROM fvLk WHERE mmId = 'idblabla3' and fvno = 3;
+
+============================================================================
+4. dml - select
+
+-- 리뷰 
+SELECT * FROM rvDtl;
+-- 찜
+SELECT * FROM fvLk;
+-- 회원
+-- 1) 탈퇴자
+SELECT m.MMID, m.MMPWD, m.MMEMAIL, m.JOINDATE, m.LLDATE, m.STSCODE, s.STSNAME, m.OUTDATE, m.OUTCODE, o.OUTNAME 
+FROM mmMst m
+INNER JOIN STSMST s ON m.STSCODE = s.STSCODE
+INNER JOIN OUTRSN o ON m.OUTCODE = o.OUTCODE
+WHERE m.STSCODE = 2
+;
+-- 2) 회원
+SELECT m.MMID, m.MMPWD, m.MMEMAIL, m.JOINDATE, m.LLDATE, m.STSCODE, s.STSNAME, m.OUTDATE, m.OUTCODE
+FROM mmMst m
+INNER JOIN STSMST s ON m.STSCODE = s.STSCODE
+WHERE m.STSCODE = 1
